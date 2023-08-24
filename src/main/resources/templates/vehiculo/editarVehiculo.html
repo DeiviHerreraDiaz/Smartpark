@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/estilos.css}"> 
+    <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
+    <title>EDITAR</title>
+</head>
+<body>
+    <header class=" u-header">
+        <img th:src="@{/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
+      <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
+  </header>
+
+    <!-- FORMULARIO     -->
+
+    <section class="u-section-1">
+        <div class="u-sheet-1">
+            <h2 class="u-text-1">
+                ACTUALIZAR VEHICULO APRENDIZ
+            </h2>
+            <div class="u-form">
+                <form action="#" class="u-inner-form" method="POST">
+                    <div class="u-form-group-1">
+                        <input type="hidden" name="IdVehiculo" class="u-input" value="<?php echo $fila['IdVehiculo']; ?>">
+                    </div>
+                    <div class="u-form-group-1">
+                        <label class="u-label">Documento</label>
+                        <input type="text" name="documento_Fk" class="u-input" placeholder="Ingresa el documento" value="<?php echo $fila['documento_Fk']; ?>" readonly>
+                    </div>
+                    <div class="u-form-group-1">
+                        <label class="u-label">Placa o Marco</label>
+                        <input type="text" placeholder="Ingresa la placa o Marco del vehiculo" name="placa" class="u-input" value="<?php echo $fila['placa']; ?>" >
+                    </div>
+                    <div class="u-form-group-1">
+                        <label class="u-label">Marca</label>
+                        <input type="text" placeholder="Ingresa la marca del vehiculo" name="marca" class="u-input" value="<?php echo $fila['marca']; ?>" >
+                    </div>
+                    <div class="u-form-group-1">
+                        <label class="u-label">Tipo de vehiculo</label>
+                       
+                        <input type="text" placeholder="1. Carro - 2. Moto - 3. Bicicleta" name="tipo_vehiculo_Fk" class="u-input" value="<?php echo $fila['tipo_vehiculo_Fk']; ?>" >  
+                           
+                     
+                    </div>
+
+                    <button class="u-btn-submit" type="submit">Actualizar</button>
+
+                </form>
+                <button class="u-btn-submit"><a href="listar.php">Volver al Listado</a></button>
+            </div>
+        </div>
+    </section>
+
+
+
+</body>
+
+<footer class="u-footer">
+    <div class=" u-sheet-1">
+    <br>
+    <p class="u-text-3">W W W . s e n a . e d u . co</p>
+    </div>
+  </footer>
+</html>
+

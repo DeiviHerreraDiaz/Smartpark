@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
+    <title>EDITAR</title>
+</head>
+<body>
+    <header class=" u-header">
+        <img src="../assets/img/logo-de-Sena-sin-fondo-Blanco.png" class="u-logo-image">
+      <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
+  </header>
+
+
+    <!-- FORMULARIO     -->
+
+    <section class="u-section-1">
+        <div class="u-sheet-1">
+            <h2 class="u-text-1">
+                ACTUALIZAR EQUIPO
+            </h2>
+            <div class="u-form">
+                <form action="editarEquipo.php" class="u-inner-form" method="POST">
+                    <div class="u-form-group-1">
+                        <input type="hidden" name="IdEquipo" class="u-input" value="<?php echo $fila['IdEquipo']; ?>">
+                    </div>
+
+                    <div class="u-form-group-1">
+                        <label class="u-label">Documento</label>
+                        <input type="text" name="documento_Fk" class="u-input" value="<?php echo $fila['documento_Fk'];?>"readonly >
+                    </div>
+
+                    <div class="u-form-group-1">
+                        <label class="u-label">Tipo</label>
+                        <input type="text" name="tipo" class="u-input" placeholder="Ingrese el tipo del equipo a actualizar" value="<?php echo $fila['tipo']; ?>">
+                    </div>
+                    <div class="u-form-group-1">
+                        <label class="u-label">Marca</label>
+                        <input type="text" placeholder="Ingresa la marca del equipo a actualizar" name="marca" class="u-input" value="<?php echo $fila['marca']; ?>" >
+                    </div>
+                    <div class="u-form-group-1">
+                        <label class="u-label">Serie</label>
+                        <input type="text" placeholder="Ingresa el serial del equipo a actualizar" name="serie" class="u-input" value="<?php echo $fila['serie'];?>" >
+                    </div>
+                
+
+                    <button class="u-btn-submit" type="submit">Actualizar</button>
+
+                </form>
+                <button class="u-btn-submit"><a href="listar.php">Volver al Listado</a></button>
+            </div>
+        </div>
+    </section>
+
+<footer class="u-footer">
+    <div class=" u-sheet-1">
+    <br>
+    <p class="u-text-3">W W W . s e n a . e d u . co</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/estilos.css}"> 
+    <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
+    <title>LISTA</title>
+</head>
+<body>
+<header class=" u-header">
+          <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
+        <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
+    </header>
+
+    <nav class="nav">
+        <ul class="nav-list">
+            <li><a th:href="@{/}" class="btn"><button>Cerrar sesión</button></a></li>
+        </ul>
+    </nav>
+
+    
+<section class="opciones">
+    <div class="division"><a th:href="@{/Usuario/listar}">USUARIOS</a></div>
+    <div class="division"><a th:href="@{/Vehiculo/listar}">VEHICULOS</a></div>
+    <div class="division"><a th:href="@{/Equipo/listar}">EQUIPOS</a></div>
+    <div class="division"><a th:href="@{/Movimiento/listar}">MOVIMIENTOS</a></div>
+    </section>
+
+    <footer class="u-footer">
+        <div class=" u-sheet-1">
+        <br>
+        <p class="u-text-3">W W W . s e n a . e d u . co</p>
+        </div>
+      </footer>
+</body>
+</html>
