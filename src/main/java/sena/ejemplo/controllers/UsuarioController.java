@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.EntityManager;
 
 import sena.ejemplo.model.*;
+import sena.ejemplo.service.IUsuarioService;
 
 @Controller
 @RequestMapping("/Usuario")
@@ -22,7 +23,7 @@ public class UsuarioController {
     private EntityManager em;
 
     @Autowired
-    private IUsuario usuariod;
+    private IUsuarioService usuariod;
     
     
     // Agregar usuarios
