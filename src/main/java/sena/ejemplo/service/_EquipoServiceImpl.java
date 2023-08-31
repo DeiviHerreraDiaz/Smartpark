@@ -24,7 +24,7 @@ public class _EquipoServiceImpl implements IEquipoService {
     }
 
     @Override
-    public _Equipo findBydocumento(String documento) {
+    public List<_Equipo> findBydocumento(String documento) {
         return equipoRepository.findByDocumento(documento);
     }
 

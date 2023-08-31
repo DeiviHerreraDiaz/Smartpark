@@ -32,7 +32,7 @@ public class _VehiculoServiceImpl implements IVehiculoService {
 
 
     @Override
-    public _Vehiculo findBydocumento(String documento) {
+    public List<_Vehiculo> findBydocumento(String documento) {
         return vehiculoRepository.findByDocumento(documento);
     }
 }

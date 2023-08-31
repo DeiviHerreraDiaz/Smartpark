@@ -68,7 +68,7 @@
                     <label for="equipo-select"><b>Equipo de propiedad</b></label>
                     <select name="equipoId" id="equipo-select" class="form-control">
                         <option value="">Ningún equipo</option> 
-                        <option th:each="equipo : ${equipo}" th:if="${documento} == ${equipo.documento.documento}" th:value="${equipo.IdEquipo}" th:text="${equipo.marca}"></option>
+                        <option th:each="equipo : ${equipos}" th:if="${documento} == ${equipo.documento.documento}" th:value="${equipo.IdEquipo}" th:text="${equipo.marca}"></option>
                     </select>
                 </div>
 

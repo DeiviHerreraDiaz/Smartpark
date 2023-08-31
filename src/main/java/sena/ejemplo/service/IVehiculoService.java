@@ -1,5 +1,6 @@
 package sena.ejemplo.service;
 
+import sena.ejemplo.model._Equipo;
 import sena.ejemplo.model._Vehiculo;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface IVehiculoService {
 
     _Vehiculo save(_Vehiculo vehiculo);
 
-    _Vehiculo findBydocumento(String documento);
+    List<_Vehiculo> findBydocumento(String documento);
 }

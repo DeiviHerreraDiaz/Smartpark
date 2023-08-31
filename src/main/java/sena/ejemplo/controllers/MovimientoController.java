@@ -84,17 +84,17 @@ public class MovimientoController {
 
     @GetMapping(value = "/entrada")
     public String entrada(@RequestParam("documento") String documento, Model model) {
-        _Equipo equipo = equipoService.findBydocumento(documento);
-        _Vehiculo vehiculos = vehiculoService.findBydocumento(documento);
+        List<_Equipo> equipos = equipoService.findBydocumento(documento);
+        List<_Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
 
 
         model.addAttribute("vehiculos", vehiculos);
-        model.addAttribute("equipo", equipo);
+        model.addAttribute("equipos", equipos);
         model.addAttribute("documento", documento);
-
 
         return "movimiento/entrada"; // Ajusta la ruta según tu estructura de vistas
     }
+
 
     @GetMapping(value = "/salida")
     public String salida(@RequestParam("IdMovimiento") Integer IdMovimiento, Model model) {
