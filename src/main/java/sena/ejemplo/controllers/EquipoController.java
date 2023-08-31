@@ -11,40 +11,33 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.EntityManager;
 
 import sena.ejemplo.model.*;
+import sena.ejemplo.service.IEquipoService;
 
 @Controller
 @RequestMapping("/Equipo")
 public class EquipoController {
-    
-    @PersistenceContext
-    private EntityManager em;
 
     @Autowired
-    private IEquipo equipod;
+    private IEquipoService equipoService;
 
     // Agregar equipos
-
     @PostMapping("/add")
-    public String add(Equipo equipo, Model m){
-        equipod.save(equipo);
+    public String add(Equipo equipo, Model m) {
+        equipoService.save(equipo);
         return "redirect:/Equipo/listar";
     }
 
     // Ruta para formulario de equipos
-
-    @GetMapping(value="/registrar-equipo")
-    public String registrar(){
+    @GetMapping(value = "/registrar-equipo")
+    public String registrar() {
         return "equipo/registroEquipo";
     }
 
     // Ruta consultar / Listar
-
-    @GetMapping(value="/listar")
-    public String listar(Model m){
-
-        m.addAttribute("equipo", equipod.findAll());
-
+    @GetMapping(value = "/listar")
+    public String listar(Model m) {
+        m.addAttribute("equipos", equipoService.findAll());
         return "equipo/listar";
     }
-    
 }
+

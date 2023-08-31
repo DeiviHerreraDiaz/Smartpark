@@ -14,7 +14,8 @@ import java.beans.PropertyEditorSupport;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+    import java.util.Optional;
+    import java.util.stream.Collectors;
 
 import sena.ejemplo.model.*;
 
@@ -36,24 +37,26 @@ import sena.ejemplo.model.*;
         @PostMapping("/add")
         public String add(Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId, Model m) {
             if (equipoId != null) {
-                Equipo equipoSeleccionado = equipod.findById(equipoId);
+                Optional<Equipo> equipoSeleccionadoOptional = equipod.findById(equipoId);
 
-                if (equipoSeleccionado != null) {
+                if (equipoSeleccionadoOptional.isPresent()) {
+                    Equipo equipoSeleccionado = equipoSeleccionadoOptional.get();
                     List<Equipo> equipos = new ArrayList<>();
                     equipos.add(equipoSeleccionado);
 
                     // Guardar el Movimiento y su Equipo correspondiente en la base de datos
-                    movimientod.saveMovimientoAndEquipos(movimiento, equipos);
+                    movimiento.setEquipos(equipos); // Asegúrate de tener un método setEquipos en la clase Movimiento
+                    movimientod.save(movimiento);
                 }
             } else {
                 // Si no se proporcionó equipoId, solo guardar el Movimiento en la base de datos
                 movimientod.save(movimiento);
             }
 
-            
-
             return "redirect:/Usuario/listar";
         }
+
+
 
         @PostMapping("/update")
         public String update(Movimiento movimiento, Model model) {
@@ -65,29 +68,29 @@ import sena.ejemplo.model.*;
         }
 
 
-        // Registrar entrada formulario
+//        // Registrar entrada formulario
+//
+//        @GetMapping(value = "/entrada")
+//        public String entrada(@RequestParam("documento") String documento, Model model){
+//            Equipo equipo = equipod.findByDocumento(documento);  // Cambio en esta línea
+//            List<Vehiculo> vehiculos = vehiculod.findBydocumento(documento);
+//            model.addAttribute("equipos", equipo);
+//            model.addAttribute("vehiculos", vehiculos);
+//            model.addAttribute("documento", documento);
+//            return "movimiento/entrada.html";
+//        }
 
-        @GetMapping(value = "/entrada")
-        public String entrada(@RequestParam("documento") String documento, Model model){
-            
-            List<Equipo> equipos = equipod.findBydocumento(documento);
-            List<Vehiculo> vehiculos = vehiculod.findBydocumento(documento);
-            model.addAttribute("equipos", equipos);
-            model.addAttribute("vehiculos", vehiculos); // Agregar la lista de vehículos al modelo
-            model.addAttribute("documento", documento);
-            return "movimiento/entrada.html";
-        }
 
-        // Registrar salida formulario
-
-        @GetMapping(value = "/salida")
-        public String salida(@RequestParam("IdMovimiento") Integer IdMovimiento, Model model){
-            Movimiento movimiento = movimientod.findById(IdMovimiento);
-            Vehiculo vehiculo = movimiento.getVehiculo();
-            model.addAttribute("movimiento", movimiento);
-            model.addAttribute("vehiculo", vehiculo);
-            return "movimiento/salida.html";
-        }
+//        // Registrar salida formulario
+//
+//        @GetMapping(value = "/salida")
+//        public String salida(@RequestParam("IdMovimiento") Integer IdMovimiento, Model model){
+//            Movimiento movimiento = movimientod.findById(IdMovimiento);
+//            Vehiculo vehiculo = movimiento.getVehiculo();
+//            model.addAttribute("movimiento", movimiento);
+//            model.addAttribute("vehiculo", vehiculo);
+//            return "movimiento/salida.html";
+//        }
 
         
 
