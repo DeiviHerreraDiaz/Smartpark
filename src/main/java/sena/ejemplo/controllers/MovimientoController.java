@@ -92,11 +92,6 @@ import sena.ejemplo.model.*;
 //            return "movimiento/salida.html";
 //        }
 
-        
-
-
-
-
 
         // LISTAR DE MOVIMIENTOS EN GENERAL
 

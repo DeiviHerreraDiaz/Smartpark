@@ -13,6 +13,7 @@ import sena.ejemplo.model.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import sena.ejemplo.service.IVehiculoService;
 
 @Controller
 @RequestMapping("/Vehiculo")
@@ -22,7 +23,7 @@ public class VehiculoController {
     private EntityManager em;
 
     @Autowired
-    private IVehiculo vehiculod;
+    private IVehiculoService vehiculod;
 
     // Agregar vehiculos
 
@@ -35,18 +36,13 @@ public class VehiculoController {
     // Ruta para formulario de vehiculos
 
     @GetMapping(value="/registrar-vehiculo")
-    public String registrar(){
-
-        return "vehiculo/registroVehicularGeneral";
-    }
+    public String registrar(){return "vehiculo/registroVehicularGeneral";}
 
     // Ruta consultar / Listar
 
     @GetMapping(value="/listar")
     public String listar(Model m){
-
         m.addAttribute("vehiculo", vehiculod.findAll());
-
         return "vehiculo/listar";
     }
 

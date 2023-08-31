@@ -1,17 +1,13 @@
 package sena.ejemplo.model;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
 import java.util.List;
 
-public interface IVehiculo {
-    
-    // LISTAR
+public interface IVehiculo extends CrudRepository<Vehiculo,Integer> {
 
-    public List<Vehiculo> findAll();
-
-    // REGISTRAR VEHICULOS
-    
-    public void save (Vehiculo vehiculo);
-
-    List<Vehiculo> findBydocumento(String documento);
+    @Query("SELECT u FROM Vehiculo u WHERE u.documento = :documento")
+    Vehiculo findByDocumento(String documento);
 
 }
