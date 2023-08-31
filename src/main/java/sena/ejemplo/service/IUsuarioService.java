@@ -1,17 +1,17 @@
 package sena.ejemplo.service;
 
-import sena.ejemplo.model.Usuario;
+import sena.ejemplo.model._Usuario;
 
 import java.util.List;
 
 public interface IUsuarioService {
-    
+
     // LISTAR
-    public List<Usuario> findAll();
+    List<_Usuario> findAll();
 
     // REGISTRAR USUARIOS
-    
-    public Usuario save (Usuario usuario);
 
-    public Usuario findByDocumento(String documento);
+    _Usuario save(_Usuario usuario);
+
+    _Usuario findByDocumento(String documento);
 }

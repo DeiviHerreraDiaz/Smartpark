@@ -1,30 +1,19 @@
 package sena.ejemplo.model;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-
 
 @Entity
-@Table(name="movimiento")
-public class Movimiento {
-    
+@Table(name = "movimiento")
+public class _Movimiento {
 
-   
+
     // ATRIBUTOS
 
     // Primary Key
@@ -33,14 +22,14 @@ public class Movimiento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdMovimiento;
 
-    @Column(name="fecha", nullable = false)
+    @Column(name = "fecha", nullable = false)
     private Date fecha;
 
-    @Column(name="horaEntrada", nullable = false)
+    @Column(name = "horaEntrada", nullable = false)
     @DateTimeFormat(pattern = "HH:mm")
     private Time horaEntrada;
 
-    @Column(name="horaSalida", nullable = true)
+    @Column(name = "horaSalida", nullable = true)
     @DateTimeFormat(pattern = "HH:mm")
     private Time HoraSalida;
 
@@ -51,32 +40,29 @@ public class Movimiento {
 
     @ManyToOne
     @JoinColumn(name = "IdVehiculo_Fk", nullable = false)
-    private Vehiculo vehiculo; 
+    private _Vehiculo vehiculo;
 
     // Relation with documento from FK, relation of entity Usuario
-    
+
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
-    private Usuario documento;
+    private _Usuario documento;
 
     @ManyToMany(mappedBy = "movimientos")
-    private List<Equipo> equipos;
+    private List<_Equipo> equipos;
 
-    
 
     // CONSTRUCTORES
 
-    public Movimiento(){
+    public _Movimiento() {
 
     }
 
 
-    
-
     // GETTERS AND SETTERS
 
-    public Movimiento(Integer idMovimiento, Date fecha, Time horaEntrada, Time horaSalida, String observaciones,
-            Vehiculo vehiculo, Usuario documento, List<Equipo> equipos) {
+    public _Movimiento(Integer idMovimiento, Date fecha, Time horaEntrada, Time horaSalida, String observaciones,
+                       _Vehiculo vehiculo, _Usuario documento, List<_Equipo> equipos) {
         IdMovimiento = idMovimiento;
         this.fecha = fecha;
         this.horaEntrada = horaEntrada;
@@ -86,8 +72,6 @@ public class Movimiento {
         this.documento = documento;
         this.equipos = equipos;
     }
-
-
 
 
     public Integer getIdMovimiento() {
@@ -95,13 +79,9 @@ public class Movimiento {
     }
 
 
-
-
     public void setIdMovimiento(Integer idMovimiento) {
         IdMovimiento = idMovimiento;
     }
-
-
 
 
     public Date getFecha() {
@@ -109,13 +89,9 @@ public class Movimiento {
     }
 
 
-
-
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
-
 
 
     public Time getHoraEntrada() {
@@ -123,13 +99,9 @@ public class Movimiento {
     }
 
 
-
-
     public void setHoraEntrada(Time horaEntrada) {
         this.horaEntrada = horaEntrada;
     }
-
-
 
 
     public Time getHoraSalida() {
@@ -137,13 +109,9 @@ public class Movimiento {
     }
 
 
-
-
     public void setHoraSalida(Time horaSalida) {
         HoraSalida = horaSalida;
     }
-
-
 
 
     public String getObservaciones() {
@@ -151,62 +119,39 @@ public class Movimiento {
     }
 
 
-
-
     public void setObservaciones(String observaciones) {
         Observaciones = observaciones;
     }
 
 
-
-
-    public Vehiculo getVehiculo() {
+    public _Vehiculo getVehiculo() {
         return vehiculo;
     }
 
 
-
-
-    public void setVehiculo(Vehiculo vehiculo) {
+    public void setVehiculo(_Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
 
 
-
-
-    public Usuario getDocumento() {
+    public _Usuario getDocumento() {
         return documento;
     }
 
 
-
-
-    public void setDocumento(Usuario documento) {
+    public void setDocumento(_Usuario documento) {
         this.documento = documento;
     }
 
 
-
-
-    public List<Equipo> getEquipos() {
+    public List<_Equipo> getEquipos() {
         return equipos;
     }
 
 
-
-
-    public void setEquipos(List<Equipo> equipos) {
+    public void setEquipos(List<_Equipo> equipos) {
         this.equipos = equipos;
     }
 
 
-
-
-    
-
-
-    
-
-
-    
 }

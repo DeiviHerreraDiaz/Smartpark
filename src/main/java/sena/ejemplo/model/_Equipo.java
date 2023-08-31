@@ -1,22 +1,12 @@
 package sena.ejemplo.model;
 
+import javax.persistence.*;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-
-import javax.persistence.Table;
 
 @Entity
-@Table(name="equipo")
-public class Equipo {
-    
+@Table(name = "equipo")
+public class _Equipo {
+
     // ATRIBUTOS
 
     // Primary Key
@@ -24,42 +14,41 @@ public class Equipo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdEquipo;
-    
+
     @Column(name = "tipo", nullable = false)
     private String tipo;
 
     @ManyToMany
     @JoinTable(
-        name = "equipo_movimiento",
-        joinColumns = @JoinColumn(name = "equipo_id", nullable = false),
-        inverseJoinColumns = @JoinColumn(name = "movimiento_id")
+            name = "equipo_movimiento",
+            joinColumns = @JoinColumn(name = "equipo_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "movimiento_id")
     )
-    private List<Movimiento> movimientos;
-    
+    private List<_Movimiento> movimientos;
+
 
     @Column(name = "marca", nullable = false)
     private String marca;
-    
+
     @Column(name = "serie", nullable = false)
     private String serie;
-    
+
     // Relation with documento from FK, relation of entity Usuario
 
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
-    private Usuario documento;
-    
+    private _Usuario documento;
+
     @Column(name = "estado", nullable = false)
     private boolean estado;
 
-   
 
     // CONSTRUCTORES
 
-    public Equipo(){
+    public _Equipo() {
     }
 
-    public Equipo(Integer idEquipo, String tipo, String marca, String serie, Usuario documento, boolean estado) {
+    public _Equipo(Integer idEquipo, String tipo, String marca, String serie, _Usuario documento, boolean estado) {
         IdEquipo = idEquipo;
         this.tipo = tipo;
         this.marca = marca;
@@ -102,11 +91,11 @@ public class Equipo {
         this.serie = serie;
     }
 
-    public Usuario getDocumento() {
+    public _Usuario getDocumento() {
         return documento;
     }
 
-    public void setDocumento(Usuario documento) {
+    public void setDocumento(_Usuario documento) {
         this.documento = documento;
     }
 
@@ -117,5 +106,5 @@ public class Equipo {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
+
 }

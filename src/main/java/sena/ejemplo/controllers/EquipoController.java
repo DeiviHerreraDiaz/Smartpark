@@ -3,14 +3,10 @@ package sena.ejemplo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import javax.persistence.PersistenceContext;
-import javax.persistence.EntityManager;
-
-import sena.ejemplo.model.*;
+import sena.ejemplo.model._Equipo;
 import sena.ejemplo.service.IEquipoService;
 
 @Controller
@@ -22,7 +18,7 @@ public class EquipoController {
 
     // Agregar equipos
     @PostMapping("/add")
-    public String add(Equipo equipo, Model m) {
+    public String add(_Equipo equipo, Model m) {
         equipoService.save(equipo);
         return "redirect:/Equipo/listar";
     }

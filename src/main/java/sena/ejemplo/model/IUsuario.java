@@ -3,8 +3,8 @@ package sena.ejemplo.model;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-public interface IUsuario extends CrudRepository<Usuario,String> {
-    
-    @Query("SELECT u FROM Usuario u WHERE u.documento = :documento")
-    public Usuario findByDocumento(String documento);
+public interface IUsuario extends CrudRepository<_Usuario, String> {
+
+    @Query("SELECT u FROM _Usuario u WHERE u.documento = :documento")
+    _Usuario findByDocumento(String documento);
 }

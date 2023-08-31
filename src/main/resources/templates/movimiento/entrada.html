@@ -56,6 +56,7 @@
                     <input type="text" class="form-control" id="documento.documento" name="documento.documento" th:value="${documento}">
                 </div>
 
+                
                 <div class="form-group">
                     <label for="vehiculo-select"><b>Vehículos de propiedad</b></label>
                     <select name="Vehiculo.IdVehiculo" id="vehiculo-select" class="form-control">
@@ -67,12 +68,12 @@
                     <label for="equipo-select"><b>Equipo de propiedad</b></label>
                     <select name="equipoId" id="equipo-select" class="form-control">
                         <option value="">Ningún equipo</option> 
-                        <option th:each="equipo : ${equipos}" th:if="${documento} == ${equipo.documento.documento}" th:value="${equipo.IdEquipo}" th:text="${equipo.marca}"></option>
+                        <option th:each="equipo : ${equipo}" th:if="${documento} == ${equipo.documento.documento}" th:value="${equipo.IdEquipo}" th:text="${equipo.marca}"></option>
                     </select>
                 </div>
 
 
-                <input type="hidden" name="tipo_Movimiento.Id_Tipo_Movimiento" th:value="1">
+
 
                 <button type="submit" class="btn btn-success mt-3">Guardar</button>
             </form>

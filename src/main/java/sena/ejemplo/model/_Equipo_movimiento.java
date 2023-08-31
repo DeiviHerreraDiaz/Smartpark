@@ -1,18 +1,12 @@
 package sena.ejemplo.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="Equipo_movimiento")
-public class Equipo_movimiento {
-    
+@Table(name = "Equipo_movimiento")
+public class _Equipo_movimiento {
+
     // Atributos
 
     // Primary Key
@@ -23,19 +17,19 @@ public class Equipo_movimiento {
 
     @ManyToOne
     @JoinColumn(name = "equipo_id", nullable = false)
-    private Equipo equipo;
+    private _Equipo equipo;
 
     @ManyToOne
     @JoinColumn(name = "movimiento_id")
-    private Movimiento movimiento;
+    private _Movimiento movimiento;
 
     // MÉTODOS CONSTRUCTORES
 
-    public Equipo_movimiento(){
+    public _Equipo_movimiento() {
 
     }
 
-    public Equipo_movimiento(Integer id_Equipo_Movimiento, Equipo equipo, Movimiento movimiento) {
+    public _Equipo_movimiento(Integer id_Equipo_Movimiento, _Equipo equipo, _Movimiento movimiento) {
         this.id_Equipo_Movimiento = id_Equipo_Movimiento;
         this.equipo = equipo;
         this.movimiento = movimiento;
@@ -51,22 +45,21 @@ public class Equipo_movimiento {
         this.id_Equipo_Movimiento = id_Equipo_Movimiento;
     }
 
-    public Equipo getEquipo() {
+    public _Equipo getEquipo() {
         return equipo;
     }
 
-    public void setEquipo(Equipo equipo) {
+    public void setEquipo(_Equipo equipo) {
         this.equipo = equipo;
     }
 
-    public Movimiento getMovimiento() {
+    public _Movimiento getMovimiento() {
         return movimiento;
     }
 
-    public void setMovimiento(Movimiento movimiento) {
+    public void setMovimiento(_Movimiento movimiento) {
         this.movimiento = movimiento;
     }
 
-    
 
 }
