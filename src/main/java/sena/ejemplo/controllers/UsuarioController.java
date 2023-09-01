@@ -24,7 +24,9 @@ public class UsuarioController {
     @Autowired
     private IUsuario usuariod;
     
-    
+    // Danna y Brigithe
+
+
     // Agregar usuarios
 
     @PostMapping("/add")
