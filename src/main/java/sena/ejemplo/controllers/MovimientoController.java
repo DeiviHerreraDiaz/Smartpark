@@ -142,7 +142,9 @@ public class MovimientoController {
         if (movimientoOptional.isPresent()) {
             _Movimiento movimiento = movimientoOptional.get();
             _Vehiculo vehiculo = movimiento.getVehiculo();
+            List<_Equipo_movimiento> equipoMovimientoList = equipoMovimientoService.findByMovimiento(movimiento);
 
+            model.addAttribute("equipoMovimientoList", equipoMovimientoList);
             model.addAttribute("movimiento", movimiento);
             model.addAttribute("vehiculo", vehiculo);
 
@@ -152,6 +154,7 @@ public class MovimientoController {
             return "redirect:/error"; // Redirige a una página de error o manejo de excepciones
         }
     }
+
 
 
     @GetMapping(value = "/MovimientosUsuario")

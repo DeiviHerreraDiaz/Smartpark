@@ -31,6 +31,7 @@ public class _EquipoServiceImpl implements IEquipoService {
 
     @Override
     public _Equipo findById(Integer id) {
+
         return equipoRepository.findById(id).orElse(null);
     }
 }

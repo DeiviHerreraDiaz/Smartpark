@@ -95,7 +95,8 @@
                   </td>
                   <td th:text="${m.horaEntrada}"></td>
                   <td th:text="${m.vehiculo.placa}"></td>
-                  <td th:text="${m.HoraSalida}"></td>
+                    <td th:if="${m.HoraSalida == null}"><p>No ha salido</p></td>
+                    <td th:if="${m.HoraSalida != null}"><p th:text="${m.HoraSalida}"></p></td>
                   <td th:text="${m.Observaciones}"></td>
                   
 

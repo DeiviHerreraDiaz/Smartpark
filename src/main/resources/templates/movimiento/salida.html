@@ -36,61 +36,82 @@
     <div class="wrapper fadeInDown">
         <div id="formContent" class="container py-4">
             <h2 class="active text-center mb-4"> Registro de salida </h2>
-            
+
             <form th:action="@{/Movimiento/update}" method="POST" class="mt-4">
                 <div class="mb-4">
                     <h5 class="active">DATOS DEL MOVIMIENTO</h5>
-                    
-           
+
                     <div class="mb-3">
-                        <label for="fecha" class="form-label">ID</label>
+                        <label for="IdMovimiento" class="form-label">ID</label>
                         <input type="text" name="IdMovimiento" class="form-control"
-                            th:value="${movimiento.IdMovimiento}" readonly>
-                    </div>
-
-
-
-                    <div class="mb-3">
-                        <label   class="form-label" th:text="${movimiento.fecha}">FECHA</label>
-            
-                    </div>
-
-
-                    <div class="mb-3">
-                        <label class="form-label" th:text="${movimiento.horaEntrada}">HORA DE ENTRADA</label>
-            
+                               th:value="${movimiento.IdMovimiento}" readonly>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" th:text="${movimiento.documento.documento}">DOCUMENTO </label>
-            
+                        <label class="form-label">FECHA</label>
+                        <span th:text="${movimiento.fecha}"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" th:text="${vehiculo.placa}">VEHICULO</label>
-            
+                        <label class="form-label">HORA DE ENTRADA</label>
+                        <span th:text="${movimiento.horaEntrada}"></span>
                     </div>
-
-                
-                <div>
-                    <h5 class="active mb-4">GENERACIÓN DE SALIDA</h5>
-                    
-                    <div class="form-group">
-                        <label for="horaEntrada">Hora de salida</label>
-                        <input type="time" th:value="${movimiento.horaSalida}" name="horaSalida"  th:field="*{movimiento.horaSalida}" class="form-control">
-                    </div>
-                    
 
                     <div class="mb-3">
-                        <label for="Observaciones" class="form-label">Observaciones</label>
-                        <input type="text" name="movimiento.Observaciones" th:field="*{movimiento.Observaciones}" class="form-control"
-                            th:value="${movimiento.Observaciones}">
+                        <label class="form-label">DOCUMENTO</label>
+                        <span th:text="${movimiento.documento.documento}"></span>
                     </div>
-                </div>
-                <div class="text-center">
-                    <input type="submit" class="btn btn-primary" value="Actualizar">
+
+                    <div class="mb-3">
+                        <label class="form-label">VEHICULO</label>
+                        <span th:text="${vehiculo.placa}"></span>
+                    </div>
+
+                    <div>
+                        <p class="active mb-4">EQUIPOS VINCULADOS AL MOVIMIENTO</p>
+
+                        <!-- Verifica si la lista de equipos asociados está vacía -->
+                        <th:block th:if="${#lists.isEmpty(equipoMovimientoList)}">
+                            <p>No hay equipos asociados.</p>
+                        </th:block>
+
+                        <!-- Si la lista de equipos no está vacía, muestra la tabla -->
+                        <table class="table" th:if="${not #lists.isEmpty(equipoMovimientoList)}">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Marca</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="equipoMovimiento : ${equipoMovimientoList}">
+                                <td th:text="${equipoMovimiento.id_Equipo_Movimiento}"></td>
+                                <td th:text="${equipoMovimiento.equipo.marca}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div>
+                        <h5 class="active mb-4">GENERACIÓN DE SALIDA</h5>
+
+                        <div class="form-group">
+                            <label for="horaSalida">Hora de salida</label>
+                            <input type="time" th:value="${movimiento.horaSalida}" name="horaSalida"  th:field="*{movimiento.horaSalida}" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Observaciones" class="form-label">Observaciones</label>
+                            <input type="text" name="movimiento.Observaciones" th:field="*{movimiento.Observaciones}" class="form-control"
+                                   th:value="${movimiento.Observaciones}">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-primary" value="Actualizar">
+                    </div>
                 </div>
             </form>
+
         </div>
     </div>
 
