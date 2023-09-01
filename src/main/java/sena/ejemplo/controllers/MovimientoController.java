@@ -14,9 +14,8 @@ import java.beans.PropertyEditorSupport;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import sena.ejemplo.model.*;
+    import sena.ejemplo.model.*;
 
     @Controller
     @RequestMapping("/Movimiento")
@@ -30,6 +29,33 @@ import sena.ejemplo.model.*;
         private IEquipo equipod;
         @Autowired
         private IEquipo_movimiento equipo_movimientod;
+
+
+        // Registrar entrada formulario
+
+        @GetMapping(value = "/entrada")
+        public String entrada(@RequestParam("documento") String documento, Model model){
+            
+            List<Equipo> equipos = equipod.findBydocumento(documento);
+            List<Vehiculo> vehiculos = vehiculod.findBydocumento(documento);
+            model.addAttribute("equipos", equipos);
+            model.addAttribute("vehiculos", vehiculos); // Agregar la lista de vehículos al modelo
+            model.addAttribute("documento", documento);
+            return "movimiento/entrada.html";
+        }
+
+        // Registrar salida formulario
+
+        @GetMapping(value = "/salida")
+        public String salida(@RequestParam("documento") String documento, Model model){
+            
+            List<Equipo> equipos = equipod.findBydocumento(documento);
+            List<Vehiculo> vehiculos = vehiculod.findBydocumento(documento);
+            model.addAttribute("equipos", equipos);
+            model.addAttribute("vehiculos", vehiculos); // Agregar la lista de vehículos al modelo
+            model.addAttribute("documento", documento);
+            return "movimiento/salida.html";
+        }
 
         // Agregar movimiento entrada / salida
 
@@ -50,52 +76,8 @@ import sena.ejemplo.model.*;
                 movimientod.save(movimiento);
             }
 
-            
-
             return "redirect:/Usuario/listar";
         }
-
-        @PostMapping("/update")
-        public String update(Movimiento movimiento, Model model) {
-            Movimiento existingMovimiento = movimientod.findById(movimiento.getIdMovimiento());
-            existingMovimiento.setHoraSalida(movimiento.getHoraSalida());
-            existingMovimiento.setObservaciones(movimiento.getObservaciones());
-            movimientod.save(existingMovimiento);
-            return "redirect:/Usuario/listar";
-        }
-
-
-        // Registrar entrada formulario
-
-        @GetMapping(value = "/entrada")
-        public String entrada(@RequestParam("documento") String documento, Model model){
-            
-            List<Equipo> equipos = equipod.findBydocumento(documento);
-            List<Vehiculo> vehiculos = vehiculod.findBydocumento(documento);
-            model.addAttribute("equipos", equipos);
-            model.addAttribute("vehiculos", vehiculos); // Agregar la lista de vehículos al modelo
-            model.addAttribute("documento", documento);
-            return "movimiento/entrada.html";
-        }
-
-        // Registrar salida formulario
-
-        @GetMapping(value = "/salida")
-        public String salida(@RequestParam("IdMovimiento") Integer IdMovimiento, Model model){
-            Movimiento movimiento = movimientod.findById(IdMovimiento);
-            Vehiculo vehiculo = movimiento.getVehiculo();
-            model.addAttribute("movimiento", movimiento);
-            model.addAttribute("vehiculo", vehiculo);
-            return "movimiento/salida.html";
-        }
-
-        
-
-
-
-
-
-        // LISTAR DE MOVIMIENTOS EN GENERAL
 
         @GetMapping(value = "/listar")
         public String listar(Model m){
@@ -105,8 +87,6 @@ import sena.ejemplo.model.*;
             return "Movimiento/listarMovimiento";
         }
 
-        // LISTAR DE DETALLES DE EQUIPO EN GENERAL
-
         @GetMapping(value = "/listarEquipoMovimiento")
         public String listarEquipoMovimiento(Model m){
             List<Equipo_movimiento> listaEquipoMovimiento = equipo_movimientod.findAll();
@@ -114,45 +94,23 @@ import sena.ejemplo.model.*;
             return "Movimiento/listarEquipoMovimiento";
         }
 
-        // MOVIMIENTO DE UN USUARIO EN ESPECIFICO
 
-        @GetMapping(value="/MovimientosUsuario")
-        public String MovimientoUsuario(Model m, @RequestParam("documento") String documento,@RequestParam("nombre") String nombre){
-            List<Movimiento> movimientosFiltrados = movimientod.findAll().stream()
-                .filter(mov -> mov.getDocumento().getDocumento().equals(documento))
-                .collect(Collectors.toList());
-            
-                
-            m.addAttribute("documento", documento);
-            m.addAttribute("nombre", nombre);
-            m.addAttribute("movimiento", movimientosFiltrados);
-            return "Movimiento/listarMovimientosUsuario.html";
+
+
+
+
+
+// CONVERSIÓN DE HORA PARA ENTRADA / SALIDA
+
+@InitBinder
+public void initBinder(WebDataBinder binder) {
+    binder.registerCustomEditor(Time.class, new PropertyEditorSupport() {
+        @Override
+        public void setAsText(String text) {
+            setValue(Time.valueOf(text + ":00"));
         }
-
-        // LISTAR DE DETALLES DE EQUIPO EN ESPECIFICO
-
-        @GetMapping(value = "/listarEquipoMovimientoUsuario")
-        public String listarEquipoMovimientoUsuario(Model m ,@RequestParam("documento") String documento){
-            List<Equipo_movimiento> listaEquipoMovimiento = equipo_movimientod.findAll().stream()
-                .filter(eq -> eq.getMovimiento().getDocumento().getDocumento().equals(documento))
-                .collect(Collectors.toList());
-            m.addAttribute("listarEquipoMovimiento", listaEquipoMovimiento);
-            return "Movimiento/listarEquipoMovimientoUsuario.html";
-        }
-
-      
-
-        // CONVERSIÓN DE HORA PARA ENTRADA / SALIDA
-
-        @InitBinder
-        public void initBinder(WebDataBinder binder) {
-            binder.registerCustomEditor(Time.class, new PropertyEditorSupport() {
-                @Override
-                public void setAsText(String text) {
-                    setValue(Time.valueOf(text + ":00"));
-                }
-            });
-        }
+    });
+}
 
 
     }

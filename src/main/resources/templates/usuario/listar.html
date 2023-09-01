@@ -42,7 +42,9 @@
             <a class="nav-link" th:href="@{/Usuario/registrar-usuario}">AGREGAR USUARIO</a>
           </li>
 
-      
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/Movimiento/listar}">MOVIMIENTOS</a>
+      </li>
 
 
       </li>
@@ -66,7 +68,7 @@
                 <th>Proveniente</th>
                 <th colspan="2">Estado</th>
                 <th>Acciones</th>
-                <th>Entrada / Movimientos</th>
+                <th>Entrada / Salida</th>
                 
             </thead>
             <tbody>
@@ -89,16 +91,16 @@
                 <!--/* FUNCIONALIDAD ACTIVAR / INACTIVAR*/ */-->
 
                 <td th:if="${u.estado==true}" align="center"> 
-                    <a rol="button" class="btn btn-success"> Inactivar </a> 
+                    <a th:href="@{/usuario/updateUserStatus/{documento}(documento = ${u.documento})}" rol="button" class="btn btn-success"> Inactivar </a> 
                 </td> 
                 <td th:if="${u.estado==false}" align="center"> 
-                    <a role="button"class="btn btn-success"> Activar </a> 
+                    <a th:href="@{/usuario/updateUserStatus/{documento}(documento = ${u.documento})}" rol="button" class="btn btn-success"> Activar </a> 
                 </td>
 
                 <!--/* FUNCIONALIDAD EDITAR / BORRAR*/ */-->
 
                 <td align="center"> 
-                  <a role="button" class="btn btn-warning btn-sm" th:href="@{/Usuario/ver/}+${u.documento}">
+                  <a role="button" class="btn btn-warning btn-sm" th:href="@{/usuario/ver/}+${u.documento}">
                       <i class="bi bi-pencil"></i> 
 
                   </a> 
@@ -114,7 +116,7 @@
                       <i class="bi bi-box-arrow-in-right"></i> 
 
                   </a> 
-                  <a role="button" class="btn btn-secondary" th:href="@{/Movimiento/MovimientosUsuario(documento=${u.documento}, nombre=${u.nombre})}"> 
+                  <a role="button" class="btn btn-secondary" th:href="@{/Movimiento/salida(documento=${u.documento})}"> 
                       <i class="bi bi-box-arrow-in-left"></i> 
                   </a> 
                 </td>

@@ -27,7 +27,7 @@ public class VehiculoDao implements IVehiculo{
     @Transactional()
     @Override
     public void save (Vehiculo vehiculo){
-        em.persist(vehiculo);
+        em.merge(vehiculo);
     }
 
     @Transactional(readOnly = true)
@@ -36,7 +36,13 @@ public class VehiculoDao implements IVehiculo{
         return em.createQuery("from Vehiculo where documento = documento", Vehiculo.class).getResultList();
                 
     }
-    
+   
+    @Transactional(readOnly = true)
+    @Override
+    public Vehiculo findOne(Integer IdVehiculo) {
+        
+        return em.find(Vehiculo.class, IdVehiculo);
+    }
 
 
 }

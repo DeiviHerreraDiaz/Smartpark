@@ -37,13 +37,4 @@ public class MovimientoDao implements IMovimiento {
             entityManager.persist(equipoMovimiento);
         }
     }
-
-    @Override
-public Movimiento findById(Integer IdMovimiento) {
-    return entityManager.find(Movimiento.class, IdMovimiento);
-}
-
-
-
-    
 }

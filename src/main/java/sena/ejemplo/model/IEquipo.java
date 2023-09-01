@@ -16,6 +16,8 @@ public interface IEquipo {
 
     Equipo findById(Integer equipoId);
 
+    public Equipo findOne(Integer idEquipo);
+
 
     
 }

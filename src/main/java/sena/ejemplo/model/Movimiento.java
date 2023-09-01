@@ -36,16 +36,13 @@ public class Movimiento {
     @Column(name="fecha", nullable = false)
     private Date fecha;
 
-    @Column(name="horaEntrada", nullable = false)
+    @Column(name="hora", nullable = false)
     @DateTimeFormat(pattern = "HH:mm")
-    private Time horaEntrada;
+    private Time hora;
 
-    @Column(name="horaSalida", nullable = true)
-    @DateTimeFormat(pattern = "HH:mm")
-    private Time HoraSalida;
-
-    @Column(name = "Observaciones", nullable = true)
-    private String Observaciones;
+    @ManyToOne
+    @JoinColumn(name ="Tipo_Movimiento_Fk", nullable = false)
+    private Tipo_Movimiento tipo_Movimiento;
 
     // Relation with ID VEHICULO from FK, relation of entity Vehiculo
 
@@ -70,29 +67,29 @@ public class Movimiento {
 
     }
 
+    
 
     
 
-    // GETTERS AND SETTERS
-
-    public Movimiento(Integer idMovimiento, Date fecha, Time horaEntrada, Time horaSalida, String observaciones,
-            Vehiculo vehiculo, Usuario documento, List<Equipo> equipos) {
+    public Movimiento(Integer idMovimiento, Date fecha, Time hora, Tipo_Movimiento tipo_Movimiento, Vehiculo vehiculo,
+            Usuario documento, List<Equipo> equipos) {
         IdMovimiento = idMovimiento;
         this.fecha = fecha;
-        this.horaEntrada = horaEntrada;
-        HoraSalida = horaSalida;
-        Observaciones = observaciones;
+        this.hora = hora;
+        this.tipo_Movimiento = tipo_Movimiento;
         this.vehiculo = vehiculo;
         this.documento = documento;
         this.equipos = equipos;
     }
 
 
+    // GETTERS AND SETTERS
 
 
     public Integer getIdMovimiento() {
         return IdMovimiento;
     }
+
 
 
 
@@ -104,9 +101,11 @@ public class Movimiento {
 
 
 
+
     public Date getFecha() {
         return fecha;
     }
+
 
 
 
@@ -118,44 +117,35 @@ public class Movimiento {
 
 
 
-    public Time getHoraEntrada() {
-        return horaEntrada;
+
+    public Time getHora() {
+        return hora;
     }
 
 
 
 
-    public void setHoraEntrada(Time horaEntrada) {
-        this.horaEntrada = horaEntrada;
+
+    public void setHora(Time hora) {
+        this.hora = hora;
     }
 
 
 
 
-    public Time getHoraSalida() {
-        return HoraSalida;
+
+    public Tipo_Movimiento getTipo_Movimiento() {
+        return tipo_Movimiento;
     }
 
 
 
 
-    public void setHoraSalida(Time horaSalida) {
-        HoraSalida = horaSalida;
+
+    public void setTipo_Movimiento(Tipo_Movimiento tipo_Movimiento) {
+        this.tipo_Movimiento = tipo_Movimiento;
     }
 
-
-
-
-    public String getObservaciones() {
-        return Observaciones;
-    }
-
-
-
-
-    public void setObservaciones(String observaciones) {
-        Observaciones = observaciones;
-    }
 
 
 
@@ -167,9 +157,11 @@ public class Movimiento {
 
 
 
+
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
+
 
 
 
@@ -181,9 +173,11 @@ public class Movimiento {
 
 
 
+
     public void setDocumento(Usuario documento) {
         this.documento = documento;
     }
+
 
 
 
@@ -195,16 +189,12 @@ public class Movimiento {
 
 
 
+
     public void setEquipos(List<Equipo> equipos) {
         this.equipos = equipos;
     }
 
-
-
-
-    
-
-
+   
     
 
 

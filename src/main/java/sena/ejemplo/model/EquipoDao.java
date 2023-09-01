@@ -39,6 +39,11 @@ public class EquipoDao implements IEquipo{
         return em.find(Equipo.class, id);
     }
 
+    @Transactional(readOnly = true)
+    public Equipo findOne(Integer IdEquipo) {
+        return em.find(Equipo.class, IdEquipo);
+    }    
+
    
 
     

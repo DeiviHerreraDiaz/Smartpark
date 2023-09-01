@@ -13,5 +13,6 @@ public interface IVehiculo {
     public void save (Vehiculo vehiculo);
 
     List<Vehiculo> findBydocumento(String documento);
+    public Vehiculo findOne(Integer idVehiculo);
 
 }

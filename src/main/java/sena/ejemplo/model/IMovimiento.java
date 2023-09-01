@@ -13,11 +13,10 @@ public interface IMovimiento {
 
     public void save (Movimiento movimiento);
 
- 
+    // List<Movimiento> findBydocumento(String documento);
      void saveMovimientoAndEquipos(Movimiento movimiento, List<Equipo> equipos);
      
-     public Movimiento findById(Integer IdMovimiento);
-
+    
 
     
 
