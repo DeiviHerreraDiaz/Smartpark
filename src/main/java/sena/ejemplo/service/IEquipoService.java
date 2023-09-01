@@ -16,7 +16,6 @@ public interface IEquipoService {
 
     List<_Equipo> findBydocumento(String documento);
 
-
     _Equipo findById(Integer equipoId);
 
 

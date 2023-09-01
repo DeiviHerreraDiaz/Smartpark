@@ -84,6 +84,7 @@
                 </td> 
                 <td th:if="${u.estado==false}" align="center"> 
                     <span class="badge bg-danger active">Inactivo</span> 
+                    
                 </td> 
 
                 <!--/* FUNCIONALIDAD ACTIVAR / INACTIVAR*/ */-->
@@ -112,17 +113,16 @@
                 <td align="center"> 
                   <a role="button" class="btn btn-info" th:href="@{/Movimiento/entrada(documento=${u.documento})}"> 
                       <i class="bi bi-box-arrow-in-right"></i> 
-
                   </a> 
                   <a role="button" class="btn btn-secondary" th:href="@{/Movimiento/MovimientosUsuario(documento=${u.documento}, nombre=${u.nombre})}"> 
                       <i class="bi bi-box-arrow-in-left"></i> 
                   </a> 
                 </td>
-
                 </tr>
             </tbody>
         </table>
     </div>
+
     <script>
 
         var datat=document.querySelector("#datat"); 

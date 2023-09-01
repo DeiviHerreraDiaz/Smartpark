@@ -15,7 +15,6 @@ public class _MovimientoServiceImpl implements IMovimientoService {
     @Autowired
     private IMovimiento movimientoRepository;
 
-
     @Override
     public List<_Movimiento> findAll() {
         return (List<_Movimiento>) movimientoRepository.findAll();

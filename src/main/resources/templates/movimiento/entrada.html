@@ -32,7 +32,9 @@
     </nav>
 
     <!-- CONTENIDO -->
-    <div class="wrapper fadeInDown">
+<br><br>
+
+    <center>
         <div id="formContent" class="p-4">
             <h2 class="active mb-4">Registro de entrada</h2>
             <div class="fadeIn first">
@@ -41,45 +43,61 @@
 
                 <form th:action="@{/Movimiento/add/}" method="post" class="mt-4">
                     <div class="form-group">
-                        <label for="fecha">Fecha</label>
+                        <label for="fecha"><b>Fecha</b></label>
                         <input type="date" name="fecha" class="form-control">
                     </div>
-
-
+<br>
                     <div class="form-group">
-                        <label for="horaEntrada">Hora</label>
+                        <label for="horaEntrada"><b>Hora</b></label>
                         <input type="time" name="horaEntrada" class="form-control">
                     </div>
-
+<br>
                 <div class="form-group">
-                    <label for="documento.documento">Documento</label>
+                    <label for="documento.documento"><b>Documento</b></label>
                     <input type="text" class="form-control" id="documento.documento" name="documento.documento" th:value="${documento}">
                 </div>
-
-                
+<br>
                 <div class="form-group">
                     <label for="vehiculo-select"><b>Vehículos de propiedad</b></label>
                     <select name="Vehiculo.IdVehiculo" id="vehiculo-select" class="form-control">
                         <option th:each="vehiculo : ${vehiculos}" th:if="${documento} == ${vehiculo.documento.documento}" th:value="${vehiculo.IdVehiculo}" th:text="${vehiculo.marca}"></option>
                     </select>
                 </div>
-
+<br>
                 <div class="form-group">
                     <label for="equipo-select"><b>Equipo de propiedad</b></label>
-                    <select name="equipoId" id="equipo-select" class="form-control">
-                        <option value="">Ningún equipo</option> 
+                    <select name="equipoId" id="equipo-select" class="form-control" th:each="campos : ${campos}">
+                        <option value=0 >Ningún equipo</option> 
                         <option th:each="equipo : ${equipos}" th:if="${documento} == ${equipo.documento.documento}" th:value="${equipo.IdEquipo}" th:text="${equipo.marca}"></option>
                     </select>
                 </div>
 
-
-
-
                 <button type="submit" class="btn btn-success mt-3">Guardar</button>
             </form>
         </div>
-    </div>
+    </center>
 
+<div class="camposDinamicos">
+    <form th:action="@{/Movimiento/Agregar/}" method="post">
+
+        <input type="hidden" th:value="1" name="campos" id="campos">
+        <input type="hidden" th:value="${documento}" name="documento" id="documento">
+        <button type="submit">Agregar Equipo</button>
+
+    </form>
+</div>
+
+<div class="camposDinamicos2">
+    <form th:action="@{/Movimiento/Agregar/}" method="post">
+
+        <input type="hidden" th:value="${documento}" name="documento" id="documento">
+        <input type="hidden" th:value="0" name="campos" id="campos">
+
+        <button type="submit">Quitar equipo</button>
+
+    </form>
+</div>
+    
     <!-- PIE DE PÁGINA -->
     <footer class="u-footer">
         <div class="u-sheet-1">

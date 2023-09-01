@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/Movimiento")
 public class MovimientoController {
@@ -31,12 +33,21 @@ public class MovimientoController {
     @Autowired
     private IEquipo_movimientoService equipoMovimientoService;
 
+    List<Integer> Campos = new ArrayList<>(List.of(1));
+
     @PostMapping("/add")
-    public String add(_Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId) {
-        if (equipoId != null) {
-            _Equipo equipoSeleccionado = equipoService.findById(equipoId);
+    public String add(_Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId, HttpServletRequest request) {
+
+    if (equipoId != 0){  
+
+        String[] equipoIds = request.getParameterValues("equipoId");
+
+        if (equipoIds != null && equipoIds.length > 0) {
+            List<_Equipo> equipos = new ArrayList<>();
+            for (String equipoIdStr : equipoIds) {
+                Integer EquipoId = Integer.parseInt(equipoIdStr);
+                _Equipo equipoSeleccionado = equipoService.findById(EquipoId);
             if (equipoSeleccionado != null) {
-                List<_Equipo> equipos = new ArrayList<>();
                 equipos.add(equipoSeleccionado);
                 movimiento.setEquipos(equipos);
 
@@ -49,10 +60,15 @@ public class MovimientoController {
                 equipoMovimiento.setMovimiento(movimiento);
                 equipoMovimientoService.save(equipoMovimiento);
             }
+        }}
         } else {
             // Save the Movimiento entity without associated equipment
             movimientoService.save(movimiento);
         }
+
+        Campos.clear();
+        Campos.add(1);
+
         return "redirect:/Usuario/listar";
     }
 
@@ -81,6 +97,27 @@ public class MovimientoController {
         return "movimiento/listarEquipoMovimiento.html";
     }
 
+    @PostMapping("/Agregar")
+    public String agregar(@RequestParam(value = "campos") int valorCampos, @RequestParam("documento") String documento, Model model) {
+
+        List<_Equipo> equipos = equipoService.findBydocumento(documento);
+        List<_Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
+
+        if (valorCampos > 0 && Campos.size() < equipos.size() && Campos.size() > 0){
+            Campos.add(valorCampos);
+        } else if (valorCampos > 0 && Campos.size() == equipos.size() && Campos.size() > 0) {
+            
+        } else if (valorCampos == 0 && Campos.size() > 0) {
+            Campos.remove(1);
+        }
+
+        model.addAttribute("campos", Campos);
+        model.addAttribute("vehiculos", vehiculos);
+        model.addAttribute("equipos", equipos);
+        model.addAttribute("documento", documento);
+
+        return "movimiento/entrada.html";
+    }
 
     @GetMapping(value = "/entrada")
     public String entrada(@RequestParam("documento") String documento, Model model) {
@@ -91,10 +128,10 @@ public class MovimientoController {
         model.addAttribute("vehiculos", vehiculos);
         model.addAttribute("equipos", equipos);
         model.addAttribute("documento", documento);
+        model.addAttribute("campos", Campos);
 
-        return "movimiento/entrada"; // Ajusta la ruta según tu estructura de vistas
+        return "movimiento/entrada";
     }
-
 
     @GetMapping(value = "/salida")
     public String salida(@RequestParam("IdMovimiento") Integer IdMovimiento, Model model) {
