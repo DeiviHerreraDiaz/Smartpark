@@ -621,3 +621,53 @@ text-decoration: none;
 .hidden {
   display: none;
 }
+
+/* Campos dinamicos */
+
+.camposDinamicos{
+  margin-left: 980px;
+  margin-top: -150px;
+  margin-bottom: 160px;
+}
+
+.camposDinamicos button{
+  font-weight: 500;
+  background: #39A900;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.camposDinamicos button:hover{
+  transform: scale(1.01);
+  border: 1px solid #39A900;
+  color: black;
+  background: white;
+}
+
+.camposDinamicos2{
+  margin-left: 980px;
+  margin-top: -150px;
+  margin-bottom: 150px;
+}
+
+.camposDinamicos2 button{
+  font-weight: 500;
+  background: #39A900;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.camposDinamicos2 button:hover{
+  transform: scale(1.01);
+  border: 1px solid #39A900;
+  color: black;
+  background: white;
+}

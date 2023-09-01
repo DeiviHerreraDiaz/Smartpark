@@ -5,9 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import sena.ejemplo.model.*;
-import sena.ejemplo.service.*;
+import sena.ejemplo.model._Equipo;
+import sena.ejemplo.model._Equipo_movimiento;
+import sena.ejemplo.model._Movimiento;
+import sena.ejemplo.model._Vehiculo;
+import sena.ejemplo.service.IEquipoService;
+import sena.ejemplo.service.IEquipo_movimientoService;
+import sena.ejemplo.service.IMovimientoService;
+import sena.ejemplo.service.IVehiculoService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.beans.PropertyEditorSupport;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -19,40 +26,51 @@ import java.util.stream.Collectors;
 @RequestMapping("/Movimiento")
 public class MovimientoController {
 
+    List<Integer> Campos = new ArrayList<>(List.of(1));
     @Autowired
     private IMovimientoService movimientoService;
-
     @Autowired
     private IEquipoService equipoService;
-
     @Autowired
     private IVehiculoService vehiculoService;
-
     @Autowired
     private IEquipo_movimientoService equipoMovimientoService;
 
     @PostMapping("/add")
-    public String add(_Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId) {
-        if (equipoId != null) {
-            _Equipo equipoSeleccionado = equipoService.findById(equipoId);
-            if (equipoSeleccionado != null) {
+    public String add(_Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId, HttpServletRequest request) {
+
+        if (equipoId != 0) {
+
+            String[] equipoIds = request.getParameterValues("equipoId");
+
+            if (equipoIds != null && equipoIds.length > 0) {
                 List<_Equipo> equipos = new ArrayList<>();
-                equipos.add(equipoSeleccionado);
-                movimiento.setEquipos(equipos);
+                for (String equipoIdStr : equipoIds) {
+                    Integer EquipoId = Integer.parseInt(equipoIdStr);
+                    _Equipo equipoSeleccionado = equipoService.findById(EquipoId);
+                    if (equipoSeleccionado != null) {
+                        equipos.add(equipoSeleccionado);
+                        movimiento.setEquipos(equipos);
 
-                // Save the Movimiento entity first
-                movimientoService.save(movimiento);
+                        // Save the Movimiento entity first
+                        movimientoService.save(movimiento);
 
-                // Create Equipo_movimiento record and associate it with the Movimiento
-                _Equipo_movimiento equipoMovimiento = new _Equipo_movimiento();
-                equipoMovimiento.setEquipo(equipoSeleccionado);
-                equipoMovimiento.setMovimiento(movimiento);
-                equipoMovimientoService.save(equipoMovimiento);
+                        // Create Equipo_movimiento record and associate it with the Movimiento
+                        _Equipo_movimiento equipoMovimiento = new _Equipo_movimiento();
+                        equipoMovimiento.setEquipo(equipoSeleccionado);
+                        equipoMovimiento.setMovimiento(movimiento);
+                        equipoMovimientoService.save(equipoMovimiento);
+                    }
+                }
             }
         } else {
             // Save the Movimiento entity without associated equipment
             movimientoService.save(movimiento);
         }
+
+        Campos.clear();
+        Campos.add(1);
+
         return "redirect:/Usuario/listar";
     }
 
@@ -81,6 +99,27 @@ public class MovimientoController {
         return "movimiento/listarEquipoMovimiento.html";
     }
 
+    @PostMapping("/Agregar")
+    public String agregar(@RequestParam(value = "campos") int valorCampos, @RequestParam("documento") String documento, Model model) {
+
+        List<_Equipo> equipos = equipoService.findBydocumento(documento);
+        List<_Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
+
+        if (valorCampos > 0 && Campos.size() < equipos.size() && Campos.size() > 0) {
+            Campos.add(valorCampos);
+        } else if (valorCampos > 0 && Campos.size() == equipos.size() && Campos.size() > 0) {
+
+        } else if (valorCampos == 0 && Campos.size() > 0) {
+            Campos.remove(1);
+        }
+
+        model.addAttribute("campos", Campos);
+        model.addAttribute("vehiculos", vehiculos);
+        model.addAttribute("equipos", equipos);
+        model.addAttribute("documento", documento);
+
+        return "movimiento/entrada.html";
+    }
 
     @GetMapping(value = "/entrada")
     public String entrada(@RequestParam("documento") String documento, Model model) {
@@ -91,10 +130,10 @@ public class MovimientoController {
         model.addAttribute("vehiculos", vehiculos);
         model.addAttribute("equipos", equipos);
         model.addAttribute("documento", documento);
+        model.addAttribute("campos", Campos);
 
-        return "movimiento/entrada"; // Ajusta la ruta según tu estructura de vistas
+        return "movimiento/entrada";
     }
-
 
     @GetMapping(value = "/salida")
     public String salida(@RequestParam("IdMovimiento") Integer IdMovimiento, Model model) {
@@ -146,4 +185,3 @@ public class MovimientoController {
         });
     }
 }
-
