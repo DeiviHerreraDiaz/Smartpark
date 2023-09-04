@@ -17,6 +17,7 @@ import javax.persistence.EntityManager;
 import sena.ejemplo.model.*;
 
 @Controller
+@SessionAttributes("usuario")
 @RequestMapping("/usuario")
 public class UsuarioController {
 
