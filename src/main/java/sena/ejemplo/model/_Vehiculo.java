@@ -1,19 +1,11 @@
 package sena.ejemplo.model;
 
-import javax.persistence.Column;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="vehiculo")
-public class Vehiculo{
-    
+@Table(name = "vehiculo")
+public class _Vehiculo {
+
     // ATRIBUTOS
 
     // Primary Key
@@ -22,35 +14,35 @@ public class Vehiculo{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdVehiculo;
 
-    @Column(name ="placa", nullable = false)
+    @Column(name = "placa", nullable = false)
     private String placa;
 
-    @Column(name ="marca", nullable = false)
+    @Column(name = "marca", nullable = false)
     private String marca;
 
     // Relation with Tipo_Vehiculo from FK, relation of entity Tipo_Vehiculo
 
     @ManyToOne
-    @JoinColumn(name ="tipo_vehiculo_fk", nullable = false)
-    private Tipo_Vehiculo tipo_Vehiculo;
+    @JoinColumn(name = "tipo_vehiculo_fk", nullable = false)
+    private _Tipo_Vehiculo tipo_Vehiculo;
 
     // Relation with documento from FK, relation of entity Usuario
 
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
-    private Usuario documento;
+    private _Usuario documento;
 
-    @Column(name ="estado", nullable = false)
+    @Column(name = "estado", nullable = false)
     private boolean estado;
 
     // CONSTRUCTORES
 
-    public Vehiculo(){
+    public _Vehiculo() {
 
     }
 
-    public Vehiculo(Integer idVehiculo, String placa, String marca, Tipo_Vehiculo tipo_Vehiculo, Usuario documento,
-            boolean estado) {
+    public _Vehiculo(Integer idVehiculo, String placa, String marca, _Tipo_Vehiculo tipo_Vehiculo, _Usuario documento,
+                     boolean estado) {
         IdVehiculo = idVehiculo;
         this.placa = placa;
         this.marca = marca;
@@ -85,19 +77,19 @@ public class Vehiculo{
         this.marca = marca;
     }
 
-    public Tipo_Vehiculo getTipo_Vehiculo() {
+    public _Tipo_Vehiculo getTipo_Vehiculo() {
         return tipo_Vehiculo;
     }
 
-    public void setTipo_Vehiculo(Tipo_Vehiculo tipo_Vehiculo) {
+    public void setTipo_Vehiculo(_Tipo_Vehiculo tipo_Vehiculo) {
         this.tipo_Vehiculo = tipo_Vehiculo;
     }
 
-    public Usuario getDocumento() {
+    public _Usuario getDocumento() {
         return documento;
     }
 
-    public void setDocumento(Usuario documento) {
+    public void setDocumento(_Usuario documento) {
         this.documento = documento;
     }
 
@@ -109,7 +101,7 @@ public class Vehiculo{
         this.estado = estado;
     }
 
-    public void save(Vehiculo vehiculo) {
+    public void save(_Vehiculo vehiculo) {
     }
 
 }

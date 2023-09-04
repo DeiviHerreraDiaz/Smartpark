@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>Lista usuarios</title>
+    <title>Lista Equipo Movimiento</title>
 </head>
 <body>
 
@@ -33,16 +33,14 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{/menu}">VOLVER AL MENU</a>
-      </li>      
       
         <li class="nav-item active">
-            <a class="nav-link" th:href="@{/Usuario/registrar-usuario}">AGREGAR USUARIO</a>
-          </li>
+        <a class="nav-link" th:href="@{/menu}">VOLVER AL MENU</a>
+      </li>
 
-      
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/Movimiento/listar}">ATRAS</a>
+      </li>
 
 
       </li>
@@ -52,71 +50,46 @@
 
 
     <div class="container-fluid">
-        <h1>Aprendices, funcionarios e invitados</h1>
+        <h1>Detalles de equipo</h1>
         <table id="datat">
 
 
             <thead >
               
-                <th>Documento</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Telefono</th>
-                <th>Rol</th>
-                <th>Proveniente</th>
-                <th colspan="2">Estado</th>
-                <th>Acciones</th>
-                <th>Entrada / Movimientos</th>
+            
+                <th>PERSONA</th>
+                <th>EQUIPO</th>
+                <th>ID MOVIMIENTO</th>
+               
+            
                 
             </thead>
             <tbody>
-                <tr th:each="u:${usuario}" >
 
-                  <td th:text="${u.documento}"></td>
-                  <td th:text="${u.nombre}"></td>
-                  <td th:text="${u.apellido}"></td> 
-                  <td th:text="${u.telefono}"></td>
-                  <td th:text="${u.Rol.nombre}"></td>
-                  <td th:text="${u.proveniente}"></td>
+                <tr th:if="${listarEquipoMovimiento.isEmpty()}">
+                    <td colspan="3" align="center">No hay detalles de equipo recientes de la persona.</td>
+                </tr>
 
-                  <td th:if="${u.estado==true}" align="center"> 
-                    <span class="badge bg-success active">Activo</span> 
-                </td> 
-                <td th:if="${u.estado==false}" align="center"> 
-                    <span class="badge bg-danger active">Inactivo</span> 
-                </td> 
+                <tr th:each="m:${listarEquipoMovimiento}" if(m.movimiento.documento == documento)>
 
-                <!--/* FUNCIONALIDAD ACTIVAR / INACTIVAR*/ */-->
 
-                <td th:if="${u.estado==true}" align="center"> 
-                  <a th:href="@{/Usuario/updateUserStatus/{documento}(documento = ${u.documento})}" rol="button" class="btn btn-success"> Inactivar </a> 
-              </td> 
-              <td th:if="${u.estado==false}" align="center"> 
-                  <a th:href="@{/Usuario/updateUserStatus/{documento}(documento = ${u.documento})}" rol="button" class="btn btn-success"> Activar </a> 
-              </td>
-                <!--/* FUNCIONALIDAD EDITAR / BORRAR*/ */-->
+                <tr th:each="m:${listarEquipoMovimiento}">
 
-                <td align="center"> 
-                  <a role="button" class="btn btn-warning btn-sm" th:href="@{/Usuario/ver/}+${u.documento}">
-                      <i class="bi bi-pencil"></i> 
+                  <td> 
+                    <span th:text="${m.movimiento.documento.nombre}"></span>
+                    <span th:text="${m.movimiento.documento.apellido}"></span>
+                  </td>
 
-                  </a> 
-                  <a role="button" class="btn btn-danger btn-sm"> 
-                      <i class="bi bi-trash"></i> 
-                  </a> 
-                </td>
 
-                <!--/* FUNCIONALIDAD ENTRADA / SALIDA*/ */-->
-                
-                <td align="center"> 
-                  <a role="button" class="btn btn-info" th:href="@{/Movimiento/entrada(documento=${u.documento})}"> 
-                      <i class="bi bi-box-arrow-in-right"></i> 
+                    <td th:text="${m.equipo.marca}"></td>
+                    <td th:text="${m.movimiento.IdMovimiento}"></td>
+          
 
-                  </a> 
-                  <a role="button" class="btn btn-secondary" th:href="@{/Movimiento/MovimientosUsuario(documento=${u.documento}, nombre=${u.nombre})}"> 
-                      <i class="bi bi-box-arrow-in-left"></i> 
-                  </a> 
-                </td>
+
+                  
+                  
+              
+                  
 
                 </tr>
             </tbody>

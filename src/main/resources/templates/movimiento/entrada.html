@@ -9,84 +9,104 @@
     <link rel="stylesheet" th:href="@{/css/estilos.css}">
     <link rel="stylesheet" th:href="@{/css/main.js}">
     <title>Formulario</title>
-</head>    
+</head>
 <body>
-    <header class="u-header">
-        <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
-        <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
-    </header>
+<header class="u-header">
+    <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
+    <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
+</header>
 
-    <!-- NAVEGACIÓN -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3" id="menu">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+<!-- NAVEGACIÓN -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-3" id="menu">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/Usuario/listar}">ATRAS</a>
-                </li>      
-            </ul>
-        </div>
-    </nav>
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/Usuario/listar}">ATRAS</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- CONTENIDO -->
-    <div class="wrapper fadeInDown">
-        <div id="formContent" class="p-4">
-            <h2 class="active mb-4">Registro de entrada</h2>
-            <div class="fadeIn first">
-                <img th:src="@{/img/auto.gif}" id="icon" alt="User Icon" />
+<!-- CONTENIDO -->
+<br><br>
+
+<center>
+    <div id="formContent" class="p-4">
+        <h2 class="active mb-4">Registro de entrada</h2>
+        <div class="fadeIn first">
+            <img th:src="@{/img/auto.gif}" id="icon" alt="User Icon" />
+        </div>
+
+        <form th:action="@{/Movimiento/add/}" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="fecha"><b>Fecha</b></label>
+                <input type="date" name="fecha" class="form-control">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="horaEntrada"><b>Hora</b></label>
+                <input type="time" name="horaEntrada" class="form-control">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="documento.documento"><b>Documento</b></label>
+                <input type="text" class="form-control" id="documento.documento" name="documento.documento" th:value="${documento}">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="vehiculo-select"><b>Vehículos de propiedad</b></label>
+                <select name="Vehiculo.IdVehiculo" id="vehiculo-select" class="form-control">
+                    <option th:each="vehiculo : ${vehiculos}" th:if="${documento} == ${vehiculo.documento.documento}" th:value="${vehiculo.IdVehiculo}" th:text="${vehiculo.marca}"></option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="equipo-select"><b>Equipo de propiedad</b></label>
+                <select name="equipoId" id="equipo-select" class="form-control" th:each="campos : ${campos}">
+                    <option value=0 >Ningún equipo</option>
+                    <option th:each="equipo : ${equipos}" th:if="${documento} == ${equipo.documento.documento}" th:value="${equipo.IdEquipo}" th:text="${equipo.marca}"></option>
+                </select>
             </div>
 
-                <form th:action="@{/Movimiento/add/}" method="post" class="mt-4">
-                    <div class="form-group">
-                        <label for="fecha">Fecha</label>
-                        <input type="date" name="fecha" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="hora">Hora</label>
-                        <input type="time" name="hora" class="form-control">
-                    </div>
-
-                <div class="form-group">
-                    <label for="documento.documento">Documento</label>
-                    <input type="text" class="form-control" id="documento.documento" name="documento.documento" th:value="${documento}">
-                </div>
-
-                <div class="form-group">
-                    <label for="vehiculo-select"><b>Vehículos de propiedad</b></label>
-                    <select name="Vehiculo.IdVehiculo" id="vehiculo-select" class="form-control">
-                        <option th:each="vehiculo : ${vehiculos}" th:if="${documento} == ${vehiculo.documento.documento}" th:value="${vehiculo.IdVehiculo}" th:text="${vehiculo.marca}"></option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="equipo-select"><b>Equipo de propiedad</b></label>
-                    <select name="equipoId" id="equipo-select" class="form-control">
-                        <option value="">Ningún equipo</option> 
-                        <option th:each="equipo : ${equipos}" th:if="${documento} == ${equipo.documento.documento}" th:value="${equipo.IdEquipo}" th:text="${equipo.marca}"></option>
-                    </select>
-                </div>
-
-
-                <input type="hidden" name="tipo_Movimiento.Id_Tipo_Movimiento" th:value="1">
-
-                <button type="submit" class="btn btn-success mt-3">Guardar</button>
-            </form>
-        </div>
+            <button type="submit" class="btn btn-success mt-3">Guardar</button>
+        </form>
     </div>
+</center>
 
-    <!-- PIE DE PÁGINA -->
-    <footer class="u-footer">
-        <div class="u-sheet-1">
-            <br>
-            <p class="u-text-3">W W W . s e n a . e d u . co</p>
-        </div>
-    </footer>
+<div class="camposDinamicos">
+    <form th:action="@{/Movimiento/Agregar/}" method="post">
 
-    <!-- SCRIPTS -->
-    <script th:src="@{/css/main.js}"></script>
+        <input type="hidden" th:value="1" name="campos" id="campos">
+        <input type="hidden" th:value="${documento}" name="documento" id="documento">
+        <button type="submit">Agregar Equipo</button>
+
+    </form>
+</div>
+
+<div class="camposDinamicos2">
+    <form th:action="@{/Movimiento/Agregar/}" method="post">
+
+        <input type="hidden" th:value="${documento}" name="documento" id="documento">
+        <input type="hidden" th:value="0" name="campos" id="campos">
+
+        <button type="submit">Quitar equipo</button>
+
+    </form>
+</div>
+
+<!-- PIE DE PÁGINA -->
+<footer class="u-footer">
+    <div class="u-sheet-1">
+        <br>
+        <p class="u-text-3">W W W . s e n a . e d u . co</p>
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script th:src="@{/css/main.js}"></script>
 </body>
 </html>

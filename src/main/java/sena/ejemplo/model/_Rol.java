@@ -1,16 +1,11 @@
 package sena.ejemplo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="rol")
-public class Rol {
-    
+@Table(name = "rol")
+public class _Rol {
+
     // Atributos
 
     // Primary Key
@@ -19,15 +14,15 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdRol;
 
-    @Column(name="nombre", nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
     // CONSTRUCTORES
 
-    public Rol(){
+    public _Rol() {
     }
 
-    public Rol(Integer idRol, String nombre) {
+    public _Rol(Integer idRol, String nombre) {
         IdRol = idRol;
         this.nombre = nombre;
     }

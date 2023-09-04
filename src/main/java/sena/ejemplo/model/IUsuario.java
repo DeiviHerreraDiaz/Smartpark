@@ -1,19 +1,10 @@
 package sena.ejemplo.model;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IUsuario {
-    // LISTAR
-    public List<Usuario> findAll();
+public interface IUsuario extends CrudRepository<_Usuario, String> {
 
-    // REGISTRAR USUARIOS
-    public void save(Usuario usuario);
-
-    public Usuario findByDocumento(Integer documento);
-
-    public Usuario findOne(Integer documento);
-
-    // MODIFICAR ESTADO DEL USUARIO
-    public void updateEstado(Integer documento, boolean nuevoEstado);
-
+    @Query("SELECT u FROM _Usuario u WHERE u.documento = :documento")
+    _Usuario findByDocumento(String documento);
 }

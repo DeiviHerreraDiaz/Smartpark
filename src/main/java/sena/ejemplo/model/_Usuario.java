@@ -1,26 +1,17 @@
 package sena.ejemplo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class _Usuario {
 
     // Atributos
 
     // Primary Key
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer documento;
+    private String documento;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
@@ -37,20 +28,21 @@ public class Usuario {
     @Column(name = "proveniente", nullable = true)
     private String proveniente;
 
-    // Relation with ID Rol from FK, relation of entity Rol
+    // Relation with ID Rol from FK, relation of entity Rol 
 
     @ManyToOne
     @JoinColumn(name = "Id_Rol_Fk", nullable = false)
-    private Rol rol;
+    private _Rol rol;
+
 
     // CONSTRUCTORES
 
-    public Usuario() {
+    public _Usuario() {
 
     }
 
-    public Usuario(Integer documento, String nombre, String apellido, String telefono, Rol rol, boolean estado,
-            String proveniente) {
+    public _Usuario(String documento, String nombre, String apellido, String telefono, _Rol rol, boolean estado,
+                    String proveniente) {
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -60,13 +52,13 @@ public class Usuario {
         this.proveniente = proveniente;
     }
 
-    // GETTERS AND SETTERS
+// GETTERS AND SETTERS
 
-    public Integer getDocumento() {
+    public String getDocumento() {
         return documento;
     }
 
-    public void setDocumento(Integer documento) {
+    public void setDocumento(String documento) {
         this.documento = documento;
     }
 
@@ -94,11 +86,11 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public Rol getRol() {
+    public _Rol getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(_Rol rol) {
         this.rol = rol;
     }
 
@@ -118,4 +110,6 @@ public class Usuario {
         this.proveniente = proveniente;
     }
 
+
 }
+    

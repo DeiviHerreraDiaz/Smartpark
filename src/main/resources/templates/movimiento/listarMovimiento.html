@@ -55,7 +55,7 @@
 
 
     <div class="container-fluid">
-        <h1>Movimientos</h1>
+        <h1>Movimientos generales</h1>
         <table id="datat">
 
 
@@ -64,9 +64,11 @@
                 <th>ID MOVIMIENTO</th>
                 <th>PERSONA</th>
                 <th>DOCUMENTO</th>
-                <th>FECHA / HORA</th>
+                <th>FECHA</th>
+                <th>HORA ENTRADA</th>
                 <th>PLACA VEHICULO</th>
-                <th>TIPO DE MOVIMIENTO</th>
+                <th>HORA SALIDA</th>
+                <th>OBSERVACIONES</th>
 
                 
             </thead>
@@ -84,11 +86,12 @@
 
                   <td> 
                     <span th:text="${m.fecha}"></span>
-                    <span th:text="${m.hora}"></span>
                   </td>
-
+                  <td th:text="${m.horaEntrada}"></td>
                   <td th:text="${m.vehiculo.placa}"></td>
-                  <td th:text="${m.tipo_Movimiento.tipo}"></td>
+                    <td th:if="${m.HoraSalida == null}"><p>No ha salido</p></td>
+                    <td th:if="${m.HoraSalida != null}"><p th:text="${m.HoraSalida}"></p></td>
+                  <td th:text="${m.Observaciones}"></td>
                   
               
                   
