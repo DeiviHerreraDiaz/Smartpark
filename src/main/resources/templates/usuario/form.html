@@ -42,10 +42,6 @@
         <h2 class="u-text-1">
           FORMULARIO ACTUALIZAR USUARIOS 
         </h2>
-        
-
-
-        
         <div class="u-form-1">
           <form th:action="@{/Usuario/add}" th:object="${usuario}" method="post" class="u-inner-form" >
             
@@ -85,8 +81,6 @@
               <input type="text" placeholder="Ingresa el telefono"  class="u-input" id="telefono" name="telefono"th:field="*{telefono}">
               <div class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
             </div>
-
-                   
 
             <div class="u-form-group-1"> 
               <label form="proveniente" class="u-label">Proveniente</label>

@@ -40,6 +40,7 @@ public class EquipoController {
         return "Equipo/listar";
     }
 //Actualizar equipo
+//Actualizacion
         @GetMapping("/ver/{IdEquipo}")
     public String ver(@PathVariable Integer IdEquipo,Model m){
         _Equipo equipo=null;

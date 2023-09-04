@@ -15,10 +15,8 @@ public interface IEquipoService {
     _Equipo save(_Equipo equipo);
 
     List<_Equipo> findBydocumento(String documento);
-
-
     _Equipo findById(Integer equipoId);
-    _Equipo findOne(Integer idEquipo);
+    _Equipo findOne(Integer IdEquipo);
 
 
 }
