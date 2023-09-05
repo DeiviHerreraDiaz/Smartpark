@@ -2,7 +2,6 @@ package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sena.ejemplo.model.IEquipo;
 import sena.ejemplo.model._Equipo;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 public class _EquipoServiceImpl implements IEquipoService {
 
     @Autowired
-    private IEquipo equipoRepository;
+    private sena.ejemplo.repository.equipoRepository equipoRepository;
 
     @Override
     public List<_Equipo> findAll() {

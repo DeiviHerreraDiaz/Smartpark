@@ -2,7 +2,6 @@ package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sena.ejemplo.model.IVehiculo;
 import sena.ejemplo.model._Vehiculo;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public class _VehiculoServiceImpl implements IVehiculoService {
 
 
     @Autowired
-    private IVehiculo vehiculoRepository;
+    private sena.ejemplo.repository.vehiculoRepository vehiculoRepository;
 
     // Obtencion de datos para la consulta (Listar)
 

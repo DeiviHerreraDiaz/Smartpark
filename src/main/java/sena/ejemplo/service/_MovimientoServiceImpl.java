@@ -2,7 +2,6 @@ package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sena.ejemplo.model.IMovimiento;
 import sena.ejemplo.model._Equipo;
 import sena.ejemplo.model._Movimiento;
 
@@ -13,7 +12,7 @@ import java.util.Optional;
 public class _MovimientoServiceImpl implements IMovimientoService {
 
     @Autowired
-    private IMovimiento movimientoRepository;
+    private sena.ejemplo.repository.movimientoRepository movimientoRepository;
 
 
     @Override

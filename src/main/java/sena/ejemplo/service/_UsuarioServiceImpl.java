@@ -2,7 +2,6 @@ package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sena.ejemplo.model.IUsuario;
 import sena.ejemplo.model._Usuario;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 public class _UsuarioServiceImpl implements IUsuarioService {
 
     @Autowired
-    private IUsuario usuarioRepository;
+    private sena.ejemplo.repository.usuarioRepository usuarioRepository;
 
     // Obtencion de datos para la consulta (Listar)
     @Override
