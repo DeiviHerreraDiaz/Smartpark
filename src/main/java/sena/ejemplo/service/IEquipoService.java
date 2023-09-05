@@ -1,6 +1,6 @@
 package sena.ejemplo.service;
 
-import sena.ejemplo.model._Equipo;
+import sena.ejemplo.model.Equipo;
 
 import java.util.List;
 
@@ -8,16 +8,16 @@ public interface IEquipoService {
 
     // LISTAR
 
-    List<_Equipo> findAll();
+    List<Equipo> findAll();
 
     // REGISTRAR EQUIPOS
 
-    _Equipo save(_Equipo equipo);
+    Equipo save(Equipo equipo);
 
-    List<_Equipo> findBydocumento(String documento);
+    List<Equipo> findBydocumento(String documento);
 
 
-    _Equipo findById(Integer equipoId);
+    Equipo findById(Integer equipoId);
 
 
 }

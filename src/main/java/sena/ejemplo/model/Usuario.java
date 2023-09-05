@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "usuario")
-public class _Usuario {
+public class Usuario {
 
     // Atributos
 
@@ -32,17 +32,17 @@ public class _Usuario {
 
     @ManyToOne
     @JoinColumn(name = "Id_Rol_Fk", nullable = false)
-    private _Rol rol;
+    private Rol rol;
 
 
     // CONSTRUCTORES
 
-    public _Usuario() {
+    public Usuario() {
 
     }
 
-    public _Usuario(String documento, String nombre, String apellido, String telefono, _Rol rol, boolean estado,
-                    String proveniente) {
+    public Usuario(String documento, String nombre, String apellido, String telefono, Rol rol, boolean estado,
+                   String proveniente) {
         this.documento = documento;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -86,11 +86,11 @@ public class _Usuario {
         this.telefono = telefono;
     }
 
-    public _Rol getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(_Rol rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 

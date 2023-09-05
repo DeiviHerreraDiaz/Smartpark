@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "rol")
-public class _Rol {
+public class Rol {
 
     // Atributos
 
@@ -19,10 +19,10 @@ public class _Rol {
 
     // CONSTRUCTORES
 
-    public _Rol() {
+    public Rol() {
     }
 
-    public _Rol(Integer idRol, String nombre) {
+    public Rol(Integer idRol, String nombre) {
         IdRol = idRol;
         this.nombre = nombre;
     }

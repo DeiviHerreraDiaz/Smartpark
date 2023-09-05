@@ -5,10 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import sena.ejemplo.model._Equipo;
-import sena.ejemplo.model._Equipo_movimiento;
-import sena.ejemplo.model._Movimiento;
-import sena.ejemplo.model._Vehiculo;
+import sena.ejemplo.model.Equipo;
+import sena.ejemplo.model.Equipo_movimiento;
+import sena.ejemplo.model.Movimiento;
+import sena.ejemplo.model.Vehiculo;
 import sena.ejemplo.service.IEquipoService;
 import sena.ejemplo.service.IEquipo_movimientoService;
 import sena.ejemplo.service.IMovimientoService;
@@ -37,17 +37,17 @@ public class MovimientoController {
     private IEquipo_movimientoService equipoMovimientoService;
 
     @PostMapping("/add")
-    public String add(_Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId, HttpServletRequest request) {
+    public String add(Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId, HttpServletRequest request) {
 
         if (equipoId != 0) {
 
             String[] equipoIds = request.getParameterValues("equipoId");
 
             if (equipoIds != null && equipoIds.length > 0) {
-                List<_Equipo> equipos = new ArrayList<>();
+                List<Equipo> equipos = new ArrayList<>();
                 for (String equipoIdStr : equipoIds) {
                     Integer EquipoId = Integer.parseInt(equipoIdStr);
-                    _Equipo equipoSeleccionado = equipoService.findById(EquipoId);
+                    Equipo equipoSeleccionado = equipoService.findById(EquipoId);
                     if (equipoSeleccionado != null) {
                         equipos.add(equipoSeleccionado);
                         movimiento.setEquipos(equipos);
@@ -56,7 +56,7 @@ public class MovimientoController {
                         movimientoService.save(movimiento);
 
                         // Create Equipo_movimiento record and associate it with the Movimiento
-                        _Equipo_movimiento equipoMovimiento = new _Equipo_movimiento();
+                        Equipo_movimiento equipoMovimiento = new Equipo_movimiento();
                         equipoMovimiento.setEquipo(equipoSeleccionado);
                         equipoMovimiento.setMovimiento(movimiento);
                         equipoMovimientoService.save(equipoMovimiento);
@@ -75,8 +75,8 @@ public class MovimientoController {
     }
 
     @PostMapping("/update")
-    public String update(_Movimiento movimiento) {
-        Optional<_Movimiento> existingMovimiento = movimientoService.findById(movimiento.getIdMovimiento());
+    public String update(Movimiento movimiento) {
+        Optional<Movimiento> existingMovimiento = movimientoService.findById(movimiento.getIdMovimiento());
         existingMovimiento.ifPresent(mov -> {
             mov.setHoraSalida(movimiento.getHoraSalida());
             mov.setObservaciones(movimiento.getObservaciones());
@@ -87,14 +87,14 @@ public class MovimientoController {
 
     @GetMapping(value = "/listar")
     public String listar(Model m) {
-        List<_Movimiento> movimientos = movimientoService.findAll();
+        List<Movimiento> movimientos = movimientoService.findAll();
         m.addAttribute("movimiento", movimientos);
         return "movimiento/listarMovimiento";
     }
 
     @GetMapping(value = "/listarEquipoMovimiento")
     public String listarEquipoMovimiento(Model m) {
-        List<_Equipo_movimiento> listaEquipoMovimiento = equipoMovimientoService.findAll();
+        List<Equipo_movimiento> listaEquipoMovimiento = equipoMovimientoService.findAll();
         m.addAttribute("listarEquipoMovimiento", listaEquipoMovimiento);
         return "movimiento/listarEquipoMovimiento.html";
     }
@@ -102,8 +102,8 @@ public class MovimientoController {
     @PostMapping("/Agregar")
     public String agregar(@RequestParam(value = "campos") int valorCampos, @RequestParam("documento") String documento, Model model) {
 
-        List<_Equipo> equipos = equipoService.findBydocumento(documento);
-        List<_Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
+        List<Equipo> equipos = equipoService.findBydocumento(documento);
+        List<Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
 
         if (valorCampos > 0 && Campos.size() < equipos.size() && Campos.size() > 0) {
             Campos.add(valorCampos);
@@ -123,8 +123,8 @@ public class MovimientoController {
 
     @GetMapping(value = "/entrada")
     public String entrada(@RequestParam("documento") String documento, Model model) {
-        List<_Equipo> equipos = equipoService.findBydocumento(documento);
-        List<_Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
+        List<Equipo> equipos = equipoService.findBydocumento(documento);
+        List<Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
 
 
         model.addAttribute("vehiculos", vehiculos);
@@ -137,12 +137,12 @@ public class MovimientoController {
 
     @GetMapping(value = "/salida")
     public String salida(@RequestParam("IdMovimiento") Integer IdMovimiento, Model model) {
-        Optional<_Movimiento> movimientoOptional = movimientoService.findById(IdMovimiento);
+        Optional<Movimiento> movimientoOptional = movimientoService.findById(IdMovimiento);
 
         if (movimientoOptional.isPresent()) {
-            _Movimiento movimiento = movimientoOptional.get();
-            _Vehiculo vehiculo = movimiento.getVehiculo();
-            List<_Equipo_movimiento> equipoMovimientoList = equipoMovimientoService.findByMovimiento(movimiento);
+            Movimiento movimiento = movimientoOptional.get();
+            Vehiculo vehiculo = movimiento.getVehiculo();
+            List<Equipo_movimiento> equipoMovimientoList = equipoMovimientoService.findByMovimiento(movimiento);
 
             model.addAttribute("equipoMovimientoList", equipoMovimientoList);
             model.addAttribute("movimiento", movimiento);
@@ -159,7 +159,7 @@ public class MovimientoController {
 
     @GetMapping(value = "/MovimientosUsuario")
     public String MovimientoUsuario(Model m, @RequestParam("documento") String documento, @RequestParam("nombre") String nombre) {
-        List<_Movimiento> movimientosFiltrados = movimientoService.findAll().stream()
+        List<Movimiento> movimientosFiltrados = movimientoService.findAll().stream()
                 .filter(mov -> mov.getDocumento().getDocumento().equals(documento))
                 .collect(Collectors.toList());
 
@@ -171,7 +171,7 @@ public class MovimientoController {
 
     @GetMapping(value = "/listarEquipoMovimientoUsuario")
     public String listarEquipoMovimientoUsuario(Model m, @RequestParam("documento") String documento) {
-        List<_Equipo_movimiento> listaEquipoMovimiento = equipoMovimientoService.findAll().stream()
+        List<Equipo_movimiento> listaEquipoMovimiento = equipoMovimientoService.findAll().stream()
                 .filter(eq -> eq.getMovimiento().getDocumento().getDocumento().equals(documento))
                 .collect(Collectors.toList());
         m.addAttribute("listarEquipoMovimiento", listaEquipoMovimiento);

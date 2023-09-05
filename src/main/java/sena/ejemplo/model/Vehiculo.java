@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "vehiculo")
-public class _Vehiculo {
+public class Vehiculo {
 
     // ATRIBUTOS
 
@@ -24,25 +24,25 @@ public class _Vehiculo {
 
     @ManyToOne
     @JoinColumn(name = "tipo_vehiculo_fk", nullable = false)
-    private _Tipo_Vehiculo tipo_Vehiculo;
+    private Tipo_Vehiculo tipo_Vehiculo;
 
     // Relation with documento from FK, relation of entity Usuario
 
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
-    private _Usuario documento;
+    private Usuario documento;
 
     @Column(name = "estado", nullable = false)
     private boolean estado;
 
     // CONSTRUCTORES
 
-    public _Vehiculo() {
+    public Vehiculo() {
 
     }
 
-    public _Vehiculo(Integer idVehiculo, String placa, String marca, _Tipo_Vehiculo tipo_Vehiculo, _Usuario documento,
-                     boolean estado) {
+    public Vehiculo(Integer idVehiculo, String placa, String marca, Tipo_Vehiculo tipo_Vehiculo, Usuario documento,
+                    boolean estado) {
         IdVehiculo = idVehiculo;
         this.placa = placa;
         this.marca = marca;
@@ -77,19 +77,19 @@ public class _Vehiculo {
         this.marca = marca;
     }
 
-    public _Tipo_Vehiculo getTipo_Vehiculo() {
+    public Tipo_Vehiculo getTipo_Vehiculo() {
         return tipo_Vehiculo;
     }
 
-    public void setTipo_Vehiculo(_Tipo_Vehiculo tipo_Vehiculo) {
+    public void setTipo_Vehiculo(Tipo_Vehiculo tipo_Vehiculo) {
         this.tipo_Vehiculo = tipo_Vehiculo;
     }
 
-    public _Usuario getDocumento() {
+    public Usuario getDocumento() {
         return documento;
     }
 
-    public void setDocumento(_Usuario documento) {
+    public void setDocumento(Usuario documento) {
         this.documento = documento;
     }
 
@@ -101,7 +101,7 @@ public class _Vehiculo {
         this.estado = estado;
     }
 
-    public void save(_Vehiculo vehiculo) {
+    public void save(Vehiculo vehiculo) {
     }
 
 }

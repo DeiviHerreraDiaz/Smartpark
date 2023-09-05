@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "equipo")
-public class _Equipo {
+public class Equipo {
 
     // ATRIBUTOS
 
@@ -24,7 +24,7 @@ public class _Equipo {
             joinColumns = @JoinColumn(name = "equipo_id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "movimiento_id")
     )
-    private List<_Movimiento> movimientos;
+    private List<Movimiento> movimientos;
 
 
     @Column(name = "marca", nullable = false)
@@ -37,7 +37,7 @@ public class _Equipo {
 
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
-    private _Usuario documento;
+    private Usuario documento;
 
     @Column(name = "estado", nullable = false)
     private boolean estado;
@@ -45,10 +45,10 @@ public class _Equipo {
 
     // CONSTRUCTORES
 
-    public _Equipo() {
+    public Equipo() {
     }
 
-    public _Equipo(Integer idEquipo, String tipo, String marca, String serie, _Usuario documento, boolean estado) {
+    public Equipo(Integer idEquipo, String tipo, String marca, String serie, Usuario documento, boolean estado) {
         IdEquipo = idEquipo;
         this.tipo = tipo;
         this.marca = marca;
@@ -91,11 +91,11 @@ public class _Equipo {
         this.serie = serie;
     }
 
-    public _Usuario getDocumento() {
+    public Usuario getDocumento() {
         return documento;
     }
 
-    public void setDocumento(_Usuario documento) {
+    public void setDocumento(Usuario documento) {
         this.documento = documento;
     }
 

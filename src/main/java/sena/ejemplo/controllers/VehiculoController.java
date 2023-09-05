@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import sena.ejemplo.model._Vehiculo;
+import sena.ejemplo.model.Vehiculo;
 import sena.ejemplo.service.IVehiculoService;
 
 import javax.persistence.EntityManager;
@@ -25,7 +25,7 @@ public class VehiculoController {
     // Agregar vehiculos
 
     @PostMapping("/add")
-    public String add(_Vehiculo vehiculo, Model m) {
+    public String add(Vehiculo vehiculo, Model m) {
         vehiculod.save(vehiculo);
         return "redirect:/Vehiculo/listar";
     }

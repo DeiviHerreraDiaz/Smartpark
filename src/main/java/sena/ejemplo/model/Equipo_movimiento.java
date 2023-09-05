@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Equipo_movimiento")
-public class _Equipo_movimiento {
+public class Equipo_movimiento {
 
     // Atributos
 
@@ -17,19 +17,19 @@ public class _Equipo_movimiento {
 
     @ManyToOne
     @JoinColumn(name = "equipo_id", nullable = false)
-    private _Equipo equipo;
+    private Equipo equipo;
 
     @ManyToOne
     @JoinColumn(name = "movimiento_id")
-    private _Movimiento movimiento;
+    private Movimiento movimiento;
 
     // MÉTODOS CONSTRUCTORES
 
-    public _Equipo_movimiento() {
+    public Equipo_movimiento() {
 
     }
 
-    public _Equipo_movimiento(Integer id_Equipo_Movimiento, _Equipo equipo, _Movimiento movimiento) {
+    public Equipo_movimiento(Integer id_Equipo_Movimiento, Equipo equipo, Movimiento movimiento) {
         this.id_Equipo_Movimiento = id_Equipo_Movimiento;
         this.equipo = equipo;
         this.movimiento = movimiento;
@@ -45,19 +45,19 @@ public class _Equipo_movimiento {
         this.id_Equipo_Movimiento = id_Equipo_Movimiento;
     }
 
-    public _Equipo getEquipo() {
+    public Equipo getEquipo() {
         return equipo;
     }
 
-    public void setEquipo(_Equipo equipo) {
+    public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
 
-    public _Movimiento getMovimiento() {
+    public Movimiento getMovimiento() {
         return movimiento;
     }
 
-    public void setMovimiento(_Movimiento movimiento) {
+    public void setMovimiento(Movimiento movimiento) {
         this.movimiento = movimiento;
     }
 

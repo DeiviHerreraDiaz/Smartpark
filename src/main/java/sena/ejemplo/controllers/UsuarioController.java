@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import sena.ejemplo.model._Usuario;
+import sena.ejemplo.model.Usuario;
 import sena.ejemplo.service.IUsuarioService;
 
 import javax.persistence.EntityManager;
@@ -26,7 +26,7 @@ public class UsuarioController {
     // Agregar usuarios
 
     @PostMapping("/add")
-    public String add(_Usuario usuario, Model m) {
+    public String add(Usuario usuario, Model m) {
         usuariod.save(usuario);
         return "redirect:/Usuario/listar";
     }
@@ -56,7 +56,7 @@ public class UsuarioController {
     public String validarUsuario(String documento) {
 
         // Buscar el usuario por documento
-        _Usuario usuario = usuariod.findByDocumento(documento);
+        Usuario usuario = usuariod.findByDocumento(documento);
 
         if (usuario != null && (usuario.getRol().getNombre().equals("Funcionario") || usuario.getRol().getNombre().equals("Aprendiz"))) {
             // El usuario es un Funcionario o Aprendiz, redireccionar al menú correspondiente.

@@ -1,9 +1,9 @@
 package sena.ejemplo.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import sena.ejemplo.model._Movimiento;
+import sena.ejemplo.model.Movimiento;
 
-public interface movimientoRepository extends CrudRepository<_Movimiento, Integer> {
+public interface movimientoRepository extends CrudRepository<Movimiento, Integer> {
 
 
 }
