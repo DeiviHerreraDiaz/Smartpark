@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sena.ejemplo.model.IEquipo;
 import sena.ejemplo.model._Equipo;
+import sena.ejemplo.model._Vehiculo;
 
 import java.util.List;
 
@@ -39,7 +40,17 @@ public class _EquipoServiceImpl implements IEquipoService {
         return equipoRepository.findById(IdEquipo).orElse(null);
     }
     
-    
+    @Override
+public _Equipo updateEstado(Integer IdEquipo, boolean estado) {
+    _Equipo equipoEncontrado = findById(IdEquipo);
+    if (equipoEncontrado != null) {
+        boolean nuevoEstado = !estado;
+        equipoEncontrado.setEstado(nuevoEstado);
+        System.out.println("This 2 -> " + nuevoEstado);
+        equipoRepository.save(equipoEncontrado); // Guarda el usuario actualizado en el repositorio
+    }
+    return equipoRepository.findById(IdEquipo).orElse(null); // Retorna el usuario actualizado o null si no se encontró
+}
 
 }
 

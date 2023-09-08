@@ -1,5 +1,8 @@
 package sena.ejemplo.controllers;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,13 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import sena.ejemplo.model._Equipo;
+import sena.ejemplo.model._Usuario;
+import sena.ejemplo.model._Vehiculo;
 import sena.ejemplo.service.IEquipoService;
 
 @Controller
 @SessionAttributes("Equipo")
 @RequestMapping("/Equipo")
 public class EquipoController {
-
+    
+    @PersistenceContext
+    private EntityManager em;
     @Autowired
     private IEquipoService equipoService;
 
@@ -45,7 +52,7 @@ public class EquipoController {
     public String ver(@PathVariable Integer IdEquipo,Model m){
         _Equipo equipo=null;
         if(IdEquipo>0){
-            equipo=equipoService.findOne(IdEquipo);
+            equipo=equipoService.findById(IdEquipo);
         }else{
             return "redirect:/Equipo/listar";
         }
@@ -61,6 +68,17 @@ public class EquipoController {
         m.addAttribute("equipo", equipo);
         m.addAttribute("accion", "Agregar Equipo");
         return "Equipo/form";
+    }
+
+            @GetMapping("/updateUserStatus/{idEquipo}")
+    public String updateUserStatus(@PathVariable Integer idEquipo) {
+        _Equipo equipo = equipoService.findById(idEquipo);
+
+        if (equipo != null) {
+            equipoService.updateEstado(idEquipo, equipo.isEstado());
+            System.out.println("This 1 -> " + equipo.isEstado());
+        }
+        return "redirect:/Equipo/listar";
     }
 
 }

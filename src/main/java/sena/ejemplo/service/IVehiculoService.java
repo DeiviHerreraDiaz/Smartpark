@@ -16,4 +16,8 @@ public interface IVehiculoService {
     _Vehiculo save(_Vehiculo vehiculo);
 
     List<_Vehiculo> findBydocumento(String documento);
+    _Vehiculo findOne(Integer idVehiculo);
+    _Vehiculo updateEstado(Integer idVehiculo, boolean nuevoEstado);
+
+
 }

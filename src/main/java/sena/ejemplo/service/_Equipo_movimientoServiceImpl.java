@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import sena.ejemplo.model.IEquipo_movimiento;
 import sena.ejemplo.model._Equipo_movimiento;
 import sena.ejemplo.model._Movimiento;
+import sena.ejemplo.model._Usuario;
+import sena.ejemplo.model._Vehiculo;
 
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class _Equipo_movimientoServiceImpl implements IEquipo_movimientoService 
     public List<_Equipo_movimiento> findByMovimiento(_Movimiento movimiento) {
         return equipo_movimientoRepository.findByMovimiento(movimiento);
     }
+
 
 
 

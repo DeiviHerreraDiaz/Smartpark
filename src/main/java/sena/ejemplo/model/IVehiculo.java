@@ -12,4 +12,5 @@ public interface IVehiculo extends CrudRepository<_Vehiculo, Integer> {
 
 
 
+
 }
