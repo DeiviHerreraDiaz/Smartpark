@@ -18,6 +18,7 @@ public class EquipoController {
     private IEquipoService equipoService;
 
     // Agregar equipos
+    // aqui agregamos
     @PostMapping("/add")
     public String add(Equipo equipo, Model m) {
         equipoService.save(equipo);
