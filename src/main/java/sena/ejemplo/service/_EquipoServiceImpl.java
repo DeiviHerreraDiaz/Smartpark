@@ -2,9 +2,7 @@ package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sena.ejemplo.model.IEquipo;
-import sena.ejemplo.model._Equipo;
-import sena.ejemplo.model._Vehiculo;
+import sena.ejemplo.model.Equipo;
 
 import java.util.List;
 
@@ -12,37 +10,38 @@ import java.util.List;
 public class _EquipoServiceImpl implements IEquipoService {
 
     @Autowired
-    private IEquipo equipoRepository;
+    private sena.ejemplo.repository.equipoRepository equipoRepository;
 
     @Override
-    public List<_Equipo> findAll() {
-        return (List<_Equipo>) equipoRepository.findAll();
+    public List<Equipo> findAll() {
+        return (List<Equipo>) equipoRepository.findAll();
     }
 
     @Override
-    public _Equipo save(_Equipo equipo) {
+    public Equipo save(Equipo equipo) {
         return equipoRepository.save(equipo);
     }
 
     @Override
-    public List<_Equipo> findBydocumento(String documento) {
+    public List<Equipo> findBydocumento(String documento) {
         return equipoRepository.findByDocumento(documento);
     }
 
 
     @Override
-    public _Equipo findById(Integer id) {
+    public Equipo findById(Integer id) {
+
         return equipoRepository.findById(id).orElse(null);
     }
-        
+
     @Override
-    public _Equipo findOne(Integer IdEquipo) {
+    public Equipo findOne(Integer IdEquipo) {
         return equipoRepository.findById(IdEquipo).orElse(null);
     }
     
     @Override
-public _Equipo updateEstado(Integer IdEquipo, boolean estado) {
-    _Equipo equipoEncontrado = findById(IdEquipo);
+public Equipo updateEstado(Integer IdEquipo, boolean estado) {
+    Equipo equipoEncontrado = findById(IdEquipo);
     if (equipoEncontrado != null) {
         boolean nuevoEstado = !estado;
         equipoEncontrado.setEstado(nuevoEstado);
@@ -51,6 +50,5 @@ public _Equipo updateEstado(Integer IdEquipo, boolean estado) {
     }
     return equipoRepository.findById(IdEquipo).orElse(null); // Retorna el usuario actualizado o null si no se encontró
 }
-
 }
 

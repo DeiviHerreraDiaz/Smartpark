@@ -2,8 +2,7 @@ package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sena.ejemplo.model.IUsuario;
-import sena.ejemplo.model._Usuario;
+import sena.ejemplo.model.Usuario;
 
 import java.util.List;
 
@@ -11,34 +10,33 @@ import java.util.List;
 public class _UsuarioServiceImpl implements IUsuarioService {
 
     @Autowired
-    private IUsuario usuarioRepository;
+    private sena.ejemplo.repository.usuarioRepository usuarioRepository;
 
     // Obtencion de datos para la consulta (Listar)
     @Override
-    public List<_Usuario> findAll() {
-        return (List<_Usuario>) usuarioRepository.findAll();
+    public List<Usuario> findAll() {
+        return (List<Usuario>) usuarioRepository.findAll();
     }
 
     // Obtencion de datos para registrar un Usuario 
     @Override
-    public _Usuario save(_Usuario usuario) {
+    public Usuario save(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
-
     @Override
-    public _Usuario findByDocumento(String documento) {
+    public Usuario findByDocumento(String documento) {
         return usuarioRepository.findByDocumento(documento);
 }
 
 @Override
-public _Usuario findOne(String documento) {
+public Usuario findOne(String documento) {
     return usuarioRepository.findById(documento).orElse(null);
 }
 
 @Override
-public _Usuario updateEstado(String documento, boolean estado) {
-    _Usuario usuarioEncontrado = findByDocumento(documento);
+public Usuario updateEstado(String documento, boolean estado) {
+    Usuario usuarioEncontrado = findByDocumento(documento);
     if (usuarioEncontrado != null) {
         boolean nuevoEstado = !estado;
         usuarioEncontrado.setEstado(nuevoEstado);
@@ -47,6 +45,5 @@ public _Usuario updateEstado(String documento, boolean estado) {
     }
     return usuarioRepository.findByDocumento(documento); // Retorna el usuario actualizado o null si no se encontró
 }
-
 
     }

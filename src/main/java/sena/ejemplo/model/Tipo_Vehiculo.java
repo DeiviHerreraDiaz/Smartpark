@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tipo_vehiculo")
-public class _Tipo_Vehiculo {
+public class Tipo_Vehiculo {
 
     // ATRIBUTOS
 
@@ -19,11 +19,11 @@ public class _Tipo_Vehiculo {
 
     // CONSTRUCTORES
 
-    public _Tipo_Vehiculo() {
+    public Tipo_Vehiculo() {
 
     }
 
-    public _Tipo_Vehiculo(Integer idTipo_Vehiculo, String nombre) {
+    public Tipo_Vehiculo(Integer idTipo_Vehiculo, String nombre) {
         IdTipo_Vehiculo = idTipo_Vehiculo;
         this.nombre = nombre;
     }

@@ -7,17 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import sena.ejemplo.model._Equipo;
-import sena.ejemplo.model._Vehiculo;
+import sena.ejemplo.model.Vehiculo;
 import sena.ejemplo.service.IVehiculoService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Controller
-@SessionAttributes("Vehiculo")
 @RequestMapping("/Vehiculo")
 public class VehiculoController {
 
@@ -30,7 +26,7 @@ public class VehiculoController {
     // Agregar vehiculos
 
     @PostMapping("/add")
-    public String add(_Vehiculo vehiculo, Model m) {
+    public String add(Vehiculo vehiculo, Model m) {
         vehiculod.save(vehiculo);
         return "redirect:/Vehiculo/listar";
     }
@@ -53,7 +49,7 @@ public class VehiculoController {
             //Actualizar equipo
         @GetMapping("/ver/{IdVehiculo}")
     public String ver(@PathVariable Integer IdVehiculo,Model m){
-        _Vehiculo vehiculo=null;
+        Vehiculo vehiculo=null;
         if(IdVehiculo>0){
             vehiculo=vehiculod.findOne(IdVehiculo);
         }else{
@@ -67,7 +63,7 @@ public class VehiculoController {
 
     @GetMapping("/form")     
     public String form(Model m){
-        _Vehiculo vehiculo=new _Vehiculo();
+        Vehiculo vehiculo=new Vehiculo();
         m.addAttribute("vehiculo", vehiculo);
         m.addAttribute("accion", "Agregar Cliente");
         return "Vehiculo/form";
@@ -75,7 +71,7 @@ public class VehiculoController {
 
                 @GetMapping("/updateUserStatus/{idVehiculo}")
     public String updateUserStatus(@PathVariable Integer idVehiculo) {
-        _Vehiculo vehiculo = vehiculod.findOne(idVehiculo);
+        Vehiculo vehiculo = vehiculod.findOne(idVehiculo);
 
         if (vehiculo != null) {
             vehiculod.updateEstado(idVehiculo, vehiculo.isEstado());
@@ -83,6 +79,4 @@ public class VehiculoController {
         }
         return "redirect:/Equipo/listar";
     }
-
-
 }

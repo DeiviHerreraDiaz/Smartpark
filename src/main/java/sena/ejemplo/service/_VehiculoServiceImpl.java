@@ -2,10 +2,7 @@ package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sena.ejemplo.model.IVehiculo;
-import sena.ejemplo.model._Equipo;
-import sena.ejemplo.model._Usuario;
-import sena.ejemplo.model._Vehiculo;
+import sena.ejemplo.model.Vehiculo;
 
 import java.util.List;
 
@@ -14,38 +11,38 @@ public class _VehiculoServiceImpl implements IVehiculoService {
 
 
     @Autowired
-    private IVehiculo vehiculoRepository;
+    private sena.ejemplo.repository.vehiculoRepository vehiculoRepository;
 
     // Obtencion de datos para la consulta (Listar)
 
 
     @Override
-    public List<_Vehiculo> findAll() {
-        return (List<_Vehiculo>) vehiculoRepository.findAll();
+    public List<Vehiculo> findAll() {
+        return (List<Vehiculo>) vehiculoRepository.findAll();
     }
 
     // Obtencion de datos para registrar un Vehiculo
 
 
     @Override
-    public _Vehiculo save(_Vehiculo vehiculo) {
+    public Vehiculo save(Vehiculo vehiculo) {
         return vehiculoRepository.save(vehiculo);
     }
 
 
     @Override
-    public List<_Vehiculo> findBydocumento(String documento) {
+    public List<Vehiculo> findBydocumento(String documento) {
         return vehiculoRepository.findByDocumento(documento);
     }
 
-@Override
-public _Vehiculo findOne(Integer IdVehiculo) {
+    @Override
+public Vehiculo findOne(Integer IdVehiculo) {
     return vehiculoRepository.findById(IdVehiculo).orElse(null);
 }   
 
     @Override
-public _Vehiculo updateEstado(Integer idVehiculo, boolean estado) {
-    _Vehiculo vehiculoEncontrado = findOne(idVehiculo);
+public Vehiculo updateEstado(Integer idVehiculo, boolean estado) {
+    Vehiculo vehiculoEncontrado = findOne(idVehiculo);
     if (vehiculoEncontrado != null) {
         boolean nuevoEstado = !estado;
         vehiculoEncontrado.setEstado(nuevoEstado);
@@ -54,5 +51,4 @@ public _Vehiculo updateEstado(Integer idVehiculo, boolean estado) {
     }
     return vehiculoRepository.findById(idVehiculo).orElse(null); // Retorna el usuario actualizado o null si no se encontró
 }
-
 }

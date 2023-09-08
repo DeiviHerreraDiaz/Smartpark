@@ -7,16 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import sena.ejemplo.model._Usuario;
+import sena.ejemplo.model.Usuario;
 import sena.ejemplo.service.IUsuarioService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Controller
-@SessionAttributes("Usuario")
 @RequestMapping("/Usuario")
 public class UsuarioController {
 
@@ -30,7 +27,7 @@ public class UsuarioController {
     // Agregar usuarios
 
     @PostMapping("/add")
-    public String add(_Usuario usuario, Model m) {
+    public String add(Usuario usuario, Model m) {
         usuariod.save(usuario);
         return "redirect:/Usuario/listar";
     }
@@ -39,6 +36,8 @@ public class UsuarioController {
 
     @GetMapping(value = "/registrar-usuario")
     public String registrar() {
+
+
         return "usuario/registroUsuario";
     }
 
@@ -46,7 +45,9 @@ public class UsuarioController {
 
     @GetMapping(value = "/listar")
     public String listar(Model m) {
+
         m.addAttribute("usuario", usuariod.findAll());
+
         return "usuario/listar";
     }
 
@@ -56,7 +57,7 @@ public class UsuarioController {
     public String validarUsuario(String documento) {
 
         // Buscar el usuario por documento
-        _Usuario usuario = usuariod.findByDocumento(documento);
+        Usuario usuario = usuariod.findByDocumento(documento);
 
         if (usuario != null && (usuario.getRol().getNombre().equals("Funcionario") || usuario.getRol().getNombre().equals("Aprendiz"))) {
             // El usuario es un Funcionario o Aprendiz, redireccionar al menú correspondiente.
@@ -71,7 +72,7 @@ public class UsuarioController {
     //Actualizar Usuario
     @GetMapping("/ver/{documento}")
     public String ver(@PathVariable String documento,Model m){
-        _Usuario usuario=null;
+        Usuario usuario=null;
         if (documento != null && !documento.isEmpty()) {
             usuario = usuariod.findByDocumento(documento);
         } else {
@@ -85,7 +86,7 @@ public class UsuarioController {
 
     @GetMapping("/form")     
     public String form(Model m){
-        _Usuario usuario=new _Usuario();
+        Usuario usuario=new Usuario();
         m.addAttribute("usuario", usuario);
         m.addAttribute("accion", "Agregar Cliente");
         return "Usuario/form";
@@ -94,7 +95,7 @@ public class UsuarioController {
 
         @GetMapping("/updateUserStatus/{documento}")
     public String updateUserStatus(@PathVariable String documento) {
-        _Usuario usuario = usuariod.findByDocumento(documento);
+        Usuario usuario = usuariod.findByDocumento(documento);
 
         if (usuario != null) {
             usuariod.updateEstado(documento, usuario.isEstado());

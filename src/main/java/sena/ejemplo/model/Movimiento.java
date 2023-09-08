@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "movimiento")
-public class _Movimiento {
+public class Movimiento {
 
 
     // ATRIBUTOS
@@ -40,29 +40,29 @@ public class _Movimiento {
 
     @ManyToOne
     @JoinColumn(name = "IdVehiculo_Fk", nullable = false)
-    private _Vehiculo vehiculo;
+    private Vehiculo vehiculo;
 
     // Relation with documento from FK, relation of entity Usuario
 
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
-    private _Usuario documento;
+    private Usuario documento;
 
     @ManyToMany(mappedBy = "movimientos")
-    private List<_Equipo> equipos;
+    private List<Equipo> equipos;
 
 
     // CONSTRUCTORES
 
-    public _Movimiento() {
+    public Movimiento() {
 
     }
 
 
     // GETTERS AND SETTERS
 
-    public _Movimiento(Integer idMovimiento, Date fecha, Time horaEntrada, Time horaSalida, String observaciones,
-                       _Vehiculo vehiculo, _Usuario documento, List<_Equipo> equipos) {
+    public Movimiento(Integer idMovimiento, Date fecha, Time horaEntrada, Time horaSalida, String observaciones,
+                      Vehiculo vehiculo, Usuario documento, List<Equipo> equipos) {
         IdMovimiento = idMovimiento;
         this.fecha = fecha;
         this.horaEntrada = horaEntrada;
@@ -124,32 +124,32 @@ public class _Movimiento {
     }
 
 
-    public _Vehiculo getVehiculo() {
+    public Vehiculo getVehiculo() {
         return vehiculo;
     }
 
 
-    public void setVehiculo(_Vehiculo vehiculo) {
+    public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
 
 
-    public _Usuario getDocumento() {
+    public Usuario getDocumento() {
         return documento;
     }
 
 
-    public void setDocumento(_Usuario documento) {
+    public void setDocumento(Usuario documento) {
         this.documento = documento;
     }
 
 
-    public List<_Equipo> getEquipos() {
+    public List<Equipo> getEquipos() {
         return equipos;
     }
 
 
-    public void setEquipos(List<_Equipo> equipos) {
+    public void setEquipos(List<Equipo> equipos) {
         this.equipos = equipos;
     }
 
