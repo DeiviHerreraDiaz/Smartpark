@@ -19,23 +19,23 @@ Software para optimizar la gestión de entrada y salida del estacionamiento del 
 
 INTERFAZ
 
-![Captura de pantalla 2023-09-09 151036](https://github.com/DeiviHerreraDiaz/Smartpark/assets/128943900/6c9aaa28-98e8-496a-8e08-a14e9142fe7c)
+<img alt="INTERFAZ" height="" src="C:\Users\herre\Desktop\Smartpark\src\main\resources\static\img\README\Captura de pantalla 2023-09-09 151036.png" width=""/>
 
 APARTADOS
 
-![Captura de pantalla 2023-09-09 151133](https://github.com/DeiviHerreraDiaz/Smartpark/assets/128943900/4db2c2ed-28b3-447d-b941-62419484ead6)
+<img alt="APARTADOS" src="C:\Users\herre\Desktop\Smartpark\src\main\resources\static\img\README\Captura de pantalla 2023-09-09 151133.png"/>
 
 - Usuarios
-![image](https://github.com/DeiviHerreraDiaz/Smartpark/assets/128943900/a4e1b1ce-7d2f-4a40-bb44-3352ea636815)
+  <img alt="Usuarios" src="C:\Users\herre\Desktop\Smartpark\src\main\resources\static\img\README\Captura de pantalla 2023-09-09 151238.png"/>
 
 - Vehiculos
-![image](https://github.com/DeiviHerreraDiaz/Smartpark/assets/128943900/93de3f4d-b151-4e71-b23a-204463c8ded3)
+  <img alt="Vehiculos" src="C:\Users\herre\Desktop\Smartpark\src\main\resources\static\img\README\Captura de pantalla 2023-09-09 151313.png"/>
 
 - Equipos
-![image](https://github.com/DeiviHerreraDiaz/Smartpark/assets/128943900/b6a4a314-be6e-480f-a95f-60839a83f4a3)
+  <img alt="Equipos" src="C:\Users\herre\Desktop\Smartpark\src\main\resources\static\img\README\Captura de pantalla 2023-09-09 151344.png"/>
 
 - Movimientos
-![image](https://github.com/DeiviHerreraDiaz/Smartpark/assets/128943900/ee2788e8-3abd-4806-be2b-fdd101130bc2)
+  <img alt="Movimientos" src="C:\Users\herre\Desktop\Smartpark\src\main\resources\static\img\README\Captura de pantalla 2023-09-09 151510.png"/>
 
 ## Instalación
 
@@ -59,7 +59,7 @@ git clone https://github.com/DeiviHerreraDiaz/Smartpark.git
 
 Corres el proyecto de la siguiente manera:
 
-![image](https://github.com/DeiviHerreraDiaz/Smartpark/assets/128943900/6cb5dbc2-49eb-46c2-8e0a-d494c0add675)
+<img alt="image" src="C:\Users\herre\Desktop\Smartpark\src\main\resources\static\img\README\Captura de pantalla 2023-09-09 152320.png"/>
 
 De esa forma ya prendes el proyecto para ver su funcionamiento.
 
@@ -80,8 +80,8 @@ Este proyecto se distribuye bajo la Licencia [Nombre de la Licencia]. Puedes con
 Si tienes alguna pregunta o necesitas más información, no dudes en ponerte en contacto con nosotros en los diferentes correos como:
 - deisherrera@soy.sena.edu.co
 - brasmoreno5@soy.sena.edu.co
-- FALTA
-- FALTA
+- danlvelandia@soy.sena.edu.co
+- briccorrea@soy.sena.edu.co
 
 ## Estado del Proyecto
 Smartpark está en desarrollo activo y seguimos trabajando en nuevas mejoras y características. Se encuentra en un 90% de manera general
