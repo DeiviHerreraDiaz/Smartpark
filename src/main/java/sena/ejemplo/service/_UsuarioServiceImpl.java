@@ -32,4 +32,21 @@ public class _UsuarioServiceImpl implements IUsuarioService {
 
 }
 
+    @Override
+    public Usuario findOne(String documento) {
+        return usuarioRepository.findById(documento).orElse(null);
+    }
+
+    @Override
+    public Usuario updateEstado(String documento, boolean estado) {
+        Usuario usuarioEncontrado = findByDocumento(documento);
+        if (usuarioEncontrado != null) {
+            boolean nuevoEstado = !estado;
+            usuarioEncontrado.setEstado(nuevoEstado);
+            System.out.println("This 2 -> " + nuevoEstado);
+            usuarioRepository.save(usuarioEncontrado); // Guarda el usuario actualizado en el repositorio
+        }
+        return usuarioRepository.findByDocumento(documento); // Retorna el usuario actualizado o null si no se encontró
+    }
+
     }

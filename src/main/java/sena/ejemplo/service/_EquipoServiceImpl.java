@@ -33,5 +33,24 @@ public class _EquipoServiceImpl implements IEquipoService {
 
         return equipoRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public Equipo findOne(Integer IdEquipo) {
+        return equipoRepository.findById(IdEquipo).orElse(null);
+    }
+
+    @Override
+    public Equipo updateEstado(Integer IdEquipo, boolean estado) {
+        Equipo equipoEncontrado = findById(IdEquipo);
+        if (equipoEncontrado != null) {
+            boolean nuevoEstado = !estado;
+            equipoEncontrado.setEstado(nuevoEstado);
+            System.out.println("This 2 -> " + nuevoEstado);
+            equipoRepository.save(equipoEncontrado); // Guarda el usuario actualizado en el repositorio
+        }
+        return equipoRepository.findById(IdEquipo).orElse(null); // Retorna el usuario actualizado o null si no se encontró
+    }
+
+
 }
 

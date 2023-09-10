@@ -19,5 +19,8 @@ public interface IEquipoService {
 
     Equipo findById(Integer equipoId);
 
+    Equipo findOne(Integer IdEquipo);
+    Equipo updateEstado(Integer documento, boolean nuevoEstado);
+
 
 }

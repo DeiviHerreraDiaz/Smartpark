@@ -14,4 +14,8 @@ public interface IUsuarioService {
     Usuario save(Usuario usuario);
 
     Usuario findByDocumento(String documento);
+
+    Usuario findOne(String documento);
+
+    Usuario updateEstado(String documento, boolean nuevoEstado);
 }
