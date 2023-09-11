@@ -10,15 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import sena.ejemplo.model.Usuario;
 import sena.ejemplo.service.IUsuarioService;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 @Controller
 @RequestMapping("/Usuario")
 public class UsuarioController {
-
-    @PersistenceContext
-    private EntityManager em;
 
     @Autowired
     private IUsuarioService usuariod;
@@ -28,15 +22,20 @@ public class UsuarioController {
 
     @PostMapping("/add")
     public String add(Usuario usuario, Model m) {
+
         usuariod.save(usuario);
+        
         return "redirect:/Usuario/listar";
     }
 
     // Ruta para formulario de usuarios
 
     @GetMapping(value = "/registrar-usuario")
-    public String registrar() {
+    public String registrar(Model m) {
 
+        Usuario usuario=new Usuario();
+
+        m.addAttribute("usuario", usuario);
 
         return "usuario/registroUsuario";
     }
@@ -74,23 +73,17 @@ public class UsuarioController {
     //Actualizar Usuario
     @GetMapping("/ver/{documento}")
     public String ver(@PathVariable String documento, Model m){
+        
         Usuario usuario=null;
+
         if (documento != null && !documento.isEmpty()) {
             usuario = usuariod.findByDocumento(documento);
         } else {
             return "redirect:/Usuario/listar";
         }
         m.addAttribute("usuario",usuario);
-        m.addAttribute("accion", "Actualizar Cliente");
-        return "Usuario/form";
-    }
 
-    @GetMapping("/form")
-    public String form(Model m){
-        Usuario usuario=new Usuario();
-        m.addAttribute("usuario", usuario);
-        m.addAttribute("accion", "Agregar Cliente");
-        return "Usuario/form";
+        return "Usuario/registroUsuario";
     }
 
     @GetMapping("/updateUserStatus/{documento}")

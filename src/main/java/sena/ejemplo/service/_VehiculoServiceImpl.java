@@ -2,7 +2,6 @@ package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sena.ejemplo.model.Usuario;
 import sena.ejemplo.model.Vehiculo;
 
 import java.util.List;

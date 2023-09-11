@@ -57,7 +57,7 @@
                     <th>Tipo</th>
                     <th>Documento</th>
                     <th colspan="2">Estado</th>
-                    <th >Editar</th>
+                    <th>Acciones</th>
                     
                 </thead>
                 <tbody>
@@ -86,10 +86,12 @@
                             <a th:href="@{/Vehiculo/updateUserStatus/{idVehiculo}(idVehiculo = ${v.idVehiculo})}" role="button" class="btn btn-success"> Activar </a>
                         </td>
 
-                    <!--/* FUNCIONALIDAD EDITAR / BORRAR*/ */-->
+                    <!--/* FUNCIONALIDAD EDITAR */-->
 
                     <td align="center">
-                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/Vehiculo/update/}+${v.idVehiculo}">
+                        <a role="button" 
+                          class="btn btn-warning btn-sm" 
+                          th:href="@{/Vehiculo/ver/}+${v.idVehiculo}">
                             <i class="bi bi-pencil"></i>
                         </a>
 

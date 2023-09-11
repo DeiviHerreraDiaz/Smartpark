@@ -56,8 +56,8 @@
                       <th>Marca</th>
                       <th>Serie</th>
                       <th>Documento</th>
-                      <th>Estado</th>
-                      <th colspan="2">Acciones</th>
+                      <th colspan="2">Estado</th>
+                      <th>Acciones</th>
 
                   </thead>
                   <tbody>
@@ -87,7 +87,9 @@
 
                       <!--/* FUNCIONALIDAD EDITAR / BORRAR*/ */-->
                       <td>
-                        <a role="button" class="btn btn-warning btn-sm" >
+                        <a role="button" 
+                        class="btn btn-warning btn-sm" 
+                        th:href="@{/Equipo/ver/}+${e.idEquipo}" >
                             <i class="bi bi-pencil"></i>
                         </a>
                       </td>

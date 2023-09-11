@@ -47,54 +47,59 @@
 
         
         <div class="u-form-1">
-          <form th:action="@{/Usuario/add/}" class="u-inner-form" method="post" >
-            
-            <div class="u-form-group-1"> 
-              <label form="Rol.IdRol" class="u-label">Rol</label>
-              
-              <select name="Rol.IdRol" id="Rol.IdRol">
+          <form th:action="@{/Usuario/add}" th:object="${usuario}" method="post" class="u-inner-form" >
 
+            <div class="u-form-group-1">
+              <label form="Rol.IdRol" class="u-label">Rol</label>
+    
+              <select name="Rol.IdRol" id="Rol.IdRol" th:field="*{Rol.IdRol}">
+    
                 <option value="1">Aprendiz</option>
                 <option value="2">Funcionario</option>
                 <option value="3">Invitado</option>
-
+    
               </select>
-            </div>  
-
-
-          <div class="u-form-group-1">
-              <label form="nombre" class="u-label">Nombre </label>
-              <input type="text" class="u-input" placeholder="Ingresa el nombre" id="nombre" name="nombre">
             </div>
-
+    
+    
+            <div class="u-form-group-1">
+              <label form="nombre" class="u-label">Nombre </label>
+              <input type="text" class="u-input" placeholder="Ingresa el nombre" id="nombre" name="nombre" th:field="*{nombre}">
+              <div class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+    
             <div class="u-form-group-1">
               <label form="apellido" class="u-label">Apellido</label>
-              <input type="text" placeholder="Ingresa el apellido" class="u-input" id="apellido" name="apellido">
+              <input type="text" placeholder="Ingresa el apellido" class="u-input" id="apellido" name="apellido" th:field="*{apellido}">
+              <div class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
             </div>
-
-            <div class="u-form-group-1"> 
+    
+            <div class="u-form-group-1">
               <label form="documento" class="u-label">Documento</label>
-              <input type="text" placeholder="Ingresa el documento" class="u-input" id="documento" name="documento">
-            </div> 
-
-            <div class="u-form-group-1"> 
+              <input type="text" placeholder="Ingresa el documento" class="u-input" id="documento" name="documento" th:field="*{documento}">
+              <div class="form-text text-danger" th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}"></div>
+            </div>
+    
+            <div class="u-form-group-1">
               <label form="telefono" class="u-label">Telefono</label>
-              <input type="text" placeholder="Ingresa el telefono"  class="u-input" id="telefono" name="telefono">
+              <input type="text" placeholder="Ingresa el telefono"  class="u-input" id="telefono" name="telefono" th:field="*{telefono}">
+              <div class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
             </div>
-
-                   
-
-            <div class="u-form-group-1"> 
+    
+    
+    
+            <div class="u-form-group-1">
               <label form="proveniente" class="u-label">Proveniente</label>
-              <input type="text" placeholder="¿De donde proviene? (SOLO PARA INVITADOS)" class="u-input" id="proveniente" name="proveniente">
+              <input type="text" placeholder="¿De donde proviene? (SOLO PARA INVITADOS)" class="u-input" id="proveniente" name="proveniente" th:field="*{proveniente}">
+              <div class="form-text text-danger" th:if="${#fields.hasErrors('proveniente')}" th:errors="*{proveniente}"></div>
             </div>
-
-            <div class="u-form-group-1"> 
+    
+            <div class="u-form-group-1">
               <input type="checkbox" name="estado" value="1" checked>Activo
-              </div>
-
-              <button class="u-btn-submit2" type="submit">Enviar</button>
-            
+            </div>
+    
+            <button class="u-btn-submit2" type="submit">Enviar</button>
+    
           </form>
           <button class="u-btn-submit"><a th:href="@{/Usuario/listar}">Volver al Listado</a></button>
         </div>

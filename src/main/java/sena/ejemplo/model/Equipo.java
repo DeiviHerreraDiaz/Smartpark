@@ -107,4 +107,8 @@ public class Equipo {
         this.estado = estado;
     }
 
+    public Equipo orElse(Object object) {
+        return null;
+    }
+
 }

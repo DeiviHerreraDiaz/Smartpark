@@ -27,11 +27,9 @@ public class _EquipoServiceImpl implements IEquipoService {
         return equipoRepository.findByDocumento(documento);
     }
 
-
     @Override
-    public Equipo findById(Integer id) {
-
-        return equipoRepository.findById(id).orElse(null);
+    public Equipo findById(Integer idEquipo) {
+        return equipoRepository.findById(idEquipo).orElse(null);
     }
 
     @Override

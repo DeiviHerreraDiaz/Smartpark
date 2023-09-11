@@ -22,28 +22,30 @@
         </h2>
         
         <div class="u-form">
-          <form th:action="@{/Vehiculo/add/}" class="u-inner-form" method="POST" >
+          <form th:action="@{/Vehiculo/add/}" th:object="${vehiculo}" class="u-inner-form" method="POST" >
             
+            <input type="hidden" th:field="*{idVehiculo}">
+
             <div class="u-form-group-1">
-              <label class="u-label">Documento</label>
-              <input type="text" placeholder="Ingresa la placa o Marco del vehiculo"  name="documento.documento" class="u-input" required="required">
+              <label form="documento.documento" class="u-label">Documento</label>
+              <input type="text" placeholder="Ingresa la placa o Marco del vehiculo"  name="documento.documento" class="u-input" required="required" th:field="*{documento.documento}">
             </div>
 
             <div class="u-form-group-1">
-              <label class="u-label">Placa o Marco</label>
-              <input type="text" placeholder="Ingresa la placa o Marco del vehiculo"  name="placa" class="u-input" required="required">
+              <label form="placa" class="u-label">Placa o Marco</label>
+              <input type="text" placeholder="Ingresa la placa o Marco del vehiculo"  name="placa" class="u-input" required="required" th:field="*{placa}">
             </div>
 
             <div class="u-form-group-1"> 
-              <label class="u-label">Marca</label>
-              <input type="text" placeholder="Ingresa la marca del vehiculo"  name="marca" class="u-input" required="required">
+              <label form="marca" class="u-label">Marca</label>
+              <input type="text" placeholder="Ingresa la marca del vehiculo"  name="marca" class="u-input" required="required" th:field="*{marca}">
             </div>
 
   
             <div class="u-form-group-1"> 
               <label form="Tipo_Vehiculo.IdTipo_Vehiculo" class="u-label">Tipo de vehículo </label>
               
-              <select name="Tipo_Vehiculo.IdTipo_Vehiculo" id="Tipo_Vehiculo.IdTipo_Vehiculo">
+              <select name="Tipo_Vehiculo.IdTipo_Vehiculo" id="Tipo_Vehiculo.IdTipo_Vehiculo" th:field="*{Tipo_Vehiculo.IdTipo_Vehiculo}">
 
                 <option value="1">Carro</option>
                 <option value="2">Moto</option>
@@ -54,7 +56,7 @@
 
 
             <div class="u-form-group-1"> 
-              <input type="checkbox" name="estado" value="1" checked>Activo
+              <input type="checkbox" name="estado" value="1" th:field="*{estado}">Activo
               <br>
               <br>
               </div>
