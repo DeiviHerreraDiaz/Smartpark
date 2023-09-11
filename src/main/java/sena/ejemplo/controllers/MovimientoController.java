@@ -37,30 +37,24 @@ public class MovimientoController {
     private IEquipo_movimientoService equipoMovimientoService;
 
     @PostMapping("/add")
-    public String add(Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId, HttpServletRequest request) {
+    public String add(Movimiento movimiento, @RequestParam(value = "equipoId", required = false) List<Integer> equipoIds) {
 
-        if (equipoId != 0) {
+        if (equipoIds != null && !equipoIds.isEmpty()) {
+            List<Equipo> equipos = new ArrayList<>();
+            for (Integer equipoId : equipoIds) {
+                Equipo equipoSeleccionado = equipoService.findById(equipoId);
+                if (equipoSeleccionado != null) {
+                    equipos.add(equipoSeleccionado);
+                    movimiento.setEquipos(equipos);
 
-            String[] equipoIds = request.getParameterValues("equipoId");
+                    // Save the Movimiento entity first
+                    movimientoService.save(movimiento);
 
-            if (equipoIds != null && equipoIds.length > 0) {
-                List<Equipo> equipos = new ArrayList<>();
-                for (String equipoIdStr : equipoIds) {
-                    Integer EquipoId = Integer.parseInt(equipoIdStr);
-                    Equipo equipoSeleccionado = equipoService.findById(EquipoId);
-                    if (equipoSeleccionado != null) {
-                        equipos.add(equipoSeleccionado);
-                        movimiento.setEquipos(equipos);
-
-                        // Save the Movimiento entity first
-                        movimientoService.save(movimiento);
-
-                        // Create Equipo_movimiento record and associate it with the Movimiento
-                        Equipo_movimiento equipoMovimiento = new Equipo_movimiento();
-                        equipoMovimiento.setEquipo(equipoSeleccionado);
-                        equipoMovimiento.setMovimiento(movimiento);
-                        equipoMovimientoService.save(equipoMovimiento);
-                    }
+                    // Create Equipo_movimiento record and associate it with the Movimiento
+                    Equipo_movimiento equipoMovimiento = new Equipo_movimiento();
+                    equipoMovimiento.setEquipo(equipoSeleccionado);
+                    equipoMovimiento.setMovimiento(movimiento);
+                    equipoMovimientoService.save(equipoMovimiento);
                 }
             }
         } else {
@@ -72,7 +66,7 @@ public class MovimientoController {
         Campos.add(1);
 
         return "redirect:/Usuario/listar";
-    }
+}
 
     @PostMapping("/update")
     public String update(Movimiento movimiento) {

@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sena.ejemplo.model.Usuario;
 import sena.ejemplo.model.Vehiculo;
 import sena.ejemplo.service.IVehiculoService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @Controller
 @RequestMapping("/Vehiculo")
@@ -26,14 +24,21 @@ public class VehiculoController {
 
     @PostMapping("/add")
     public String add(Vehiculo vehiculo, Model m) {
+
         vehiculod.save(vehiculo);
+
         return "redirect:/Vehiculo/listar";
     }
 
     // Ruta para formulario de vehiculos
 
     @GetMapping(value = "/registrar-vehiculo")
-    public String registrar() {
+    public String registrar(Model m) {
+
+        Vehiculo vehiculo = new Vehiculo();
+
+        m.addAttribute("vehiculo", vehiculo);
+
         return "vehiculo/registroVehicularGeneral";
     }
 
@@ -45,6 +50,21 @@ public class VehiculoController {
         return "vehiculo/listar";
     }
 
+    //Actuazlizar
+
+    @GetMapping("/ver/{idVehiculo}")
+    public String ver(@PathVariable Integer idVehiculo, Model m){
+
+        Vehiculo vehiculo = vehiculod.findOne(idVehiculo);
+
+        m.addAttribute("vehiculo", vehiculo);
+
+        return "Vehiculo/registroVehicularGeneral";
+
+    }
+
+    // Cambiar estado
+
     @GetMapping("/updateUserStatus/{idVehiculo}")
     public String updateUserStatus(@PathVariable Integer idVehiculo) {
         Vehiculo vehiculo = vehiculod.findOne(idVehiculo);
@@ -53,7 +73,7 @@ public class VehiculoController {
             vehiculod.updateEstado(idVehiculo, vehiculo.isEstado());
             System.out.println("This 1 -> " + vehiculo.isEstado());
         }
-        return "redirect:/Vehiculos/listar";
-    }
+        return "redirect:/Vehiculo/listar";
+}
 
 }
