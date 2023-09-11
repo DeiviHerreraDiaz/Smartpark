@@ -16,8 +16,12 @@ public interface IEquipoService {
 
     List<Equipo> findBydocumento(String documento);
 
+<<<<<<< HEAD
 
     Equipo findById(Integer equipoId);
+=======
+    _Equipo findById(Integer equipoId);
+>>>>>>> 7979a17fed079a6407b7ad1d2cac60915ff9c44b
 
     Equipo findOne(Integer IdEquipo);
 

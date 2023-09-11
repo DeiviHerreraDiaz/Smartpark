@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/Movimiento")
 public class MovimientoController {
@@ -36,13 +38,29 @@ public class MovimientoController {
     @Autowired
     private IEquipo_movimientoService equipoMovimientoService;
 
+    List<Integer> Campos = new ArrayList<>(List.of(1));
+
     @PostMapping("/add")
+<<<<<<< HEAD
     public String add(Movimiento movimiento, @RequestParam(value = "equipoId", required = false) List<Integer> equipoIds) {
 
         if (equipoIds != null && !equipoIds.isEmpty()) {
             List<Equipo> equipos = new ArrayList<>();
             for (Integer equipoId : equipoIds) {
                 Equipo equipoSeleccionado = equipoService.findById(equipoId);
+=======
+    public String add(_Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId, HttpServletRequest request) {
+
+    if (equipoId != 0){  
+
+        String[] equipoIds = request.getParameterValues("equipoId");
+
+        if (equipoIds != null && equipoIds.length > 0) {
+            List<_Equipo> equipos = new ArrayList<>();
+            for (String equipoIdStr : equipoIds) {
+                Integer EquipoId = Integer.parseInt(equipoIdStr);
+                _Equipo equipoSeleccionado = equipoService.findById(EquipoId);
+>>>>>>> 7979a17fed079a6407b7ad1d2cac60915ff9c44b
             if (equipoSeleccionado != null) {
                 equipos.add(equipoSeleccionado);
                 movimiento.setEquipos(equipos);
@@ -56,7 +74,11 @@ public class MovimientoController {
                 equipoMovimiento.setMovimiento(movimiento);
                 equipoMovimientoService.save(equipoMovimiento);
             }
+<<<<<<< HEAD
         }
+=======
+        }}
+>>>>>>> 7979a17fed079a6407b7ad1d2cac60915ff9c44b
         } else {
             // Save the Movimiento entity without associated equipment
             movimientoService.save(movimiento);
@@ -97,6 +119,7 @@ public class MovimientoController {
     @PostMapping("/Agregar")
     public String agregar(@RequestParam(value = "campos") int valorCampos, @RequestParam("documento") String documento, Model model) {
 
+<<<<<<< HEAD
         List<Equipo> equipos = equipoService.findBydocumento(documento);
         List<Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
 
@@ -104,6 +127,15 @@ public class MovimientoController {
             Campos.add(valorCampos);
         } else if (valorCampos > 0 && Campos.size() == equipos.size() && Campos.size() > 0) {
 
+=======
+        List<_Equipo> equipos = equipoService.findBydocumento(documento);
+        List<_Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
+
+        if (valorCampos > 0 && Campos.size() < equipos.size() && Campos.size() > 0){
+            Campos.add(valorCampos);
+        } else if (valorCampos > 0 && Campos.size() == equipos.size() && Campos.size() > 0) {
+            
+>>>>>>> 7979a17fed079a6407b7ad1d2cac60915ff9c44b
         } else if (valorCampos == 0 && Campos.size() > 0) {
             Campos.remove(1);
         }

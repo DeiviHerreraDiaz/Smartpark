@@ -14,7 +14,6 @@ public class _MovimientoServiceImpl implements IMovimientoService {
     @Autowired
     private sena.ejemplo.repository.movimientoRepository movimientoRepository;
 
-
     @Override
     public List<Movimiento> findAll() {
         return (List<Movimiento>) movimientoRepository.findAll();
