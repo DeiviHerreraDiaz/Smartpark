@@ -9,9 +9,6 @@ Software para optimizar la gestión de entrada y salida del estacionamiento del 
 - ¿Qué hace este proyecto?:
   Smartpark simplifica y agiliza el proceso de entrada y salida del estacionamiento, mejorando la accesibilidad para los equipos informáticos que ingresan. Esto optimiza la eficiencia y seguridad de los procesos en comparación con los métodos manuales previamente utilizados en la sede.
 
-- ¿Por qué es importante o útil?:
-  Ahorra tiempo, seguridad, complejidad en los procesos que se llevaban actualmente en la sede, los cuales se hacian de forma manual.
-
 - ¿Cómo se usa?
   El usuario solo pasa su carnet por el lector de barras o digita su documento, y con solo eso, podemos hacer un registro que mantiene la hora en la que entró. A la salida, es igual, brindando un registro completo vinculando los equipos que pasaron por el movimiento.
 
