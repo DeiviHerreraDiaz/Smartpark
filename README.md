@@ -60,7 +60,7 @@ Corres el proyecto de la siguiente manera:
 
 De esa forma ya prendes el proyecto para ver su funcionamiento.
 
-Si deseas desplazarte entre las ramas del repositorio lo puedes hacer con el siguiente comando.
+Si deseas desplazarte entre las ramas del repositorio, lo puedes hacer con el siguiente comando.
 ```bash
 git switch "Nombre de la rama"
 ```
@@ -70,7 +70,7 @@ git checkout "Nombre de la rama"
 ```
 
 ## Licencia
-Este proyecto se distribuye bajo la Licencia [Nombre de la Licencia]. Puedes consultar los detalles en el archivo [LICENSE.md].  👷 (Aún falta) 👷 
+Este proyecto se distribuye bajo la Licencia [Nombre de la Licencia].  
 
 
 ## Contacto
