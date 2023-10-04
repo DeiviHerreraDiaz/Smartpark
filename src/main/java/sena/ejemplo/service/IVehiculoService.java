@@ -13,7 +13,11 @@ public interface IVehiculoService {
     // REGISTRAR VEHICULOS
 
     Vehiculo save(Vehiculo vehiculo);
+
+    List<Vehiculo> findBydocumento(String documento);
+
     Vehiculo findOne(Integer idVehiculo);
     Vehiculo updateEstado(Integer idVehiculo, boolean nuevoEstado);
-    List<Vehiculo> findBydocumento(String documento);
+
+
 }

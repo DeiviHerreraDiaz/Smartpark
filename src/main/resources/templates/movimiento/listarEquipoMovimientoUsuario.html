@@ -22,6 +22,12 @@
     <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
 </header>
 
+<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+  <span th:text="${success}"></span>
+</div>
 
 <!-- NAVEGAVILIDAD -->
 

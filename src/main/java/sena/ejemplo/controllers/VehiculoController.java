@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import sena.ejemplo.model.Vehiculo;
 import sena.ejemplo.service.IVehiculoService;
 
@@ -23,22 +25,23 @@ public class VehiculoController {
     @Autowired
     private IVehiculoService vehiculod;
 
-    // Agregar vehiculos
-
     @PostMapping("/add")
-    public String add(Vehiculo vehiculo, Model m) {
+    public String add(Vehiculo vehiculo, Model m, RedirectAttributes flash) {
+
         vehiculod.save(vehiculo);
+        flash.addFlashAttribute("success","Vehiculo registrado o actualizado exitosamente");
         return "redirect:/Vehiculo/listar";
     }
 
-    // Ruta para formulario de vehiculos
-
     @GetMapping(value = "/registrar-vehiculo")
-    public String registrar() {
+    public String registrar(Model m) {
+
+        Vehiculo vehiculo = new Vehiculo();
+
+        m.addAttribute("vehiculo", vehiculo);
+
         return "vehiculo/registroVehicularGeneral";
     }
-
-    // Ruta consultar / Listar
 
     @GetMapping(value = "/listar")
     public String listar(Model m) {
@@ -46,37 +49,27 @@ public class VehiculoController {
         return "vehiculo/listar";
     }
 
-            //Actualizar equipo
-        @GetMapping("/ver/{IdVehiculo}")
-    public String ver(@PathVariable Integer IdVehiculo,Model m){
-        Vehiculo vehiculo=null;
-        if(IdVehiculo>0){
-            vehiculo=vehiculod.findOne(IdVehiculo);
-        }else{
-            return "redirect:listar";
-        }
-        m.addAttribute("vehiculo",vehiculo);
-        m.addAttribute("accion", "Actualizar Vehiculo");
-        return "Vehiculo/form";
-    }
+    @GetMapping("/ver/{idVehiculo}")
+    public String ver(@PathVariable Integer idVehiculo, Model m, RedirectAttributes flash){
 
+        Vehiculo vehiculo = vehiculod.findOne(idVehiculo);
 
-    @GetMapping("/form")     
-    public String form(Model m){
-        Vehiculo vehiculo=new Vehiculo();
         m.addAttribute("vehiculo", vehiculo);
-        m.addAttribute("accion", "Agregar Cliente");
-        return "Vehiculo/form";
+        flash.addFlashAttribute("success","Vehiculo registrado o actualizado exitosamente");
+        return "Vehiculo/registroVehicularGeneral";
+
     }
 
-                @GetMapping("/updateUserStatus/{idVehiculo}")
-    public String updateUserStatus(@PathVariable Integer idVehiculo) {
+    @GetMapping("/updateUserStatus/{idVehiculo}")
+    public String updateUserStatus(@PathVariable Integer idVehiculo, RedirectAttributes flash) {
         Vehiculo vehiculo = vehiculod.findOne(idVehiculo);
 
         if (vehiculo != null) {
             vehiculod.updateEstado(idVehiculo, vehiculo.isEstado());
             System.out.println("This 1 -> " + vehiculo.isEstado());
         }
-        return "redirect:/Equipo/listar";
-    }
+        flash.addFlashAttribute("success","Se cambio de estado exitosamente exitosamente");
+        return "redirect:/Vehiculo/listar";
+}
+
 }

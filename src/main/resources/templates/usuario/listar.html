@@ -22,6 +22,12 @@
     <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
 </header>
 
+<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+  <span th:text="${success}"></span>
+</div>
 
 <!-- NAVEGAVILIDAD -->
 
@@ -65,7 +71,7 @@
                 <th>Rol</th>
                 <th>Proveniente</th>
                 <th colspan="2">Estado</th>
-                <th>Acciones</th>
+                <th>Editar</th>
                 <th>Entrada / Movimientos</th>
                 
             </thead>
@@ -88,22 +94,18 @@
 
                 <!--/* FUNCIONALIDAD ACTIVAR / INACTIVAR*/ */-->
 
-                <td th:if="${u.estado==true}" align="center"> 
-                  <a th:href="@{/Usuario/updateUserStatus/{documento}(documento = ${u.documento})}" rol="button" class="btn btn-success"> Inactivar </a> 
-              </td> 
-              <td th:if="${u.estado==false}" align="center"> 
-                  <a th:href="@{/Usuario/updateUserStatus/{documento}(documento = ${u.documento})}" rol="button" class="btn btn-success"> Activar </a> 
-              </td>
-                <!--/* FUNCIONALIDAD EDITAR / BORRAR*/ */-->
+                    <td th:if="${u.estado==true}" align="center">
+                        <a th:href="@{/Usuario/updateUserStatus/{documento}(documento = ${u.documento})}" rol="button" class="btn btn-success"> Inactivar </a>
+                    </td>
+                    <td th:if="${u.estado==false}" align="center">
+                        <a th:href="@{/Usuario/updateUserStatus/{documento}(documento = ${u.documento})}" rol="button" class="btn btn-success"> Activar </a>
+                    </td>
+                    <!--/* FUNCIONALIDAD EDITAR / BORRAR*/ */-->
 
-                <td align="center"> 
-                  <a role="button" class="btn btn-warning btn-sm" th:href="@{/Usuario/ver/}+${u.documento}">
-                      <i class="bi bi-pencil"></i> 
-
-                  </a> 
-                  <a role="button" class="btn btn-danger btn-sm"> 
-                      <i class="bi bi-trash"></i> 
-                  </a> 
+                    <td align="center">
+                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/Usuario/ver/}+${u.documento}">
+                            <i class="bi bi-pencil"></i>
+                        </a>
                 </td>
 
                 <!--/* FUNCIONALIDAD ENTRADA / SALIDA*/ */-->

@@ -15,9 +15,12 @@ public interface IEquipoService {
     Equipo save(Equipo equipo);
 
     List<Equipo> findBydocumento(String documento);
+
+
+    Equipo findById(Integer equipoId);
+
     Equipo findOne(Integer IdEquipo);
     Equipo updateEstado(Integer documento, boolean nuevoEstado);
-    Equipo findById(Integer equipoId);
 
 
 }

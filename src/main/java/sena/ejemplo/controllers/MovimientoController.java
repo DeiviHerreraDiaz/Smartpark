@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import sena.ejemplo.model.Equipo;
 import sena.ejemplo.model.Equipo_movimiento;
 import sena.ejemplo.model.Movimiento;
@@ -14,7 +16,6 @@ import sena.ejemplo.service.IEquipo_movimientoService;
 import sena.ejemplo.service.IMovimientoService;
 import sena.ejemplo.service.IVehiculoService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.beans.PropertyEditorSupport;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -37,30 +38,24 @@ public class MovimientoController {
     private IEquipo_movimientoService equipoMovimientoService;
 
     @PostMapping("/add")
-    public String add(Movimiento movimiento, @RequestParam(value = "equipoId", required = false) Integer equipoId, HttpServletRequest request) {
+    public String add(Movimiento movimiento, @RequestParam(value = "equipoId", required = false) List<Integer> equipoIds, RedirectAttributes flash) {
 
-        if (equipoId != 0) {
+        if (equipoIds != null && !equipoIds.isEmpty()) {
+            List<Equipo> equipos = new ArrayList<>();
+            for (Integer equipoId : equipoIds) {
+                Equipo equipoSeleccionado = equipoService.findById(equipoId);
+                if (equipoSeleccionado != null) {
+                    equipos.add(equipoSeleccionado);
+                    movimiento.setEquipos(equipos);
 
-            String[] equipoIds = request.getParameterValues("equipoId");
+                    // Save the Movimiento entity first
+                    movimientoService.save(movimiento);
 
-            if (equipoIds != null && equipoIds.length > 0) {
-                List<Equipo> equipos = new ArrayList<>();
-                for (String equipoIdStr : equipoIds) {
-                    Integer EquipoId = Integer.parseInt(equipoIdStr);
-                    Equipo equipoSeleccionado = equipoService.findById(EquipoId);
-                    if (equipoSeleccionado != null) {
-                        equipos.add(equipoSeleccionado);
-                        movimiento.setEquipos(equipos);
-
-                        // Save the Movimiento entity first
-                        movimientoService.save(movimiento);
-
-                        // Create Equipo_movimiento record and associate it with the Movimiento
-                        Equipo_movimiento equipoMovimiento = new Equipo_movimiento();
-                        equipoMovimiento.setEquipo(equipoSeleccionado);
-                        equipoMovimiento.setMovimiento(movimiento);
-                        equipoMovimientoService.save(equipoMovimiento);
-                    }
+                    // Create Equipo_movimiento record and associate it with the Movimiento
+                    Equipo_movimiento equipoMovimiento = new Equipo_movimiento();
+                    equipoMovimiento.setEquipo(equipoSeleccionado);
+                    equipoMovimiento.setMovimiento(movimiento);
+                    equipoMovimientoService.save(equipoMovimiento);
                 }
             }
         } else {
@@ -70,18 +65,21 @@ public class MovimientoController {
 
         Campos.clear();
         Campos.add(1);
+        flash.addFlashAttribute("success","Movimiento registrado  exitosamente");
 
         return "redirect:/Usuario/listar";
-    }
+}
 
     @PostMapping("/update")
-    public String update(Movimiento movimiento) {
+    public String update(Movimiento movimiento, RedirectAttributes flash) {
         Optional<Movimiento> existingMovimiento = movimientoService.findById(movimiento.getIdMovimiento());
         existingMovimiento.ifPresent(mov -> {
             mov.setHoraSalida(movimiento.getHoraSalida());
             mov.setObservaciones(movimiento.getObservaciones());
             movimientoService.save(mov);
         });
+                flash.addFlashAttribute("success","Movimiento actualizado exitosamente");
+
         return "redirect:/Usuario/listar"; // Cambiar la URL a la que rediriges después de actualizar un movimiento
     }
 
@@ -100,7 +98,7 @@ public class MovimientoController {
     }
 
     @PostMapping("/Agregar")
-    public String agregar(@RequestParam(value = "campos") int valorCampos, @RequestParam("documento") String documento, Model model) {
+    public String agregar(@RequestParam(value = "campos") int valorCampos, @RequestParam("documento") String documento, Model model, RedirectAttributes flash) {
 
         List<Equipo> equipos = equipoService.findBydocumento(documento);
         List<Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
@@ -118,11 +116,13 @@ public class MovimientoController {
         model.addAttribute("equipos", equipos);
         model.addAttribute("documento", documento);
 
+        flash.addFlashAttribute("success","Entrada registrada exitosamente");
+
         return "movimiento/entrada.html";
     }
 
     @GetMapping(value = "/entrada")
-    public String entrada(@RequestParam("documento") String documento, Model model) {
+    public String entrada(@RequestParam("documento") String documento, Model model, RedirectAttributes flash) {
         List<Equipo> equipos = equipoService.findBydocumento(documento);
         List<Vehiculo> vehiculos = vehiculoService.findBydocumento(documento);
 
@@ -131,12 +131,13 @@ public class MovimientoController {
         model.addAttribute("equipos", equipos);
         model.addAttribute("documento", documento);
         model.addAttribute("campos", Campos);
+        flash.addFlashAttribute("success","Entrada registrada exitosamente");
 
         return "movimiento/entrada";
     }
 
     @GetMapping(value = "/salida")
-    public String salida(@RequestParam("IdMovimiento") Integer IdMovimiento, Model model) {
+    public String salida(@RequestParam("IdMovimiento") Integer IdMovimiento, Model model, RedirectAttributes flash) {
         Optional<Movimiento> movimientoOptional = movimientoService.findById(IdMovimiento);
 
         if (movimientoOptional.isPresent()) {
@@ -147,6 +148,7 @@ public class MovimientoController {
             model.addAttribute("equipoMovimientoList", equipoMovimientoList);
             model.addAttribute("movimiento", movimiento);
             model.addAttribute("vehiculo", vehiculo);
+        flash.addFlashAttribute("success","Salida registrada exitosamente");
 
             return "movimiento/salida"; // Ajusta la ruta según tu estructura de vistas
         } else {
@@ -158,7 +160,7 @@ public class MovimientoController {
 
 
     @GetMapping(value = "/MovimientosUsuario")
-    public String MovimientoUsuario(Model m, @RequestParam("documento") String documento, @RequestParam("nombre") String nombre) {
+    public String MovimientoUsuario(Model m, @RequestParam("documento") String documento, @RequestParam("nombre") String nombre, RedirectAttributes flash) {
         List<Movimiento> movimientosFiltrados = movimientoService.findAll().stream()
                 .filter(mov -> mov.getDocumento().getDocumento().equals(documento))
                 .collect(Collectors.toList());
@@ -166,11 +168,13 @@ public class MovimientoController {
         m.addAttribute("documento", documento);
         m.addAttribute("nombre", nombre);
         m.addAttribute("movimiento", movimientosFiltrados);
+                flash.addFlashAttribute("success","Movimiento registrado exitosamente");
+
         return "Movimiento/listarMovimientosUsuario";
     }
 
     @GetMapping(value = "/listarEquipoMovimientoUsuario")
-    public String listarEquipoMovimientoUsuario(Model m, @RequestParam("documento") String documento) {
+    public String listarEquipoMovimientoUsuario(Model m, @RequestParam("documento") String documento, RedirectAttributes flash) {
         List<Equipo_movimiento> listaEquipoMovimiento = equipoMovimientoService.findAll().stream()
                 .filter(eq -> eq.getMovimiento().getDocumento().getDocumento().equals(documento))
                 .collect(Collectors.toList());

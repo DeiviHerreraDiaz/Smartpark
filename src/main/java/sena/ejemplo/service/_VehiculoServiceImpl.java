@@ -35,20 +35,22 @@ public class _VehiculoServiceImpl implements IVehiculoService {
         return vehiculoRepository.findByDocumento(documento);
     }
 
-    @Override
-public Vehiculo findOne(Integer IdVehiculo) {
-    return vehiculoRepository.findById(IdVehiculo).orElse(null);
-}   
 
     @Override
-public Vehiculo updateEstado(Integer idVehiculo, boolean estado) {
-    Vehiculo vehiculoEncontrado = findOne(idVehiculo);
-    if (vehiculoEncontrado != null) {
-        boolean nuevoEstado = !estado;
-        vehiculoEncontrado.setEstado(nuevoEstado);
-        System.out.println("This 2 -> " + nuevoEstado);
-        vehiculoRepository.save(vehiculoEncontrado); // Guarda el usuario actualizado en el repositorio
+    public Vehiculo findOne(Integer IdVehiculo) {
+        return vehiculoRepository.findById(IdVehiculo).orElse(null);
     }
-    return vehiculoRepository.findById(idVehiculo).orElse(null); // Retorna el usuario actualizado o null si no se encontró
-}
+
+    @Override
+    public Vehiculo updateEstado(Integer idVehiculo, boolean estado) {
+        Vehiculo vehiculoEncontrado = findOne(idVehiculo);
+        if (vehiculoEncontrado != null) {
+            boolean nuevoEstado = !estado;
+            vehiculoEncontrado.setEstado(nuevoEstado);
+            System.out.println("This 2 -> " + nuevoEstado);
+            vehiculoRepository.save(vehiculoEncontrado); // Guarda el usuario actualizado en el repositorio
+        }
+        return vehiculoRepository.findById(idVehiculo).orElse(null); // Retorna el usuario actualizado o null si no se encontró
+    }
+
 }
