@@ -47,7 +47,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/js/**", "/css/**", "/img/**").permitAll()
-                .antMatchers("/Usuario/**", "/Movimiento/**", "/Vehiculo/**").hasRole("Funcionario")
                 .anyRequest().authenticated() // Cualquier otra página requiere autenticación
                 .and()
                 .formLogin()
