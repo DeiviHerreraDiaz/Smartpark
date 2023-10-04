@@ -57,6 +57,7 @@ public class UsuarioController {
     public String validarUsuario(String documento) {
 
         // Buscar el usuario por documento
+        //
         Usuario usuario = usuariod.findByDocumento(documento);
 
         if (usuario != null && (usuario.getRol().getNombre().equals("Funcionario") || usuario.getRol().getNombre().equals("Aprendiz"))) {
