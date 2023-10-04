@@ -17,9 +17,6 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService usuariod;
 
-
-    // Agregar usuarios
-
     @PostMapping("/add")
     public String add(Usuario usuario, Model m) {
 
@@ -27,8 +24,6 @@ public class UsuarioController {
 
         return "redirect:/Usuario/listar";
     }
-
-    // Ruta para formulario de usuarios
 
     @GetMapping(value = "/registrar-usuario")
     public String registrar(Model m) {
@@ -40,8 +35,6 @@ public class UsuarioController {
         return "usuario/registroUsuario";
     }
 
-    // Ruta consultar / Listar
-
     @GetMapping(value = "/listar")
     public String listar(Model m) {
 
@@ -50,27 +43,6 @@ public class UsuarioController {
         return "usuario/listar";
     }
 
-    // Validar login
-
-    @PostMapping("/validar")
-    public String validarUsuario(String documento) {
-
-        // Buscar el usuario por documento
-        Usuario usuario = usuariod.findByDocumento(documento);
-
-        if (usuario != null && (usuario.getRol().getNombre().equals("Funcionario") || usuario.getRol().getNombre().equals("Aprendiz"))) {
-            // El usuario es un Funcionario o Aprendiz, redireccionar al menú correspondiente.
-            return "redirect:/menu";
-        } else if (usuario == null) {
-            // El usuario no es un Funcionario o no existe, redireccionar al formulario de registro.
-            return "login";
-        }
-        return "login";
-    }
-
-//    BRIGITHE
-
-    //Actualizar Usuario
     @GetMapping("/ver/{documento}")
     public String ver(@PathVariable String documento, Model m){
 

@@ -12,5 +12,4 @@ public interface vehiculoRepository extends CrudRepository<Vehiculo, Integer> {
     List<Vehiculo> findByDocumento(String documento);
 
 
-
 }

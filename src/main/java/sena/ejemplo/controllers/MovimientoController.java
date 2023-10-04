@@ -14,7 +14,6 @@ import sena.ejemplo.service.IEquipo_movimientoService;
 import sena.ejemplo.service.IMovimientoService;
 import sena.ejemplo.service.IVehiculoService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.beans.PropertyEditorSupport;
 import java.sql.Time;
 import java.util.ArrayList;

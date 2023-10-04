@@ -20,7 +20,7 @@
           <ul class="nav-list">
               <li><a th:href="@{/}" class="btn"><button>Volver</button></a></li>
           </ul>
-          </nav>
+    </nav>
 
 
     <div class="wrapper fadeInDown">
@@ -33,9 +33,9 @@
           </div>
       
           <!-- FORMULARIO LOGIN -->
-          <form th:action="@{/Usuario/validar/}" method="POST">
-            <label for="Passwordd">Documento:</label><br>
-            <input type="number" id="documento" name="documento"  class="fadeIn third"  placeholder="Documento">
+          <form th:action="@{/login}" method="POST">
+            <label for="username">Documento:</label><br>
+            <input type="text" id="username" name="username"  class="fadeIn third"  placeholder="Documento">
             <!-- <input class="btn mt-4" type="submit" value="Entrar" > -->
             <br><br><br><br>
             <a class="btn2"><button>Entrar</button></a>

@@ -3,7 +3,10 @@ package sena.ejemplo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import sena.ejemplo.model.Vehiculo;
 import sena.ejemplo.service.IVehiculoService;
 
@@ -20,8 +23,6 @@ public class VehiculoController {
     @Autowired
     private IVehiculoService vehiculod;
 
-    // Agregar vehiculos
-
     @PostMapping("/add")
     public String add(Vehiculo vehiculo, Model m) {
 
@@ -29,8 +30,6 @@ public class VehiculoController {
 
         return "redirect:/Vehiculo/listar";
     }
-
-    // Ruta para formulario de vehiculos
 
     @GetMapping(value = "/registrar-vehiculo")
     public String registrar(Model m) {
@@ -42,15 +41,11 @@ public class VehiculoController {
         return "vehiculo/registroVehicularGeneral";
     }
 
-    // Ruta consultar / Listar
-
     @GetMapping(value = "/listar")
     public String listar(Model m) {
         m.addAttribute("vehiculo", vehiculod.findAll());
         return "vehiculo/listar";
     }
-
-    //Actuazlizar
 
     @GetMapping("/ver/{idVehiculo}")
     public String ver(@PathVariable Integer idVehiculo, Model m){
@@ -62,8 +57,6 @@ public class VehiculoController {
         return "Vehiculo/registroVehicularGeneral";
 
     }
-
-    // Cambiar estado
 
     @GetMapping("/updateUserStatus/{idVehiculo}")
     public String updateUserStatus(@PathVariable Integer idVehiculo) {

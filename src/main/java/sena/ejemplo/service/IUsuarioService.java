@@ -1,10 +1,11 @@
 package sena.ejemplo.service;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import sena.ejemplo.model.Usuario;
 
 import java.util.List;
 
-public interface IUsuarioService {
+public interface IUsuarioService extends UserDetailsService {
 
     // LISTAR
     List<Usuario> findAll();
