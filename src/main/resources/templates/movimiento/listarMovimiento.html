@@ -74,7 +74,6 @@
         <th>PLACA VEHICULO</th>
         <th>HORA SALIDA</th>
         <th>OBSERVACIONES</th>
-        <th>EQUIPOS</th>
 
         </thead>
         <tbody>
@@ -97,12 +96,6 @@
             <td th:if="${m.HoraSalida == null}"><p>No ha salido</p></td>
             <td th:if="${m.HoraSalida != null}"><p th:text="${m.HoraSalida}"></p></td>
             <td th:text="${m.Observaciones}"></td>
-            <th:block th:if="${lists.isEmpty(m.equipos)}">
-                <p>No hay equipos</p>
-            </th:block>
-            <th:block th:unless="${lists.isEmpty(m.equipos)}">
-                <p>Si hay</p>
-            </th:block>
 
         </tr>
         </tbody>
