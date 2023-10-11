@@ -6,10 +6,6 @@ import javax.persistence.*;
 @Table(name = "vehiculo")
 public class Vehiculo {
 
-    // ATRIBUTOS
-
-    // Primary Key
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdVehiculo;
@@ -20,13 +16,9 @@ public class Vehiculo {
     @Column(name = "marca", nullable = false)
     private String marca;
 
-    // Relation with Tipo_Vehiculo from FK, relation of entity Tipo_Vehiculo
-
     @ManyToOne
     @JoinColumn(name = "tipo_vehiculo_fk", nullable = false)
     private Tipo_Vehiculo tipo_Vehiculo;
-
-    // Relation with documento from FK, relation of entity Usuario
 
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
@@ -34,8 +26,6 @@ public class Vehiculo {
 
     @Column(name = "estado", nullable = false)
     private boolean estado;
-
-    // CONSTRUCTORES
 
     public Vehiculo() {
 
@@ -50,8 +40,6 @@ public class Vehiculo {
         this.documento = documento;
         this.estado = estado;
     }
-
-    // GETTERS AND SETTERS
 
     public Integer getIdVehiculo() {
         return IdVehiculo;

@@ -17,8 +17,6 @@ public class _UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     private sena.ejemplo.repository.usuarioRepository usuarioRepository;
 
-
-    // Obtencion de datos para la consulta (Listar)
     @Override
     public List<Usuario> findAll() {
         return (List<Usuario>) usuarioRepository.findAll();
@@ -34,10 +32,7 @@ public class _UsuarioServiceImpl implements IUsuarioService {
     public Usuario findByDocumento(String documento) {
         return usuarioRepository.findByDocumento(documento);
 
-
-
 }
-
     @Override
     public Usuario findOne(String documento) {
         return usuarioRepository.findById(documento).orElse(null);
@@ -50,9 +45,9 @@ public class _UsuarioServiceImpl implements IUsuarioService {
             boolean nuevoEstado = !estado;
             usuarioEncontrado.setEstado(nuevoEstado);
             System.out.println("This 2 -> " + nuevoEstado);
-            usuarioRepository.save(usuarioEncontrado); // Guarda el usuario actualizado en el repositorio
+            usuarioRepository.save(usuarioEncontrado);
         }
-        return usuarioRepository.findByDocumento(documento); // Retorna el usuario actualizado o null si no se encontró
+        return usuarioRepository.findByDocumento(documento);
     }
 
     @Override
@@ -62,9 +57,8 @@ public class _UsuarioServiceImpl implements IUsuarioService {
             throw new UsernameNotFoundException("Usuario no encontrado con documento: " + username);
         }
 
-        // Verificar si el rol del usuario es "Funcionario"
-        if (!usuario.getRol().getNombre().equals("Funcionario")) {
-            throw new UsernameNotFoundException("Acceso denegado para usuarios que no sean Funcionarios.");
+        if (!usuario.getRol().getNombre().equals("Administrador")) {
+            throw new UsernameNotFoundException("Acceso denegado para usuarios que no sean Administradores.");
         }
 
         Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) usuario.getAuthorities();

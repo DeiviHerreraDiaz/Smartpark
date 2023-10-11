@@ -13,11 +13,6 @@ import java.util.List;
 @Table(name = "movimiento")
 public class Movimiento {
 
-
-    // ATRIBUTOS
-
-    // Primary Key
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdMovimiento;
@@ -36,13 +31,9 @@ public class Movimiento {
     @Column(name = "Observaciones", nullable = true)
     private String Observaciones;
 
-    // Relation with ID VEHICULO from FK, relation of entity Vehiculo
-
     @ManyToOne
     @JoinColumn(name = "IdVehiculo_Fk", nullable = false)
     private Vehiculo vehiculo;
-
-    // Relation with documento from FK, relation of entity Usuario
 
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
@@ -51,15 +42,9 @@ public class Movimiento {
     @ManyToMany(mappedBy = "movimientos")
     private List<Equipo> equipos;
 
-
-    // CONSTRUCTORES
-
     public Movimiento() {
 
     }
-
-
-    // GETTERS AND SETTERS
 
     public Movimiento(Integer idMovimiento, Date fecha, Time horaEntrada, Time horaSalida, String observaciones,
                       Vehiculo vehiculo, Usuario documento, List<Equipo> equipos) {

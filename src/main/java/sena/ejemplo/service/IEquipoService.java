@@ -6,16 +6,11 @@ import java.util.List;
 
 public interface IEquipoService {
 
-    // LISTAR
-
     List<Equipo> findAll();
-
-    // REGISTRAR EQUIPOS
 
     Equipo save(Equipo equipo);
 
     List<Equipo> findBydocumento(String documento);
-
 
     Equipo findById(Integer equipoId);
 

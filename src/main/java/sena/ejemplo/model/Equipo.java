@@ -7,10 +7,6 @@ import java.util.List;
 @Table(name = "equipo")
 public class Equipo {
 
-    // ATRIBUTOS
-
-    // Primary Key
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdEquipo;
@@ -42,9 +38,6 @@ public class Equipo {
     @Column(name = "estado", nullable = false)
     private boolean estado;
 
-
-    // CONSTRUCTORES
-
     public Equipo() {
     }
 
@@ -56,8 +49,6 @@ public class Equipo {
         this.documento = documento;
         this.estado = estado;
     }
-
-    // GETTERS AND SETTER   
 
     public Integer getIdEquipo() {
         return IdEquipo;

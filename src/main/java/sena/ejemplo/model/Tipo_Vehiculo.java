@@ -6,18 +6,12 @@ import javax.persistence.*;
 @Table(name = "tipo_vehiculo")
 public class Tipo_Vehiculo {
 
-    // ATRIBUTOS
-
-    // Primary Key
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdTipo_Vehiculo;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
-
-    // CONSTRUCTORES
 
     public Tipo_Vehiculo() {
 
@@ -27,8 +21,6 @@ public class Tipo_Vehiculo {
         IdTipo_Vehiculo = idTipo_Vehiculo;
         this.nombre = nombre;
     }
-
-    // GETTERS AND SETTERS
 
     public Integer getIdTipo_Vehiculo() {
         return IdTipo_Vehiculo;

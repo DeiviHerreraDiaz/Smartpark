@@ -12,10 +12,6 @@ import java.util.Collections;
 @Table(name = "usuario")
 public class Usuario implements UserDetails {
 
-    // Atributos
-
-    // Primary Key
-
     @Id
     private String documento;
 
@@ -40,9 +36,6 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "Id_Rol_Fk", nullable = false)
     private Rol rol;
 
-
-    // CONSTRUCTORES
-
     public Usuario() {
 
     }
@@ -57,8 +50,6 @@ public class Usuario implements UserDetails {
         this.estado = estado;
         this.proveniente = proveniente;
     }
-
-// GETTERS AND SETTERS
 
     public String getDocumento() {
         return documento;
