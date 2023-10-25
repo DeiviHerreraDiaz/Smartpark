@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>Lista Equipo Movimiento</title>
+    <title>Lista Movimientos COMPLETADOS</title>
 </head>
 <body>
 
@@ -21,7 +21,6 @@
     <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
     <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
 </header>
-
 <div class="alert alert-success alert-dismissable" th:if="${success != null}">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -41,12 +40,14 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/menu}">VOLVER AL MENU</a>
+                <a class="nav-link" th:href="@{/Movimiento/MovimientosUsuario(documento=${documento}, nombre=${nombre})}">ATRAS</a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/Movimiento/listar}">ATRAS</a>
+                <a class="nav-link" th:href="@{/menu}">VOLVER AL MENU</a>
             </li>
+
+
 
 
             </li>
@@ -54,35 +55,64 @@
     </div>
 </nav>
 
+
 <div class="container-fluid">
-    <h1>Detalles de equipo</h1>
+    <h1 th:text="${'Movimientos de '+ nombre  +' Completados '}"></h1>
+
+
     <table id="datat">
+
 
         <thead >
 
-        <th>PERSONA</th>
-        <th>EQUIPO</th>
         <th>ID MOVIMIENTO</th>
+        <th>PERSONA</th>
+        <th>DOCUMENTO</th>
+        <th>FECHA</th>
+        <th>HORA ENTRADA</th>
+        <th>PLACA VEHICULO</th>
+        <th>HORA SALIDA</th>
+
+        <th>OBSERVACIONES</th>
+        <th>DETALLES DE EQUIPOS</th>
+
 
         </thead>
         <tbody>
-        <tr th:each="m:${listarEquipoMovimiento}">
+
+
+        <tr th:if="${movimiento.isEmpty()}">
+            <td colspan="10" align="center">No hay movimientos completos de la persona.</td>
+        </tr>
+
+        <tr th:each="m:${movimiento}"
+            if(m.documento.documento == documento)>
+
+            <td th:text="${m.IdMovimiento}"></td>
 
             <td>
-                <span th:text="${m.movimiento.documento.nombre}"></span>
-                <span th:text="${m.movimiento.documento.apellido}"></span>
+                <span th:text="${m.documento.nombre}"></span>
+                <span th:text="${m.documento.apellido}"></span>
             </td>
 
+            <td th:text="${m.documento.documento}"></td>
 
-            <td th:text="${m.equipo.marca}"></td>
-            <td th:text="${m.movimiento.IdMovimiento}"></td>
+            <td>
+                <span th:text="${m.fecha}"></span>
+            </td>
+            <td th:text="${m.horaEntrada}"></td>
+            <td th:text="${m.vehiculo.placa}"></td>
+            <td th:text="${m.HoraSalida}"></td>
+            <td th:text="${m.Observaciones}"></td>
 
+            </td>
 
+            <td align="center">
+                <a role="button" class="btn btn-success" th:href="@{/Movimiento/listarEquipoMovimientoUsuario(documento=${m.documento.documento}, IdMovimiento=${m.IdMovimiento})}">
+                    <i class="bi bi-laptop"></i>
+                </a>
 
-
-
-
-
+            </td>
 
         </tr>
         </tbody>

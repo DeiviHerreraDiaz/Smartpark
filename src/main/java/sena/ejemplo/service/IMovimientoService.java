@@ -12,4 +12,7 @@ public interface IMovimientoService {
     Movimiento save(Movimiento movimiento);
     void saveMovimientoAndEquipos(Movimiento movimiento, List<Equipo> equipos);
     Optional<Movimiento> findById(Integer IdMovimiento);
+
+
+
 }

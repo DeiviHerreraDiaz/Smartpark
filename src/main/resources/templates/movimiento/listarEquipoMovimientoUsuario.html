@@ -59,28 +59,18 @@
     <h1>Detalles de equipo</h1>
     <table id="datat">
 
-
-        <thead >
-
-
+        <thead>
         <th>PERSONA</th>
         <th>EQUIPO</th>
         <th>ID MOVIMIENTO</th>
-
-
-
         </thead>
-        <tbody>
 
-        <tr th:if="${listarEquipoMovimiento.isEmpty()}">
-            <td colspan="3" align="center">No hay detalles de equipo recientes de la persona.</td>
+        <tr th:if="${#lists.isEmpty(listarEquipoMovimiento)}">
+            <td colspan="10" align="center">No hay detalles de equipos en el movimiento de la persona.</td>
         </tr>
 
-        <tr th:each="m:${listarEquipoMovimiento}" if(m.movimiento.documento == documento)>
-
-
-        <tr th:each="m:${listarEquipoMovimiento}">
-
+        <tbody th:unless="${#lists.isEmpty(listarEquipoMovimiento)}">
+        <tr th:each="m:${listarEquipoMovimiento}"  >
             <td>
                 <span th:text="${m.movimiento.documento.nombre}"></span>
                 <span th:text="${m.movimiento.documento.apellido}"></span>
@@ -89,16 +79,12 @@
 
             <td th:text="${m.equipo.marca}"></td>
             <td th:text="${m.movimiento.IdMovimiento}"></td>
-
-
-
-
-
-
-
-
         </tr>
+
         </tbody>
+
+
+
     </table>
 </div>
 <script>

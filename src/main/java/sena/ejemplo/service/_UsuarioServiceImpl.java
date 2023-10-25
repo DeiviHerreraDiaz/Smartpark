@@ -24,9 +24,7 @@ public class _UsuarioServiceImpl implements IUsuarioService {
 
     // Obtencion de datos para registrar un Usuario
     @Override
-    public Usuario save(Usuario usuario) {
-        return usuarioRepository.save(usuario);
-    }
+    public Usuario save(Usuario usuario) {return usuarioRepository.save(usuario);}
 
     @Override
     public Usuario findByDocumento(String documento) {

@@ -39,8 +39,9 @@ public class Movimiento {
     @JoinColumn(name = "documento", nullable = false)
     private Usuario documento;
 
-    @ManyToMany(mappedBy = "movimientos")
+    @ManyToMany(mappedBy = "movimientos", fetch = FetchType.EAGER)
     private List<Equipo> equipos;
+
 
     public Movimiento() {
 

@@ -34,4 +34,6 @@ public class _MovimientoServiceImpl implements IMovimientoService {
     public Optional<Movimiento> findById(Integer IdMovimiento) {
         return movimientoRepository.findById(IdMovimiento);
     }
+
+
 }

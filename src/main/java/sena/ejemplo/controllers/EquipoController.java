@@ -43,7 +43,7 @@ public class EquipoController {
         return "equipo/listar";
     }
 
-    @GetMapping("/ver/{idEquipo}")
+    @GetMapping("/ver/{idEquipoww}")
     public String ver(@PathVariable Integer idEquipo, Model m, RedirectAttributes flash) {
 
         Equipo equipo = equipod.findById(idEquipo);

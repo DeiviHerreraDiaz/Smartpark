@@ -23,6 +23,7 @@ public class Equipo {
     private List<Movimiento> movimientos;
 
 
+
     @Column(name = "marca", nullable = false)
     private String marca;
 
