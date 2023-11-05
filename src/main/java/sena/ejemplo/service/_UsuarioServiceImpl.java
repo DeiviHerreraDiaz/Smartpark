@@ -63,7 +63,7 @@ public class _UsuarioServiceImpl implements IUsuarioService {
 
         System.out.println("Roles asignados al usuario: " + authorities);
 
-        return new User(usuario.getDocumento(), "", authorities);
+        return new User(usuario.getDocumento(), usuario.getPassword(), authorities);
     }
 
 

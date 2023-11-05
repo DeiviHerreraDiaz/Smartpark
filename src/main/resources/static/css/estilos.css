@@ -1,13 +1,15 @@
 /* Estilos generales */
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
+  background-color: #00165e;
+  background: linear-gradient(to right, #e2e2e2, rgb(220, 241, 232));
   color: #000000;
 }
 
 /* Estilos del encabezado */
 .u-header {
   background-color: #39A900;
+  background: linear-gradient(to bottom   , #8ae051, #39A900);
   padding: 10px;
   display: flex;
   align-items: center;
@@ -17,8 +19,8 @@ body {
 }
 
 .u-logo-image {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
 
 }
 
@@ -42,13 +44,11 @@ body {
 
 .u-footer {
   background-color: #39A900;
+  background: linear-gradient(to bottom   , #8ae051, #39A900);
   padding: 20px;
   display: center;
   text-align: center;
   color: #ffffff;
-  
-
-  
 }
 
 .u-text-3 {
@@ -61,13 +61,11 @@ body {
 
 width: 1405px;
 height: 600px;
-padding: 20px;
 margin: auto;
 
 }
 
 .nav{
-background-color: white;
 display: flex;
 justify-content: end;
 align-items: center;
@@ -130,10 +128,6 @@ margin-top: 30px;
 border-right: 2px solid #39A900;
 position: absolute;
 
-}
-
-.texto{
-padding: 5px;
 }
 
 .texto-dest{

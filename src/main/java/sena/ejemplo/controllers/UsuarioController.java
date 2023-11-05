@@ -20,9 +20,10 @@ public class UsuarioController {
 
     @PostMapping("/add")
     public String add(Usuario usuario, Model m, RedirectAttributes flash) {
-
         usuariod.save(usuario);
-        flash.addFlashAttribute("success", "Usuario registrado o actualizado exitosamente");
+        if (usuario.getRol().getIdRol() != 4) {
+            flash.addFlashAttribute("success", "Usuario registrado o actualizado exitosamente");
+        }
         return "redirect:/Usuario/listar";
     }
 

@@ -1,68 +1,88 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" lang="es">
-
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
-    <link rel="stylesheet" th:href="@{/css/estilos.css}">
-    <title>Formulario</title>
-</head>    
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/nav.css}">
+
     
+    <title>INICIAR SESIÓN</title>
+</head>
+
+<body>
+
     
-  <body>
-    <header class=" u-header">
-          <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
-          <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
-    </header>
 
-    <nav class="nav">
-          <ul class="nav-list">
-              <li><a th:href="@{/}" class="btn"><button>Volver</button></a></li>
-          </ul>
-    </nav>
+  <nav class="nav">
+    <ul class="nav-list">
+        <li><a th:href="@{/}" class="btn"><button>Volver</button></a></li>
+    </ul>
+</nav>
 
 
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-          <!-- Tabs  -->
-          <h2 class="active"> INICIAR SESION </h2>
-          <!-- ICONO -->
-          <div class="fadeIn first">
-            <img src="https://img.freepik.com/vector-premium/ilustracion-concepto-inicio-sesion-seguro_251005-445.jpg" id="icon" alt="User Icon" />
-          </div>
-      
-          <!-- FORMULARIO LOGIN -->
-          <form th:action="@{/login}" method="POST">
-            <label for="username">Documento:</label><br>
-            <input type="text" id="username" name="username"  class="fadeIn third"  placeholder="Documento">
-            <!-- <input class="btn mt-4" type="submit" value="Entrar" > -->
-            <br><br><br><br>
-            <a class="btn2"><button>Entrar</button></a>
-
-          </form>
-
-       
-
-          
-
-          <div id="formFooter">
-            <a class="underlineHover" href="#">¿Olvido su Contraseña?</a>
-          <!-- RECORDAR CONTRASEÑA -->
-          </div>
-      
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form th:action="@{/Usuario/add}" th:object="${usuario}" method="post">
+                <h1>Crear usuario</h1>
+                <br>
+                <span>Rellene los campos</span>
+                <input type="text" name="Rol.IdRol" placeholder="Rol" value="4" hidden>
+                <input type="text" name="nombre"   placeholder="Nombre" required>
+                <input type="text" name="apellido" placeholder="Apellido" required>
+                <input type="text" name="documento" placeholder="Documento" required>
+                <input type="text" name="telefono" placeholder="Telefono" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input name="estado" value="1" hidden>
+                <button type="submit">Registrar</button>
+            </form>
+            
         </div>
+        <div class="form-container sign-in">
+            <form th:action="@{/login}" method="POST">
+                <h1>Iniciar sesión</h1>
+                <div class="social-icons">
+                    <a href="https://maps.app.goo.gl/R7vK5dJWRyUKu75u8" class="icon"><i class="fa-solid fa-location-dot"></i></a>
+                
+                </div>
+                <span>Introduzca sus credenciales</span>
+                <input type="text" name="username" placeholder="Documento">
+                <input type="password" name="password"  placeholder="Contraseña">
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <button>Iniciar sesión</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>!Bienvenido <br>Inicia sesión!</h1>
+                    <p>Introduce información personal <br>(Solo para administradores)</p>
+                    <button class="hidden" id="login">Iniciar</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>¿No estas registrado?</h1>
+                    <p>Para acceder al sistema del parqueadero tienes que contar con un usuario</p>
+                    <button class="hidden" id="register">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script th:src="@{/js/script.js}"></script>
 
-</div>
+<br><br><br><br><br><br>
 
-
-        
     <footer class="u-footer">
-        <div class=" u-sheet-1">
-        <br>
-        <p class="u-text-3">W W W . s e n a . e d u . co</p>
-        </div>
-      </footer>
-      </body>
-  </html>
+      <div class=" u-sheet-1">
+      <br>
+      <p class="u-text-3">W W W . s e n a . e d u . co</p>
+      </div>
+    </footer>
+
+
+</body>
+
+</html>

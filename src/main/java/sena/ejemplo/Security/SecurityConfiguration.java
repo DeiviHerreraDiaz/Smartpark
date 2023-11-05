@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import sena.ejemplo.service.IUsuarioService;
 
@@ -21,16 +23,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private IUsuarioService iUsuarioService;
 
+    
+     @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
+
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider() {
-            @Override
-            protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-
-            }
-        };
-        auth.setUserDetailsService(iUsuarioService);
-        return auth;
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(iUsuarioService);
+        authProvider.setPasswordEncoder(passwordEncoder()); 
+        return authProvider;
     }
 
     @Override
@@ -42,8 +47,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/js/**", "/css/**", "/img/**").permitAll()
-                .anyRequest().authenticated() // Cualquier otra página requiere autenticación
+                .antMatchers("/", "/js/**", "/css/**", "/img/**", "/Usuario/add**").permitAll()
+                .anyRequest().authenticated() 
                 .and()
                 .formLogin()
                 .loginPage("/login") // Página de inicio de sesión personalizada

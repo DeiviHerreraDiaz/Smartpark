@@ -11,7 +11,7 @@ public class Rol {
     private Integer IdRol;
 
     @Column(name = "nombre", nullable = false)
-    private String nombre;
+    private String nombre; 
 
     public Rol() {
     }

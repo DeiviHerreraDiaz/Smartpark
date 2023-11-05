@@ -17,6 +17,9 @@ public class Usuario implements UserDetails {
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
+    
+    @Column(name = "password", nullable = true)
+    private String password;
 
     @Column(name = "apellido", nullable = false)
     private String apellido;
@@ -40,15 +43,16 @@ public class Usuario implements UserDetails {
 
     }
 
-    public Usuario(String documento, String nombre, String apellido, String telefono, Rol rol, boolean estado,
-                   String proveniente) {
+    public Usuario(String documento, String nombre, String password, String apellido, String telefono, boolean estado,
+            String proveniente, Rol rol) {
         this.documento = documento;
         this.nombre = nombre;
+        this.password = password;
         this.apellido = apellido;
         this.telefono = telefono;
-        this.rol = rol;
         this.estado = estado;
         this.proveniente = proveniente;
+        this.rol = rol;
     }
 
     public String getDocumento() {
@@ -67,6 +71,10 @@ public class Usuario implements UserDetails {
         this.nombre = nombre;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getApellido() {
         return apellido;
     }
@@ -81,14 +89,6 @@ public class Usuario implements UserDetails {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
     }
 
     public boolean isEstado() {
@@ -107,6 +107,13 @@ public class Usuario implements UserDetails {
         this.proveniente = proveniente;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -120,7 +127,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null; // No hay contraseña en este caso
+        return password; 
     }
 
     @Override
