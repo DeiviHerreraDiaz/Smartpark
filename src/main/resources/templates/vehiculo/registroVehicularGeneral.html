@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
+  <link rel="stylesheet" th:href="@{/css/listar.css}">
+  <title>Formulario</title>
+</head>
+
+
+<body>
+<header class=" u-header">
+  <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
+  <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
+</header>
+
+<section class="u-section-1">
+  <div class="u-sheet-1">
+    <h2 class="u-text-1">
+      FORMULARIO REGISTRO VEHICULAR
+    </h2>
+
+    <div class="u-form">
+      <form th:action="@{/Vehiculo/add/}" th:object="${vehiculo}" class="u-inner-form" method="POST" >
+
+        <input type="hidden" th:field="*{idVehiculo}">
+
+        <div class="u-form-group-1">
+          <label form="documento.documento" class="u-label">Documento</label>
+          <input type="text" placeholder="Ingresa la placa o Marco del vehiculo"  name="documento.documento" class="u-input" required="required" th:field="*{documento.documento}" readonly>
+        </div>
+
+        <div class="u-form-group-1">
+          <label form="placa" class="u-label">Placa o Marco</label>
+          <input type="text" placeholder="Ingresa la placa o Marco del vehiculo"  name="placa" class="u-input" required="required" th:field="*{placa}">
+        </div>
+
+        <div class="u-form-group-1">
+          <label form="marca" class="u-label">Marca</label>
+          <input type="text" placeholder="Ingresa la marca del vehiculo"  name="marca" class="u-input" required="required" th:field="*{marca}">
+        </div>
+
+
+        <div class="u-form-group-1">
+          <label form="Tipo_Vehiculo.IdTipo_Vehiculo" class="u-label">Tipo de vehículo </label>
+
+          <select name="Tipo_Vehiculo.IdTipo_Vehiculo" id="Tipo_Vehiculo.IdTipo_Vehiculo" th:field="*{Tipo_Vehiculo.IdTipo_Vehiculo}">
+
+            <option value="1">Carro</option>
+            <option value="2">Moto</option>
+            <option value="3">Bicicleta</option>
+
+          </select>
+        </div>
+
+
+        <div class="u-form-group-1">
+          <input type="checkbox" name="estado" value="1" th:field="*{estado}">Activo
+          <br>
+          <br>
+        </div>
+
+        <br>
+        <br>
+
+        <button class="u-btn-submit2" type="submit">Enviar</button>
+
+      </form>
+      <button class="u-btn-submit"><a th:href="@{/Vehiculo/listar}">Volver al Listado</a></button>
+    </div>
+  </div>
+</section>
+
+
+<footer class="u-footer">
+  <div class=" u-sheet-1">
+    <br>
+    <p class="u-text-3">W W W . s e n a . e d u . co</p>
+  </div>
+</footer>
+</body>
+</html>

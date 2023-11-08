@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/footer2.css}">
+    <link rel="stylesheet" th:href="@{/css/nav.css}"> 
+    <title>SMARTPARK</title>
+</head>
+
+
+<body>
+
+<header class=" u-header">
+    <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
+    <p class="u-text-1">SMARTPARK</p>
+</header>
+
+<nav class="nav">
+    <ul class="nav-list">
+        <li><a th:href="@{/loguearse}" class="btn"><button>Iniciar sesión</button></a></li>
+    </ul>
+</nav>
+
+
+
+<section class="index">
+
+    <div class="titulo-index">
+
+        <h1>SMARTPARK</h1>
+
+    </div>
+
+    <div class="contenido-index">
+
+        <p class="texto">Sistema de gestión de parqueadero diseñado para una solución completa y eficiente.</p>
+        <p class="texto-dest">Funciones destacadas:</p>
+        <p class="texto">• Registro de movimientos: Seguimiento completo de todos los movimientos registrados, tanto de ingreso como de salida. Esta funcionalidad te brinda un historial detallado de cada vehículo y equipo, incluyendo la fecha, hora y detalles asociados a cada movimiento.</p>
+        <p class="texto">• Registro de usuarios: Registrar y administrar a los usuarios autorizados para acceder al parqueadero. Esto permite otorgar permisos específicos y tener un control de quiénes pueden acceder al parqueadero.</p>
+        <p class="texto">• Registro de equipos y vehículos: Registros de los equipos y vehículos asociados a los usuarios. Puedes registrar detalles como la marca, modelo, número de placa y características relevantes de cada vehículo o equipo.</p>
+        <p class="texto">• Consulta de registros: Acceder fácilmente a los registros de movimientos, usuarios, equipos y vehículos almacenados en el sistema.</p>
+
+    </div>
+
+<br>
+
+    <div class="imagenes">
+
+        <img th:src="@{/img/parqueadero1.jpg}" class="imagen-index">
+
+    </div>
+    <div class="imagenes">
+
+        <img th:src="@{/img/parqueadero2.jpg}" class="imagen-index">
+
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <div class="imagenes">
+
+        <img th:src="@{/img/parqueadero3.jpg}" class="imagen-index">
+
+    </div>
+
+    <div class="imagenes">
+
+        <img th:src="@{/img/parqueadero4.jpg}" class="imagen-index">
+
+    </div>
+
+
+</section>
+
+
+<footer class="u-footer">
+    <div class=" u-sheet-1">
+        <br>
+        <p class="u-text-3">W W W . s e n a . e d u . co</p>
+    </div>
+</footer>
+</body>
+</html>
