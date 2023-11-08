@@ -13,6 +13,14 @@ import java.util.List;
 @Table(name = "movimiento")
 public class Movimiento {
 
+<<<<<<< HEAD
+=======
+
+    // ATRIBUTOS
+
+    // Primary Key
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdMovimiento;
@@ -31,22 +39,47 @@ public class Movimiento {
     @Column(name = "Observaciones", nullable = true)
     private String Observaciones;
 
+<<<<<<< HEAD
+=======
+    // Relation with ID VEHICULO from FK, relation of entity Vehiculo
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @ManyToOne
     @JoinColumn(name = "IdVehiculo_Fk", nullable = false)
     private Vehiculo vehiculo;
 
+<<<<<<< HEAD
+=======
+    // Relation with documento from FK, relation of entity Usuario
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
     private Usuario documento;
 
+<<<<<<< HEAD
     @ManyToMany(mappedBy = "movimientos", fetch = FetchType.EAGER)
     private List<Equipo> equipos;
 
 
+=======
+    @ManyToMany(mappedBy = "movimientos")
+    private List<Equipo> equipos;
+
+
+    // CONSTRUCTORES
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Movimiento() {
 
     }
 
+<<<<<<< HEAD
+=======
+
+    // GETTERS AND SETTERS
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Movimiento(Integer idMovimiento, Date fecha, Time horaEntrada, Time horaSalida, String observaciones,
                       Vehiculo vehiculo, Usuario documento, List<Equipo> equipos) {
         IdMovimiento = idMovimiento;

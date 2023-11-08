@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface IMovimientoService {
 
+<<<<<<< HEAD
     List<Movimiento> findAll();
     Movimiento save(Movimiento movimiento);
     void saveMovimientoAndEquipos(Movimiento movimiento, List<Equipo> equipos);
@@ -15,4 +16,18 @@ public interface IMovimientoService {
 
 
 
+=======
+    // LISTAR
+
+    List<Movimiento> findAll();
+
+
+    // REGISTRAR EQUIPOS
+
+    Movimiento save(Movimiento movimiento);
+
+    void saveMovimientoAndEquipos(Movimiento movimiento, List<Equipo> equipos);
+
+    Optional<Movimiento> findById(Integer IdMovimiento);
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 }

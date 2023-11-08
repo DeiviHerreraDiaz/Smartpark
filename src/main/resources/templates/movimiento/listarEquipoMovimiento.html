@@ -7,7 +7,11 @@
     <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+<<<<<<< HEAD
     <link rel="stylesheet" th:href="@{/css/listar.css}">
+=======
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
@@ -18,6 +22,7 @@
 <body>
 
 <header class=" u-header">
+<<<<<<< HEAD
     <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
     <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
 </header>
@@ -28,10 +33,17 @@
     </button>
     <span th:text="${success}"></span>
 </div>
+=======
+  <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
+    <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
+</header>
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
 <!-- NAVEGAVILIDAD -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-3" id="menu">
+<<<<<<< HEAD
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,6 +133,103 @@
         <p class="u-text-3">W W W . s e n a . e d u . co</p>
     </div>
 </footer>
+=======
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+        <li class="nav-item active">
+        <a class="nav-link" th:href="@{/menu}">VOLVER AL MENU</a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/Movimiento/listar}">ATRAS</a>
+      </li>
+
+
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+    <div class="container-fluid">
+        <h1>Detalles de equipo</h1>
+        <table id="datat">
+
+
+            <thead >
+              
+            
+                <th>PERSONA</th>
+                <th>EQUIPO</th>
+                <th>ID MOVIMIENTO</th>
+               
+                
+
+                
+            </thead>
+            <tbody>
+                <tr th:each="m:${listarEquipoMovimiento}">
+
+                  <td> 
+                    <span th:text="${m.movimiento.documento.nombre}"></span>
+                    <span th:text="${m.movimiento.documento.apellido}"></span>
+                  </td>
+
+
+                    <td th:text="${m.equipo.marca}"></td>
+                    <td th:text="${m.movimiento.IdMovimiento}"></td>
+          
+
+
+                  
+                  
+              
+                  
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+
+        var datat=document.querySelector("#datat"); 
+        var dataTable=new DataTable("#datat",{ 
+          perPage:10,
+          labels: {
+              placeholder: "Busca por un campo...",
+              perPage: "{select} registros por página",
+              noRows: "No se encontraron registros",
+              info: "Mostrando {start} a {end} de {rows} registros",
+          }
+        } ) ;
+        
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+        <footer class="u-footer">
+          <div class=" u-sheet-1">
+          <br>
+          <p class="u-text-3">W W W . s e n a . e d u . co</p>
+          </div>
+        </footer>
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
 </body>
 

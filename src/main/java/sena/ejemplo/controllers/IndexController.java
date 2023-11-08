@@ -14,7 +14,11 @@ public class IndexController {
         return "index";
     }
 
+<<<<<<< HEAD
     @GetMapping(value = "/login")
+=======
+    @GetMapping(value = "/loguearse")
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public String login() {
 
         return "/login";

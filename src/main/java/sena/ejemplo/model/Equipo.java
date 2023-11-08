@@ -7,6 +7,13 @@ import java.util.List;
 @Table(name = "equipo")
 public class Equipo {
 
+<<<<<<< HEAD
+=======
+    // ATRIBUTOS
+
+    // Primary Key
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdEquipo;
@@ -23,7 +30,10 @@ public class Equipo {
     private List<Movimiento> movimientos;
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @Column(name = "marca", nullable = false)
     private String marca;
 
@@ -39,6 +49,12 @@ public class Equipo {
     @Column(name = "estado", nullable = false)
     private boolean estado;
 
+<<<<<<< HEAD
+=======
+
+    // CONSTRUCTORES
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Equipo() {
     }
 
@@ -51,6 +67,11 @@ public class Equipo {
         this.estado = estado;
     }
 
+<<<<<<< HEAD
+=======
+    // GETTERS AND SETTER   
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Integer getIdEquipo() {
         return IdEquipo;
     }
@@ -99,4 +120,11 @@ public class Equipo {
         this.estado = estado;
     }
 
+<<<<<<< HEAD
+=======
+    public Equipo orElse(Object object) {
+        return null;
+    }
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 }

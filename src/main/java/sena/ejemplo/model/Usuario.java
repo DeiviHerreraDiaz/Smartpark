@@ -1,5 +1,6 @@
 package sena.ejemplo.model;
 
+<<<<<<< HEAD
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,15 +12,29 @@ import java.util.Collections;
 @Entity
 @Table(name = "usuario")
 public class Usuario implements UserDetails {
+=======
+import javax.persistence.*;
+
+@Entity
+@Table(name = "usuario")
+public class Usuario {
+
+    // Atributos
+
+    // Primary Key
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
     @Id
     private String documento;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
+<<<<<<< HEAD
     
     @Column(name = "password", nullable = true)
     private String password;
+=======
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
     @Column(name = "apellido", nullable = false)
     private String apellido;
@@ -39,10 +54,17 @@ public class Usuario implements UserDetails {
     @JoinColumn(name = "Id_Rol_Fk", nullable = false)
     private Rol rol;
 
+<<<<<<< HEAD
+=======
+
+    // CONSTRUCTORES
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Usuario() {
 
     }
 
+<<<<<<< HEAD
     public Usuario(String documento, String nombre, String password, String apellido, String telefono, boolean estado,
             String proveniente, Rol rol) {
         this.documento = documento;
@@ -55,6 +77,21 @@ public class Usuario implements UserDetails {
         this.rol = rol;
     }
 
+=======
+    public Usuario(String documento, String nombre, String apellido, String telefono, Rol rol, boolean estado,
+                   String proveniente) {
+        this.documento = documento;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.rol = rol;
+        this.estado = estado;
+        this.proveniente = proveniente;
+    }
+
+// GETTERS AND SETTERS
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public String getDocumento() {
         return documento;
     }
@@ -71,10 +108,13 @@ public class Usuario implements UserDetails {
         this.nombre = nombre;
     }
 
+<<<<<<< HEAD
     public void setPassword(String password) {
         this.password = password;
     }
 
+=======
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public String getApellido() {
         return apellido;
     }
@@ -91,6 +131,17 @@ public class Usuario implements UserDetails {
         this.telefono = telefono;
     }
 
+<<<<<<< HEAD
+=======
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public boolean isEstado() {
         return estado;
     }
@@ -107,6 +158,7 @@ public class Usuario implements UserDetails {
         this.proveniente = proveniente;
     }
 
+<<<<<<< HEAD
     public Rol getRol() {
         return rol;
     }
@@ -149,6 +201,8 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+=======
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
 }
     

@@ -14,7 +14,10 @@ public class _MovimientoServiceImpl implements IMovimientoService {
     @Autowired
     private sena.ejemplo.repository.movimientoRepository movimientoRepository;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @Override
     public List<Movimiento> findAll() {
         return (List<Movimiento>) movimientoRepository.findAll();
@@ -34,6 +37,9 @@ public class _MovimientoServiceImpl implements IMovimientoService {
     public Optional<Movimiento> findById(Integer IdMovimiento) {
         return movimientoRepository.findById(IdMovimiento);
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 }

@@ -2,9 +2,15 @@ package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import sena.ejemplo.model.Equipo_movimiento;
 import sena.ejemplo.model.Movimiento;
 import sena.ejemplo.repository.equipoMovimientoRepository;
+=======
+import sena.ejemplo.repository.equipoMovimientoRepository;
+import sena.ejemplo.model.Equipo_movimiento;
+import sena.ejemplo.model.Movimiento;
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
 import java.util.List;
 

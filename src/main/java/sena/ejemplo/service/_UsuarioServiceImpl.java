@@ -1,6 +1,7 @@
 package sena.ejemplo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +10,11 @@ import org.springframework.stereotype.Service;
 import sena.ejemplo.model.Usuario;
 
 import java.util.Collection;
+=======
+import org.springframework.stereotype.Service;
+import sena.ejemplo.model.Usuario;
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 import java.util.List;
 
 @Service
@@ -17,20 +23,37 @@ public class _UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     private sena.ejemplo.repository.usuarioRepository usuarioRepository;
 
+<<<<<<< HEAD
+=======
+    // Obtencion de datos para la consulta (Listar)
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @Override
     public List<Usuario> findAll() {
         return (List<Usuario>) usuarioRepository.findAll();
     }
 
+<<<<<<< HEAD
     // Obtencion de datos para registrar un Usuario
     @Override
     public Usuario save(Usuario usuario) {return usuarioRepository.save(usuario);}
+=======
+    // Obtencion de datos para registrar un Usuario 
+    @Override
+    public Usuario save(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
     @Override
     public Usuario findByDocumento(String documento) {
         return usuarioRepository.findByDocumento(documento);
+<<<<<<< HEAD
 
 }
+=======
+}
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @Override
     public Usuario findOne(String documento) {
         return usuarioRepository.findById(documento).orElse(null);
@@ -43,6 +66,7 @@ public class _UsuarioServiceImpl implements IUsuarioService {
             boolean nuevoEstado = !estado;
             usuarioEncontrado.setEstado(nuevoEstado);
             System.out.println("This 2 -> " + nuevoEstado);
+<<<<<<< HEAD
             usuarioRepository.save(usuarioEncontrado);
         }
         return usuarioRepository.findByDocumento(documento);
@@ -68,3 +92,11 @@ public class _UsuarioServiceImpl implements IUsuarioService {
 
 
 }
+=======
+            usuarioRepository.save(usuarioEncontrado); // Guarda el usuario actualizado en el repositorio
+        }
+        return usuarioRepository.findByDocumento(documento); // Retorna el usuario actualizado o null si no se encontró
+    }
+
+    }
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09

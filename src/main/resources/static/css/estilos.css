@@ -1,15 +1,22 @@
 /* Estilos generales */
 body {
   font-family: Arial, sans-serif;
+<<<<<<< HEAD
   background-color: #00165e;
   background: linear-gradient(to right, #e2e2e2, rgb(220, 241, 232));
+=======
+  background-color: #ffffff;
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
   color: #000000;
 }
 
 /* Estilos del encabezado */
 .u-header {
   background-color: #39A900;
+<<<<<<< HEAD
   background: linear-gradient(to bottom   , #8ae051, #39A900);
+=======
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
   padding: 10px;
   display: flex;
   align-items: center;
@@ -19,8 +26,13 @@ body {
 }
 
 .u-logo-image {
+<<<<<<< HEAD
   width: 100px;
   height: 100px;
+=======
+  width: 200px;
+  height: 200px;
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
 }
 
@@ -44,11 +56,20 @@ body {
 
 .u-footer {
   background-color: #39A900;
+<<<<<<< HEAD
   background: linear-gradient(to bottom   , #8ae051, #39A900);
+=======
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
   padding: 20px;
   display: center;
   text-align: center;
   color: #ffffff;
+<<<<<<< HEAD
+=======
+  
+
+  
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 }
 
 .u-text-3 {
@@ -61,11 +82,19 @@ body {
 
 width: 1405px;
 height: 600px;
+<<<<<<< HEAD
+=======
+padding: 20px;
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 margin: auto;
 
 }
 
 .nav{
+<<<<<<< HEAD
+=======
+background-color: white;
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 display: flex;
 justify-content: end;
 align-items: center;
@@ -130,6 +159,13 @@ position: absolute;
 
 }
 
+<<<<<<< HEAD
+=======
+.texto{
+padding: 5px;
+}
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 .texto-dest{
 padding-top: 40px;
 padding-left: 5px;
@@ -340,6 +376,45 @@ td{
   transform: scale(1.2)
 }
 
+<<<<<<< HEAD
+=======
+/*LOGIN */
+
+.wrapper {
+display: flex;
+align-items: center;
+flex-direction: column; 
+justify-content: center;
+width: 100%;
+min-height: 100%;
+padding: 20px;
+}
+
+#formContent {
+-webkit-border-radius: 10px 10px 10px 10px;
+border-radius: 10px 10px 10px 10px;
+background: #fff;
+padding: 30px;
+width: 90%;
+height: 250%;
+max-width: 450px;
+position: relative;
+padding: 0px;
+-webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+text-align: center;
+}
+
+#formFooter {
+background-color: #f6f6f6;
+border-top: 1px solid #dce8f1;
+padding: 25px;
+text-align: center;
+-webkit-border-radius: 0 0 10px 10px;
+border-radius: 0 0 10px 10px;
+}
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 .btn2 button{
 font-weight: 700;
 width: 200px;
