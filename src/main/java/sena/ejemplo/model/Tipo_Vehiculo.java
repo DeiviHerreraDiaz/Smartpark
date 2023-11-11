@@ -6,13 +6,6 @@ import javax.persistence.*;
 @Table(name = "tipo_vehiculo")
 public class Tipo_Vehiculo {
 
-<<<<<<< HEAD
-=======
-    // ATRIBUTOS
-
-    // Primary Key
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdTipo_Vehiculo;
@@ -20,11 +13,6 @@ public class Tipo_Vehiculo {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-<<<<<<< HEAD
-=======
-    // CONSTRUCTORES
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Tipo_Vehiculo() {
 
     }
@@ -34,11 +22,6 @@ public class Tipo_Vehiculo {
         this.nombre = nombre;
     }
 
-<<<<<<< HEAD
-=======
-    // GETTERS AND SETTERS
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Integer getIdTipo_Vehiculo() {
         return IdTipo_Vehiculo;
     }

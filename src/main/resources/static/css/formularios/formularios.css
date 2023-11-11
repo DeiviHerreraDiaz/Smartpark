@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #000000;
+  }
+
+  .u-label {
+    font-weight: bold;
+  }
+
+  .boton{
+    
+  background-color: #39A900;
+  }
+
+  /* Campos dinamicos */
+
+.camposDinamicos{
+    margin-left: 980px;
+    margin-top: -150px;
+    margin-bottom: 160px;
+  }
+  
+  .camposDinamicos button{
+    font-weight: 500;
+    background: #39A900;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .camposDinamicos button:hover{
+    transform: scale(1.01);
+    border: 1px solid #39A900;
+    color: black;
+    background: white;
+  }
+  
+  .camposDinamicos2{
+    margin-left: 980px;
+    margin-top: -150px;
+    margin-bottom: 150px;
+  }
+  
+  .camposDinamicos2 button{
+    font-weight: 500;
+    background: #39A900;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .camposDinamicos2 button:hover{
+    transform: scale(1.01);
+    border: 1px solid #39A900;
+    color: black;
+    background: white;
+  }
+
+  #formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    height: 250%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+    }

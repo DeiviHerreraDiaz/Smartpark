@@ -7,13 +7,6 @@ import javax.persistence.*;
 @Table(name = "Equipo_movimiento")
 public class Equipo_movimiento {
 
-<<<<<<< HEAD
-=======
-    // Atributos
-
-    // Primary Key
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_Equipo_Movimiento;
@@ -26,11 +19,6 @@ public class Equipo_movimiento {
     @JoinColumn(name = "movimiento_id")
     private Movimiento movimiento;
 
-<<<<<<< HEAD
-=======
-    // MÉTODOS CONSTRUCTORES
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Equipo_movimiento() {
 
     }
@@ -41,11 +29,6 @@ public class Equipo_movimiento {
         this.movimiento = movimiento;
     }
 
-<<<<<<< HEAD
-=======
-    // GETTERS AND SETTERS
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Integer getId_Equipo_Movimiento() {
         return id_Equipo_Movimiento;
     }

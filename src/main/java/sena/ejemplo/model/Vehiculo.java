@@ -6,13 +6,6 @@ import javax.persistence.*;
 @Table(name = "vehiculo")
 public class Vehiculo {
 
-<<<<<<< HEAD
-=======
-    // ATRIBUTOS
-
-    // Primary Key
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdVehiculo;
@@ -23,20 +16,10 @@ public class Vehiculo {
     @Column(name = "marca", nullable = false)
     private String marca;
 
-<<<<<<< HEAD
-=======
-    // Relation with Tipo_Vehiculo from FK, relation of entity Tipo_Vehiculo
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @ManyToOne
     @JoinColumn(name = "tipo_vehiculo_fk", nullable = false)
     private Tipo_Vehiculo tipo_Vehiculo;
 
-<<<<<<< HEAD
-=======
-    // Relation with documento from FK, relation of entity Usuario
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     @ManyToOne
     @JoinColumn(name = "documento", nullable = false)
     private Usuario documento;
@@ -44,11 +27,6 @@ public class Vehiculo {
     @Column(name = "estado", nullable = false)
     private boolean estado;
 
-<<<<<<< HEAD
-=======
-    // CONSTRUCTORES
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Vehiculo() {
 
     }
@@ -63,11 +41,6 @@ public class Vehiculo {
         this.estado = estado;
     }
 
-<<<<<<< HEAD
-=======
-    // GETTERS AND SETTERS
-
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
     public Integer getIdVehiculo() {
         return IdVehiculo;
     }

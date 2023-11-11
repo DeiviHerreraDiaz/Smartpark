@@ -43,7 +43,6 @@
 		</dependency>
 
 		<dependency>
-<<<<<<< HEAD
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
@@ -55,8 +54,6 @@
 		</dependency>
 
 		<dependency>
-=======
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
@@ -66,14 +63,11 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-<<<<<<< HEAD
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
 
-=======
->>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 	</dependencies>
 
 	<build>
