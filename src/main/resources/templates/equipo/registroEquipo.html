@@ -8,14 +8,14 @@
   <link rel="stylesheet" th:href="@{/css/formularios/formularios.css}">
   <link rel="stylesheet" th:href="@{/css/header/header.css}">
   <link rel="stylesheet" th:href="@{/css/footer/footer2.css}">
-  <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
+  <link rel="icon" th:href="@{/img/menu/logo-de-Sena-sin-fondo-Blanco.png}">
   <title>Formulario</title>
 </head>
 
 
 <body>
 <header class=" u-header">
-  <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
+  <img th:src="@{/img/menu/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
   <p class="u-text-1">SMARTPARK</p>
 </header>
 
@@ -42,7 +42,7 @@
   <div id="formContent" class="p-4">
       <h2 class="active mb-4">Registro de equipo</h2>
       <div class="fadeIn first">
-        <img th:src="@{/img/equipo.png}" style="height: 200px; width: 200px;" id="icon" alt="User Icon" />
+        <img th:src="@{/img/formularios/equipo.png}" style="height: 200px; width: 200px;" id="icon" alt="User Icon" />
       </div>
 
       <form th:action="@{/Equipo/add/}" th:object="${equipo}" class="u-inner-form" method="post">
