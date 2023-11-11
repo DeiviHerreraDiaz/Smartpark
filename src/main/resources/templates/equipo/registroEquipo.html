@@ -41,6 +41,9 @@
 <center>
   <div id="formContent" class="p-4">
       <h2 class="active mb-4">Registro de equipo</h2>
+      <div class="fadeIn first">
+        <img th:src="@{/img/equipo.png}" style="height: 200px; width: 200px;" id="icon" alt="User Icon" />
+      </div>
 
       <form th:action="@{/Equipo/add/}" th:object="${equipo}" class="u-inner-form" method="post">
 
@@ -50,6 +53,8 @@
           <label form="tipo" class="u-label">Tipo</label>
           <input type="text" class="form-control"  placeholder="Ingresa el tipo de equipo" id="tipo" name="tipo" th:field="*{tipo}">
         </div>
+
+<br>
 
         <div class="form-group">
           <label form="marca" class="u-label">Marca</label>

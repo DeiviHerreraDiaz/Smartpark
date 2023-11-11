@@ -44,6 +44,9 @@
 <center>
     <div id="formContent" class="p-4">
         <h2 class="active mb-4">Registro de usuarios</h2>
+        <div class="fadeIn first">
+          <img th:src="@{/img/usuario.png}" style="height: 200px; width: 200px;" id="icon" alt="User Icon" />
+        </div>
 
       <form th:action="@{/Usuario/add}" th:object="${usuario}" method="post" class="mt-4" >
 
