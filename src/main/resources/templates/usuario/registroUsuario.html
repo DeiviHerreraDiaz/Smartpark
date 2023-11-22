@@ -53,7 +53,7 @@
         <div class="form-group">
           <label form="Rol.IdRol"><b>Rol</b></label>
 
-          <select name="Rol.IdRol" id="Rol.IdRol" class="form-control" th:field="*{Rol.IdRol}">
+          <select name="Rol.IdRol" id="Rol.IdRol" class="form-control" th:field="*{Rol.IdRol}" required>
 
             <option value="1">Aprendiz</option>
             <option value="2">Funcionario</option>
@@ -66,7 +66,7 @@
 
         <div class="form-group">
           <label form="nombre"><b>Nombre</b></label>
-          <input type="text" class="form-control" placeholder="Ingresa el nombre" id="nombre" name="nombre" th:field="*{nombre}">
+          <input type="text" class="form-control" placeholder="Ingresa el nombre" id="nombre" name="nombre" th:field="*{nombre}" required>
           <div class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
         </div>
 
@@ -74,7 +74,7 @@
 
         <div class="form-group">
           <label form="apellido"><b>Apellido</b></label>
-          <input type="text" placeholder="Ingresa el apellido" class="form-control" id="apellido" name="apellido" th:field="*{apellido}">
+          <input type="text" placeholder="Ingresa el apellido" class="form-control" id="apellido" name="apellido" th:field="*{apellido}" required>
           <div class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
         </div>
 
@@ -82,7 +82,7 @@
 
         <div class="form-group">
           <label form="documento"><b>Documento</b></label>
-          <input type="text" placeholder="Ingresa el documento" class="form-control" id="documento" name="documento" th:field="*{documento}">
+          <input type="text" placeholder="Ingresa el documento" class="form-control" id="documento" name="documento" th:field="*{documento}" required>
           <div class="form-text text-danger" th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}"></div>
         </div>
 
@@ -90,7 +90,7 @@
 
         <div class="form-group">
           <label form="telefono"><b>Telefono</b></label>
-          <input type="text" placeholder="Ingresa el telefono"  class="form-control" id="telefono" name="telefono" th:field="*{telefono}">
+          <input type="text" placeholder="Ingresa el telefono"  class="form-control" id="telefono" name="telefono" th:field="*{telefono}" required>
           <div class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
         </div>
 

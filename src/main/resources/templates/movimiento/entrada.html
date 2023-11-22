@@ -46,22 +46,22 @@
         <form th:action="@{/Movimiento/add/}" method="post" class="mt-4">
             <div class="form-group">
                 <label for="fecha"><b>Fecha</b></label>
-                <input type="date" name="fecha" class="form-control">
+                <input type="date" name="fecha" class="form-control" required>
             </div>
             <br>
             <div class="form-group">
                 <label for="horaEntrada"><b>Hora</b></label>
-                <input type="time" name="horaEntrada" class="form-control">
+                <input type="time" name="horaEntrada" class="form-control" required>
             </div>
             <br>
             <div class="form-group">
                 <label for="documento.documento"><b>Documento</b></label>
-                <input type="text" class="form-control" id="documento.documento" name="documento.documento" th:value="${documento}">
+                <input type="text" class="form-control" id="documento.documento" name="documento.documento" th:value="${documento}" required>
             </div>
             <br>
             <div class="form-group">
                 <label for="vehiculo-select"><b>Vehículos de propiedad</b></label>
-                <select name="Vehiculo.IdVehiculo" id="vehiculo-select" class="form-control">
+                <select name="Vehiculo.IdVehiculo" id="vehiculo-select" class="form-control" required>
                     <option th:each="vehiculo : ${vehiculos}" th:if="${documento} == ${vehiculo.documento.documento}" th:value="${vehiculo.IdVehiculo}" th:text="${vehiculo.marca}"></option>
                 </select>
             </div>
@@ -109,6 +109,6 @@
 </footer>
 
 <!-- SCRIPTS -->
-<script th:src="@{/css/main.js}"></script>
+<script th:src="@{/js/main.js}"></script>
 </body>
 </html>

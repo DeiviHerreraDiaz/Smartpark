@@ -101,7 +101,7 @@
 
                     <div class="form-group">
                         <label for="horaSalida">Hora de salida</label>
-                        <input type="time" th:value="${movimiento.horaSalida}" name="horaSalida"  th:field="*{movimiento.horaSalida}" class="form-control">
+                        <input type="time" th:value="${movimiento.horaSalida}" name="horaSalida"  th:field="*{movimiento.horaSalida}" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
@@ -126,7 +126,7 @@
     </div>
 </footer>
 
-<script th:src="@{/css/main.js}"></script>
+<script th:src="@{/js/main.js}"></script>
 
 </body>
 
