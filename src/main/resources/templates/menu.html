@@ -14,10 +14,8 @@
 </head>
 <body>
 <header class=" u-header">
-          <img th:src="@{/img/menu/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
-
-        <p class="u-text-1">SMARTPARK</p>
-
+    <img th:src="@{/img/menu/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
+    <p class="u-text-1">SMARTPARK -  BIENVENIDO DE NUEVO  <span class="user"  th:text="${nombreUsuario.toUpperCase()}" ></span> <span class="user" th:text="${apellidoUsuario.toUpperCase()}"></span></p>
     </header>
 
     <nav class="nav">

@@ -57,13 +57,15 @@
 
 
 <div class="container-fluid">
-    <h1>Detalles de equipo</h1>
+
+    <h1 th:text="${'Detalles de equipo de '+ nombre  }"></h1>
     <table id="datat">
 
         <thead>
-        <th>PERSONA</th>
+
+        <th>SERIAL</th>
         <th>EQUIPO</th>
-        <th>ID MOVIMIENTO</th>
+
         </thead>
 
         <tr th:if="${#lists.isEmpty(listarEquipoMovimiento)}">
@@ -72,14 +74,11 @@
 
         <tbody th:unless="${#lists.isEmpty(listarEquipoMovimiento)}">
         <tr th:each="m:${listarEquipoMovimiento}"  >
-            <td>
-                <span th:text="${m.movimiento.documento.nombre}"></span>
-                <span th:text="${m.movimiento.documento.apellido}"></span>
-            </td>
 
 
+            <td th:text="${m.equipo.serie}"></td>
             <td th:text="${m.equipo.marca}"></td>
-            <td th:text="${m.movimiento.IdMovimiento}"></td>
+
         </tr>
 
         </tbody>

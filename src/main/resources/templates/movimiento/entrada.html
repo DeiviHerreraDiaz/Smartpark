@@ -62,7 +62,7 @@
             <div class="form-group">
                 <label for="vehiculo-select"><b>Vehículos de propiedad</b></label>
                 <select name="Vehiculo.IdVehiculo" id="vehiculo-select" class="form-control" required>
-                    <option th:each="vehiculo : ${vehiculos}" th:if="${documento} == ${vehiculo.documento.documento}" th:value="${vehiculo.IdVehiculo}" th:text="${vehiculo.marca}"></option>
+                    <option th:each="vehiculo : ${vehiculos}" th:if="${documento} == ${vehiculo.documento.documento}" th:value="${vehiculo.IdVehiculo}" th:text="${vehiculo.placa}"></option>
                 </select>
             </div>
             <br>
@@ -89,6 +89,8 @@
     </form>
 </div>
 
+
+
 <div class="camposDinamicos2">
     <form th:action="@{/Movimiento/Agregar/}" method="post">
 
@@ -98,6 +100,8 @@
         <button type="submit">Quitar equipo</button>
 
     </form>
+
+
 </div>
 
 <!-- PIE DE PÁGINA -->

@@ -75,6 +75,11 @@
 
         </thead>
         <tbody>
+        <tr th:if="${movimiento.isEmpty()}">
+            <td colspan="10" align="center">No hay movimientos</td>
+        </tr>
+
+
         <tr th:each="m:${movimiento}">
 
             <td th:text="${m.IdMovimiento}"></td>

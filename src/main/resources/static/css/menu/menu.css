@@ -16,6 +16,12 @@ body {
     align-items: center; 
 }
 
+.user{
+
+    color: #dcffb4;
+
+}
+
 .fila {
     display: flex;
     justify-content: center;

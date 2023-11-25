@@ -66,6 +66,10 @@
 
         </thead>
         <tbody>
+        <tr th:if="${listarEquipoMovimiento.isEmpty()}">
+            <td colspan="10" align="center">No hay detalles de equipo.</td>
+        </tr>
+
         <tr th:each="m:${listarEquipoMovimiento}">
 
             <td>
