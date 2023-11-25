@@ -170,13 +170,14 @@ public class MovimientoController {
     }
 
     @GetMapping(value = "/listarEquipoMovimientoUsuario")
-    public String listarEquipoMovimientoUsuario(Model m, @RequestParam("documento") String documento, @RequestParam("IdMovimiento") Integer IdMovimiento) {
+    public String listarEquipoMovimientoUsuario(Model m, @RequestParam("documento") String documento,@RequestParam("nombre") String nombre, @RequestParam("IdMovimiento") Integer IdMovimiento) {
         List<Equipo_movimiento> listaEquipoMovimiento = equipoMovimientoService.findAll().stream()
                 .filter(eq -> eq.getMovimiento().getDocumento().getDocumento().equals(documento) && eq.getMovimiento().getIdMovimiento() == IdMovimiento)
                 .collect(Collectors.toList());
 
         m.addAttribute("Mensaje", "MENSAJE");
         m.addAttribute("IdMovimiento", IdMovimiento);
+        m.addAttribute("nombre", nombre);
         m.addAttribute("listarEquipoMovimiento", listaEquipoMovimiento);
         return "Movimiento/listarEquipoMovimientoUsuario";
     }

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
-    <link rel="stylesheet" th:href="@{/css/login.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
-    <link rel="stylesheet" th:href="@{/css/nav.css}">
+    <link rel="icon" th:href="@{/img/menu/logo-de-Sena-sin-fondo-Blanco.png}">
+    <link rel="stylesheet" th:href="@{/css/login/login.css}">
+    <link rel="stylesheet" th:href="@{/css/footer/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/nav/nav2.css}">
 
     
     <title>INICIAR SESIÓN</title>
@@ -19,7 +19,7 @@
 
   <nav class="nav">
     <ul class="nav-list">
-        <li><a th:href="@{/}" class="btn"><button>Volver</button></a></li>
+        <li><a th:href="@{/}" style="margin-left: 400px;" class="btn"><button>Volver</button></a></li>
     </ul>
 </nav>
 
@@ -35,7 +35,7 @@
                 <input type="text" name="apellido" placeholder="Apellido" required>
                 <input type="text" name="documento" placeholder="Documento" required>
                 <input type="text" name="telefono" placeholder="Telefono" required>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número, una letra mayúscula, una letra minúscula y tener al menos 8 caracteres." required>
                 <input name="estado" value="1" hidden>
                 <button type="submit">Registrar</button>
             </form>
@@ -51,6 +51,12 @@
                 <span>Introduzca sus credenciales</span>
                 <input type="text" name="username" placeholder="Documento">
                 <input type="password" name="password"  placeholder="Contraseña">
+                <div th:if="${param.error}">
+                    <p style="color: red;">Credenciales incorrectas. Inténtelo de nuevo.</p>
+                </div>
+                <div th:if="${param.logout}">
+                    <p style="color: green;">Se cerró la sesión exitosamente.</p>
+                </div>
                 <a href="#">¿Olvidaste tu contraseña?</a>
                 <button>Iniciar sesión</button>
             </form>

@@ -5,16 +5,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" th:href="@{/img/logo-de-Sena-sin-fondo-Blanco.png}">
+  <link rel="icon" th:href="@{/img/menu/logo-de-Sena-sin-fondo-Blanco.png}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" th:href="@{/css/listar.css}">
-
+  <link rel="stylesheet" th:href="@{/css/formularios/formularios.css}">
+  <link rel="stylesheet" th:href="@{/css/header/header.css}">
+  <link rel="stylesheet" th:href="@{/css/footer/footer2.css}">
   <title>Formulario</title>
 </head>
 <body>
 <header class=" u-header">
-  <img th:src="@{/img/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
-  <p class="u-text-1">CENTRO DE GESTIÓN DE MERCADOS LOGÍSTICA Y TECNOLOGÍAS DE LA INFORMACIÓN</p>
+  <img th:src="@{/img/menu/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
+  <p class="u-text-1">SMARTPARK</p>
 </header>
 
 
@@ -37,22 +38,22 @@
   </div>
 </nav>
 
-<section class="u-section">
-  <div class="u-sheet">
-    <h2 class="u-text-1">
-      FORMULARIO REGISTRO USUARIOS
-    </h2>
+  
+<br><br>
 
+<center>
+    <div id="formContent" class="p-4">
+        <h2 class="active mb-4">Registro de usuarios</h2>
+        <div class="fadeIn first">
+          <img th:src="@{/img/formularios/usuario.png}" style="height: 200px; width: 200px;" id="icon" alt="User Icon" />
+        </div>
 
+      <form th:action="@{/Usuario/add}" th:object="${usuario}" method="post" class="mt-4" >
 
+        <div class="form-group">
+          <label form="Rol.IdRol"><b>Rol</b></label>
 
-    <div class="u-form-1">
-      <form th:action="@{/Usuario/add}" th:object="${usuario}" method="post" class="u-inner-form" >
-
-        <div class="u-form-group-1">
-          <label form="Rol.IdRol" class="u-label">Rol</label>
-
-          <select name="Rol.IdRol" id="Rol.IdRol" th:field="*{Rol.IdRol}">
+          <select name="Rol.IdRol" id="Rol.IdRol" class="form-control" th:field="*{Rol.IdRol}" required>
 
             <option value="1">Aprendiz</option>
             <option value="2">Funcionario</option>
@@ -61,49 +62,63 @@
           </select>
         </div>
 
+<br>
 
-        <div class="u-form-group-1">
-          <label form="nombre" class="u-label">Nombre </label>
-          <input type="text" class="u-input" placeholder="Ingresa el nombre" id="nombre" name="nombre" th:field="*{nombre}">
+        <div class="form-group">
+          <label form="nombre"><b>Nombre</b></label>
+          <input type="text" class="form-control" placeholder="Ingresa el nombre" id="nombre" name="nombre" th:field="*{nombre}" required>
           <div class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
         </div>
 
-        <div class="u-form-group-1">
-          <label form="apellido" class="u-label">Apellido</label>
-          <input type="text" placeholder="Ingresa el apellido" class="u-input" id="apellido" name="apellido" th:field="*{apellido}">
+<br>
+
+        <div class="form-group">
+          <label form="apellido"><b>Apellido</b></label>
+          <input type="text" placeholder="Ingresa el apellido" class="form-control" id="apellido" name="apellido" th:field="*{apellido}" required>
           <div class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
         </div>
 
-        <div class="u-form-group-1">
-          <label form="documento" class="u-label">Documento</label>
-          <input type="text" placeholder="Ingresa el documento" class="u-input" id="documento" name="documento" th:field="*{documento}">
+<br>
+
+        <div class="form-group">
+          <label form="documento"><b>Documento</b></label>
+          <input type="text" placeholder="Ingresa el documento" class="form-control" id="documento" name="documento" th:field="*{documento}" required>
           <div class="form-text text-danger" th:if="${#fields.hasErrors('documento')}" th:errors="*{documento}"></div>
         </div>
 
-        <div class="u-form-group-1">
-          <label form="telefono" class="u-label">Telefono</label>
-          <input type="text" placeholder="Ingresa el telefono"  class="u-input" id="telefono" name="telefono" th:field="*{telefono}">
+<br>
+
+        <div class="form-group">
+          <label form="telefono"><b>Telefono</b></label>
+          <input type="text" placeholder="Ingresa el telefono"  class="form-control" id="telefono" name="telefono" th:field="*{telefono}" required>
           <div class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
         </div>
 
-        <div class="u-form-group-1">
-          <label form="proveniente" class="u-label">Proveniente</label>
-          <input type="text" placeholder="¿De donde proviene? (SOLO PARA INVITADOS)" class="u-input" id="proveniente" name="proveniente" th:field="*{proveniente}">
+<br>
+
+        <div class="form-group">
+          <label form="proveniente"><b>Proveniente</b></label>
+          <input type="text" placeholder="¿De donde proviene? (SOLO PARA INVITADOS)" class="form-control" id="proveniente" name="proveniente" th:field="*{proveniente}">
           <div class="form-text text-danger" th:if="${#fields.hasErrors('proveniente')}" th:errors="*{proveniente}"></div>
         </div>
 
-        <div class="u-form-group-1">
-          <input type="checkbox" name="estado" value="1" checked>Activo
+<br>
+
+        <div class="form-group">
+          <label form="proveniente"><b>Activo</b></label>
+          <br>
+          <input type="checkbox" name="estado" value="1" checked>
         </div>
 
-        <button class="u-btn-submit2" type="submit">Enviar</button>
+<br>
+
+        <button class="btn btn-success mt-3 boton" type="submit">Enviar</button>
 
       </form>
-      <button class="u-btn-submit"><a th:href="@{/Usuario/listar}">Volver al Listado</a></button>
     </div>
-  </div>
-</section>
+</center>
 
+<br><br>
 
 <footer class="u-footer">
   <div class=" u-sheet-1">

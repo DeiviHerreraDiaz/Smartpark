@@ -5,12 +5,22 @@ select * from usuario;
 insert into rol (nombre) values 
 ("Aprendiz"),
 ("Funcionario"),
+<<<<<<< HEAD
+("Invitado"),
+("Administrador");
+
+insert into usuario (documento,apellido,estado,nombre,proveniente,telefono,id_rol_fk) values
+("1028480560","Moreno",true,"Brayan","","3117382120",4),
+("1234567892","Vega",false,"Laura","","987654321",4),
+("1033679469","Herrera",true,"Deivi","","3044028836",4),
+=======
 ("Invitado");
 
 insert into usuario (documento,apellido,estado,nombre,proveniente,telefono,id_rol_fk) values
 ("1028480560","Moreno",true,"Brayan","Centro de Electricidad, Electrónica y Telecomunicaciones","3117382120",3),
 ("1234567892","Vega",false,"Laura","","987654321",1),
 ("1033679469","Herrera",true,"Deivi","","3044028836",2),
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 ("1013106777","Vargas",false,"Dayana","Centro de Gestión Industrial","321456789",3),
 ("1000000001","Lopez",true,"Luis","Centro de Informática","300111222",2),
 ("1000000002","Gomez",false,"Carlos","Centro de Diseño","311222333",1),

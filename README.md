@@ -9,6 +9,12 @@ Software para optimizar la gestión de entrada y salida del estacionamiento del 
 - ¿Qué hace este proyecto?:
   Smartpark simplifica y agiliza el proceso de entrada y salida del estacionamiento, mejorando la accesibilidad para los equipos informáticos que ingresan. Esto optimiza la eficiencia y seguridad de los procesos en comparación con los métodos manuales previamente utilizados en la sede.
 
+<<<<<<< HEAD
+=======
+- ¿Por qué es importante o útil?:
+  Ahorra tiempo, seguridad, complejidad en los procesos que se llevaban actualmente en la sede, los cuales se hacian de forma manual.
+
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 - ¿Cómo se usa?
   El usuario solo pasa su carnet por el lector de barras o digita su documento, y con solo eso, podemos hacer un registro que mantiene la hora en la que entró. A la salida, es igual, brindando un registro completo vinculando los equipos que pasaron por el movimiento.
 
@@ -60,7 +66,11 @@ Corres el proyecto de la siguiente manera:
 
 De esa forma ya prendes el proyecto para ver su funcionamiento.
 
+<<<<<<< HEAD
 Si deseas desplazarte entre las ramas del repositorio, lo puedes hacer con el siguiente comando.
+=======
+Si deseas desplazarte entre las ramas del repositorio lo puedes hacer con el siguiente comando.
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 ```bash
 git switch "Nombre de la rama"
 ```
@@ -70,7 +80,11 @@ git checkout "Nombre de la rama"
 ```
 
 ## Licencia
+<<<<<<< HEAD
 Este proyecto se distribuye bajo la Licencia [Nombre de la Licencia].  
+=======
+Este proyecto se distribuye bajo la Licencia [Nombre de la Licencia]. Puedes consultar los detalles en el archivo [LICENSE.md].  👷 (Aún falta) 👷 
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09
 
 
 ## Contacto
@@ -91,6 +105,7 @@ Agradecemos a los siguientes colaboradores por su dedicación en el desarrollo d
 - Danna Lizbeth Velandia Hernandez
 - Brigithe Carolina Correa Triana
 
+<<<<<<< HEAD
 ### INGLES
 
 # Smartpark 
@@ -183,3 +198,5 @@ We thank the following contributors for their dedication in the development of S
 - Danna Lizbeth Velandia Hernandez
 - Brigithe Carolina Correa Triana
 
+=======
+>>>>>>> dcd4b21feb5d92f81affd35208995ba7257f5d09

@@ -1,0 +1,23 @@
+ /* Estilos del encabezado */
+  .u-header {
+    background-color: #39A900;
+    background: linear-gradient(to bottom   , #8ae051, #39A900);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    display: flex;
+    padding-left: 60px;
+  }
+  
+  .u-logo-image {
+    width: 100px;
+    height: 100px;
+  
+  }
+  
+  .u-text-1 {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-left: 80px;
+  }

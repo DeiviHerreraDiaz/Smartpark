@@ -53,4 +53,3 @@ public class _EquipoServiceImpl implements IEquipoService {
 
 
 }
-
