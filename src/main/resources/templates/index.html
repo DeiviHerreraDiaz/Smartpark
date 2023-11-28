@@ -17,14 +17,26 @@
 
 <header class=" u-header">
     <img th:src="@{/img/menu/logo-de-Sena-sin-fondo-Blanco.png}" class="u-logo-image">
-    <p class="u-text-1">SMARTPARK</p>
+    <p class="u-text-1">SMARTPARK Bienvenido, <span th:text="${nombreUsuario}"></span> <span class="user" th:text="${apellidoUsuario}"></span></p>
 </header>
 
-<nav class="nav">
+
+
+
+<nav class="nav" th:if="${usuarioAutenticado == 'anonymousUser'}">
     <ul class="nav-list">
-        <li><a th:href="@{/loguearse}" class="btn"><button>Iniciar sesión</button></a></li>
+        <li ><a th:href="@{/loguearse}" class="btn"><button>Iniciar sesión</button></a></li>
     </ul>
 </nav>
+
+<nav class="nav" th:if="${usuarioAutenticado != 'anonymousUser'}">
+    <ul class="nav-list">
+        <li ><a th:href="@{/menu}" class="btn"><button>Ir al Menú</button></a></li>
+        <li ><a th:href="@{/logout}" class="btn"><button>Cerrar Sesión</button></a></li>
+    </ul>
+</nav>
+
+
 
 
 

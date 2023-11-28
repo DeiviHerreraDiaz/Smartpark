@@ -17,10 +17,26 @@ public class IndexController {
     private IUsuarioService usuarioService;
 
     @GetMapping(value = "/")
-    public String inicio() {
+    public String inicio(Model m) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        m.addAttribute("usuarioAutenticado", auth.getName()); // Esto asume que el nombre del usuario es relevante para tu caso
+        Usuario usuario = usuarioService.findByDocumento(auth.getName());
+
+
+        if (usuario != null) {
+            m.addAttribute("nombreUsuario", usuario.getNombre());
+            m.addAttribute("apellidoUsuario", usuario.getApellido());
+
+        } else {
+
+            m.addAttribute("nombreUsuario", "Invitado");
+
+        }
 
         return "index";
     }
+
 
     @GetMapping(value = "/login")
     public String login() {
