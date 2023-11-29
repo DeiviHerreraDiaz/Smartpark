@@ -175,6 +175,7 @@ public class MovimientoController {
                 .filter(eq -> eq.getMovimiento().getDocumento().getDocumento().equals(documento) && eq.getMovimiento().getIdMovimiento() == IdMovimiento)
                 .collect(Collectors.toList());
 
+        m.addAttribute("documento", documento   );
         m.addAttribute("Mensaje", "MENSAJE");
         m.addAttribute("IdMovimiento", IdMovimiento);
         m.addAttribute("nombre", nombre);

@@ -17,4 +17,11 @@ let today = new Date().toLocaleDateString('en-CA', {year: 'numeric', month: '2-d
 // Establecer la fecha actual como el valor del campo de fecha
 document.querySelector("[name=fecha]").value = today;
 
+// Devolver a vista anterior
+
+
+    function goBack() {
+    window.history.back();
+}
+
 
