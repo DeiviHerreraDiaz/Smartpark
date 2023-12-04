@@ -2,6 +2,8 @@ package sena.ejemplo.controllers;
 
 import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -81,12 +83,15 @@ public class UsuarioController {
     }
 
     @GetMapping("/ExportarPdf")
-    public void ExportarListadoUsuarios(HttpServletResponse response) throws DocumentException, IOException {
+    public void ExportarListadoUsuarios(Model m,HttpServletResponse response) throws DocumentException, IOException {
 
         response.setContentType("application/pdf");
 
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        DateFormat dateFormatter2 = new SimpleDateFormat("yyyy-MM-dd");
+
         String fechaActual = dateFormatter.format(new Date());
+        String fecha = dateFormatter2.format(new Date());
 
         String cabecera = "Content-Disposition";
         String valor = "attachment; filename=Usuarios_" + fechaActual + ".pdf";
@@ -94,14 +99,17 @@ public class UsuarioController {
 
         List<Usuario> usuarios = usuariod.findAll();
 
-        // Additional information
-        String regional = "REGIONAL DISTRITO CAPITAL";
-        String centroGestion = "EL CENTRO DE GESTIÓN DE MERCADOS, LOGISTICA Y TECNOLOGIAS DE LA INFORMACIÓN";
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Usuario usuario = usuariod.findByDocumento(auth.getName());
+        String info = "El administrador " + usuario.getNombre() + " " + usuario.getApellido() + ", identificado con el número " + usuario.getDocumento() + ", generó un reporte en la fecha " + fecha + " , con la información de los usuarios que utilizan el servicio de parqueadero del CGMLTI.";
+
+
 
         UsuariosExporterPDF exporter = new UsuariosExporterPDF(usuarios);
 
-        // Pass additional information to the exportar method
-        exporter.exportar(response, regional, centroGestion);
+
+        exporter.exportar(response, info);
     }
 
 

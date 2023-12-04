@@ -66,21 +66,53 @@ public class UsuariosExporterPDF {
         }
     }
 
-    public void exportar(HttpServletResponse response, String regional, String centroGestion) throws IOException, DocumentException {
+    public void exportar(HttpServletResponse response, String info) throws IOException, DocumentException {
         Document documento = new Document(PageSize.A4);
         PdfWriter.getInstance(documento, response.getOutputStream());
         documento.open();
 
-        // Add the specified information
-        Paragraph regionalInfo = new Paragraph(regional);
-        regionalInfo.setAlignment(Paragraph.ALIGN_LEFT);
+        Font FUENTE_NEGRITA = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
+        Chunk Regional = new Chunk("REGIONAL DISTRITO CAPITAL.", FUENTE_NEGRITA);
+        Chunk CentroGestion = new Chunk("EL CENTRO DE GESTIÓN DE MERCADOS, LOGISTICA Y TECNOLOGIAS DE LA INFORMACIÓN.", FUENTE_NEGRITA);
+        Chunk text = new Chunk("Reporte de usuarios en utilización de parqueadero.", FUENTE_NEGRITA);
+
+        Image imagen = Image.getInstance("C:\\Users\\herre\\Desktop\\Smartpark\\src\\main\\java\\sena\\ejemplo\\controllers\\logo.jpeg");
+        imagen.scaleToFit(75, 75);
+        imagen.setAlignment(Image.ALIGN_CENTER);
+
+        documento.add(imagen);
+
+
+        Paragraph regionalInfo = new Paragraph();
+        regionalInfo.setAlignment(Paragraph.ALIGN_CENTER);
+        regionalInfo.add(Regional);
         documento.add(regionalInfo);
 
-        Paragraph centroGestionInfo = new Paragraph(centroGestion);
-        centroGestionInfo.setAlignment(Paragraph.ALIGN_LEFT);
-        documento.add(centroGestionInfo);
+        documento.add(Chunk.NEWLINE);
 
-        // Add the title
+        Paragraph centro = new Paragraph();
+        centro.setAlignment(Paragraph.ALIGN_CENTER);
+        centro.add(CentroGestion);
+        documento.add(centro);
+
+        documento.add(Chunk.NEWLINE);
+
+        Paragraph textoInfo = new Paragraph(text);
+        textoInfo.setAlignment(Paragraph.ALIGN_CENTER);
+        documento.add(textoInfo);
+
+        documento.add(Chunk.NEWLINE);
+
+        Paragraph informacion = new Paragraph(info);
+        informacion.setAlignment(Paragraph.ALIGN_CENTER);
+        documento.add(informacion);
+
+        documento.add(Chunk.NEWLINE);
+
+
+
+
+
         Paragraph titulo = new Paragraph("Lista de usuarios", FUENTE_TITULO);
         titulo.setAlignment(Paragraph.ALIGN_CENTER);
         documento.add(titulo);
